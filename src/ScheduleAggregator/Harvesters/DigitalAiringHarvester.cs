@@ -62,6 +62,7 @@ namespace ScheduleAggregator.Harvesters
                                             {
                                                 Id = summary.TitleId,
                                                 Name = summary.Name,
+                                                SeriesName = summary.SeriesName,
                                                 ReleaseYear = summary.ReleaseYear,
                                             }
                                         };

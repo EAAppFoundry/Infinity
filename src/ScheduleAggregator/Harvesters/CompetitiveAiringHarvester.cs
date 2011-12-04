@@ -30,7 +30,8 @@ namespace ScheduleAggregator.Harvesters
                                Title = new Title
                                {
                                    Id = (int)program.PROGRAM_ID,
-                                   Name = program.TITLE_NAME,
+                                   Name = program.EPISODE_NAME,
+                                   SeriesName = program.TITLE_NAME,
                                    ReleaseYear = program.RELEASE_YEAR.Value,
                                    Rating = program.MPAA_RATING,
                                    Genre = genre.GENRE_NAME,
@@ -51,7 +52,7 @@ namespace ScheduleAggregator.Harvesters
                            }).ToList();
             }
 
-            logger.InfoFormat("Retrieved {0} digital airings for all networks between '{1}' and '{2}'",
+            logger.InfoFormat("Retrieved {0} competitive airings for all networks between '{1}' and '{2}'",
                               airings.Count, startDate.ToShortDateString(), endDate.ToShortDateString());
 
             return airings;

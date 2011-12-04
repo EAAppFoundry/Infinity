@@ -22,9 +22,11 @@ namespace ScheduleAggregator.Harvesters
                             join titleAiring in entities.TitleAirings on franchiseAiring.FRANCHISE_AIRING_ID equals
                                 titleAiring.FRANCHISE_AIRING_ID
                             join title in entities.Titles on titleAiring.TITLE_ID equals title.TITLE_ID
+                            join seriesTitle in entities.Titles on title.SERIES_TITLE_ID equals seriesTitle.TITLE_ID into seriesTitles
                             join schedule in entities.LinearSchedules on franchiseAiring.SCHEDULE_ID equals schedule.SCHEDULE_ID
                             join titleSchedule in entities.LinearSchedules on titleAiring.SCHEDULE_ID equals titleSchedule.SCHEDULE_ID
                             join networkTitle in entities.NetworkTitles on titleAiring.TITLE_ID equals networkTitle.TITLE_ID
+                            from st in seriesTitles.DefaultIfEmpty()
                             where schedule.SCHED_TYPE_CD == "R" &&
                                   titleSchedule.SCHED_TYPE_CD == "R" &&
                                   (titleAiring.ACTION_IND != "X" && titleAiring.ACTION_IND != "D") &&
@@ -39,6 +41,7 @@ namespace ScheduleAggregator.Harvesters
                                            Network = schedule.NETWORK_CD,
                                            TitleId = (int)title.TITLE_ID,
                                            TitleName = title.TITLE_NAME,
+                                           SeriesName = st.TITLE_NAME ?? "",
                                            ReleaseYear = title.RELEASE_YEAR,
                                            TitleType = title.TITLE_TYPE_CD,
                                        };
@@ -63,6 +66,7 @@ namespace ScheduleAggregator.Harvesters
                                               {
                                                   Id = result.TitleId,
                                                   Name = result.TitleName,
+                                                  SeriesName = result.SeriesName,
                                                   ReleaseYear = result.ReleaseYear
                                               }
                               };

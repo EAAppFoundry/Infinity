@@ -38,12 +38,14 @@ namespace ScheduleAggregator
             var linearHarvester = new LinearAiringHarvester();
 
             var airings = new List<Airing>();
+            
             var competitiveAirings = competitiveHarvester.Harvest(startDate, endDate);
-            var digitalAirings = digitalHarvester.Harvest(startDate, endDate);
-            var linearAirings = linearHarvester.Harvest(startDate, endDate);
-
             airings.AddRange(competitiveAirings);
+
+            var digitalAirings = digitalHarvester.Harvest(startDate, endDate);
             airings.AddRange(digitalAirings);
+
+            var linearAirings = linearHarvester.Harvest(startDate, endDate);
             airings.AddRange(linearAirings);
 
             scheduleCollection.InsertBatch(airings);
