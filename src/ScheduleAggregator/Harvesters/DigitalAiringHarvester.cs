@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using ScheduleAggregator.Data;
 using ScheduleAggregator.EA.Turniverse.BlocksOfTime;
+using log4net;
 
 namespace ScheduleAggregator.Harvesters
 {
     public class DigitalAiringHarvester
     {
+        private readonly ILog logger = LogManager.GetLogger(typeof(DigitalAiringHarvester));
+
         public IEnumerable<Airing> Harvest(DateTime startDate, DateTime endDate)
         {
             var airings = new List<Airing>();
@@ -60,8 +63,6 @@ namespace ScheduleAggregator.Harvesters
                                                 Id = summary.TitleId,
                                                 Name = summary.Name,
                                                 ReleaseYear = summary.ReleaseYear,
-                                                Rating = summary.TVRatingCode,
-                                                Storyline = summary.StoryLine,
                                             }
                                         };
 
@@ -69,6 +70,9 @@ namespace ScheduleAggregator.Harvesters
                     }
                 }
             }
+
+            logger.InfoFormat("Retrieved {0} digital airings for all networks between '{1}' and '{2}'",
+                              airings.Count, startDate.ToShortDateString(), endDate.ToShortDateString());
 
             return airings;
         }

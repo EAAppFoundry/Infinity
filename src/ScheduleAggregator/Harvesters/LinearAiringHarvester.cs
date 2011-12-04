@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using ScheduleAggregator.Data;
+using log4net;
 
 namespace ScheduleAggregator.Harvesters
 {
     public class LinearAiringHarvester : IDisposable
     {
         readonly ScarlettEntities entities = new ScarlettEntities();
+        private readonly ILog logger = LogManager.GetLogger(typeof (LinearAiringHarvester));
 
         public void Dispose()
         {
@@ -42,6 +44,9 @@ namespace ScheduleAggregator.Harvesters
                                        };
 
             var executedResults = queryable.ToList();
+
+            logger.InfoFormat("Retrieved {0} linear airings for all networks between '{1}' and '{2}'",
+                              executedResults.Count, startDate.ToShortDateString(), endDate.ToShortDateString());
 
             return from result in executedResults
                    select new Airing

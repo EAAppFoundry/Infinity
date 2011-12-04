@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using ScheduleAggregator.Data;
+using log4net;
 
 namespace ScheduleAggregator.Harvesters
 {
     public class CompetitiveAiringHarvester
     {
+        private readonly ILog logger = LogManager.GetLogger(typeof(CompetitiveAiringHarvester));
+
         public IEnumerable<Airing> Harvest(DateTime startDate, DateTime endDate)
         {
             List<Airing> airings = null;
@@ -47,6 +50,9 @@ namespace ScheduleAggregator.Harvesters
                                Title = d.Title
                            }).ToList();
             }
+
+            logger.InfoFormat("Retrieved {0} digital airings for all networks between '{1}' and '{2}'",
+                              airings.Count, startDate.ToShortDateString(), endDate.ToShortDateString());
 
             return airings;
         }
