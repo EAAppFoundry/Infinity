@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/blockoftimegroups/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimegroups/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd0" namespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd2" namespace="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="GroupBlockOfTimesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q1:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssetId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BillingId" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" minOccurs="0" name="BlocksOfTime" nillable="true" type="q2:ArrayOfBlockOfTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GroupBlockOfTimesRequest" nillable="true" type="tns:GroupBlockOfTimesRequest" />
+  <xs:complexType name="GroupBlockOfTimesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q3:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BlockOfTimeIds" nillable="true" type="q4:ArrayOfint" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GroupBlockOfTimesResponse" nillable="true" type="tns:GroupBlockOfTimesResponse" />
+  <xs:complexType name="UnGroupBlockOfTimesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q5:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" minOccurs="0" name="BlocksOfTime" nillable="true" type="q6:ArrayOfBlockOfTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UnGroupBlockOfTimesRequest" nillable="true" type="tns:UnGroupBlockOfTimesRequest" />
+  <xs:complexType name="UnGroupBlockOfTimesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q7:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="BlockOfTimes" nillable="true" type="q8:ArrayOfint" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UnGroupBlockOfTimesResponse" nillable="true" type="tns:UnGroupBlockOfTimesResponse" />
+</xs:schema>

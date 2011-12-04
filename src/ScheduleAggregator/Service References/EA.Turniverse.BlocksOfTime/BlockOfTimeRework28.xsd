@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/core/titles/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/core/titles/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd9" namespace="http://schemas.turner.com/ea/augusta/base/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd12" namespace="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" />
+  <xs:complexType name="Title">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.turner.com/ea/augusta/base/2007/01" base="q1:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Active" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ElementNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EpisodeId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="EventDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IsSeries" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LengthSec" type="xs:int" />
+          <xs:element minOccurs="0" name="MPAARating" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MultipartParentId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="MultipartParentName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MultipartSequenceNum" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PlatformName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="QualComplete" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferenceIntl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReleaseYear" type="xs:int" />
+          <xs:element minOccurs="0" name="SeasonNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="SeriesId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="SeriesTitleName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SeriesTitleTypeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SeriesTypeCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TitleAiring" nillable="true" type="tns:TitleAiring" />
+          <xs:element minOccurs="0" name="TitleId" type="xs:int" />
+          <xs:element minOccurs="0" name="TitleNetworks" nillable="true" type="tns:ArrayOfTitleNetwork" />
+          <xs:element minOccurs="0" name="TitleTypeName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TypeCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Title" nillable="true" type="tns:Title" />
+  <xs:complexType name="TitleAiring">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.turner.com/ea/augusta/base/2007/01" base="q2:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LastAiredScheduleName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q3="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" minOccurs="0" name="LinearPremierNetwork" nillable="true" type="q3:ProgramService" />
+          <xs:element minOccurs="0" name="LinearPremiereDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="TitleAirDates" nillable="true" type="tns:ArrayOfTitleAirDate" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TitleAiring" nillable="true" type="tns:TitleAiring" />
+  <xs:complexType name="ArrayOfTitleAirDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitleAirDate" nillable="true" type="tns:TitleAirDate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitleAirDate" nillable="true" type="tns:ArrayOfTitleAirDate" />
+  <xs:complexType name="TitleAirDate">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.turner.com/ea/augusta/base/2007/01" base="q4:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MostRecentAirEndDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MostRecentAirFeedName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q5="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" minOccurs="0" name="MostRecentAirNetwork" nillable="true" type="q5:ProgramService" />
+          <xs:element minOccurs="0" name="MostRecentAirStartDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NextAirEndDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="NextAirFeedName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q6="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" minOccurs="0" name="NextAirNetwork" nillable="true" type="q6:ProgramService" />
+          <xs:element minOccurs="0" name="NextAirStartDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PreviousAirEndDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PreviousAirFeedName" nillable="true" type="xs:string" />
+          <xs:element xmlns:q7="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" minOccurs="0" name="PreviousAirNetwork" nillable="true" type="q7:ProgramService" />
+          <xs:element minOccurs="0" name="PreviousAirStartDateTime" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ScheduleTypeID" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TitleID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TitleAirDate" nillable="true" type="tns:TitleAirDate" />
+  <xs:complexType name="ArrayOfTitleNetwork">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitleNetwork" nillable="true" type="tns:TitleNetwork" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitleNetwork" nillable="true" type="tns:ArrayOfTitleNetwork" />
+  <xs:complexType name="TitleNetwork">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q8="http://schemas.turner.com/ea/augusta/base/2007/01" base="q8:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Descriptors" nillable="true" type="tns:ArrayOfTitleDescriptor" />
+          <xs:element minOccurs="0" name="Duration" type="xs:int" />
+          <xs:element minOccurs="0" name="Genres" nillable="true" type="tns:ArrayOfTitleGenre" />
+          <xs:element xmlns:q9="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" minOccurs="0" name="Network" nillable="true" type="q9:ProgramService" />
+          <xs:element minOccurs="0" name="Participants" nillable="true" type="tns:ArrayOfTitleParticipant" />
+          <xs:element minOccurs="0" name="Storyline" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Studio" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TVRatingCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TVRatingID" type="xs:int" />
+          <xs:element minOccurs="0" name="TitleId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TitleNetwork" nillable="true" type="tns:TitleNetwork" />
+  <xs:complexType name="ArrayOfTitleDescriptor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitleDescriptor" nillable="true" type="tns:TitleDescriptor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitleDescriptor" nillable="true" type="tns:ArrayOfTitleDescriptor" />
+  <xs:complexType name="TitleDescriptor">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q10="http://schemas.turner.com/ea/augusta/base/2007/01" base="q10:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TitleDescriptor" nillable="true" type="tns:TitleDescriptor" />
+  <xs:complexType name="ArrayOfTitleGenre">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitleGenre" nillable="true" type="tns:TitleGenre" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitleGenre" nillable="true" type="tns:ArrayOfTitleGenre" />
+  <xs:complexType name="TitleGenre">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.turner.com/ea/augusta/base/2007/01" base="q11:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TitleGenre" nillable="true" type="tns:TitleGenre" />
+  <xs:complexType name="ArrayOfTitleParticipant">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitleParticipant" nillable="true" type="tns:TitleParticipant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitleParticipant" nillable="true" type="tns:ArrayOfTitleParticipant" />
+  <xs:complexType name="TitleParticipant">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q12="http://schemas.turner.com/ea/augusta/base/2007/01" base="q12:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoleID" type="xs:int" />
+          <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TitleParticipant" nillable="true" type="tns:TitleParticipant" />
+  <xs:complexType name="ArrayOfTitleAiring">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitleAiring" nillable="true" type="tns:TitleAiring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitleAiring" nillable="true" type="tns:ArrayOfTitleAiring" />
+</xs:schema>

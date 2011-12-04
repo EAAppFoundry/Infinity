@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd14" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatacategories/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd16" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatadescriptors/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd17" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedtitlemetadata/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd25" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatagenres/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd27" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataguidecategories/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd28" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataprogramtypes/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd29" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataproviderContentTiers/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd30" namespace="http://schemas.turner.com/ea/augusta/schedules/TitleMetaData/TitleMetaDataTags/2007/01" />
+  <xs:complexType name="TitleMetaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetID" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatacategories/2007/01" minOccurs="0" name="Categories" nillable="true" type="q1:ArrayOfTitleMetaDataCategory" />
+      <xs:element minOccurs="0" name="ClipBlurb" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element xmlns:q2="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatadescriptors/2007/01" minOccurs="0" name="Descriptors" nillable="true" type="q2:ArrayOfTitleMetaDataDescriptor" />
+      <xs:element minOccurs="0" name="ElementNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EpisodeNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FastForwardAllowed" nillable="true" type="xs:boolean" />
+      <xs:element xmlns:q3="http://schemas.turner.com/ea/augusta/schedules/feeds/feedtitlemetadata/2007/01" minOccurs="0" name="Feeds" nillable="true" type="q3:ArrayOfFeedTitleMetaData" />
+      <xs:element minOccurs="0" name="Filename" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightDuration" type="xs:int" />
+      <xs:element minOccurs="0" name="FlightDurationEnum" type="tns:FlightDurationEnum" />
+      <xs:element xmlns:q4="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatagenres/2007/01" minOccurs="0" name="Genres" nillable="true" type="q4:ArrayOfTitleMetaDataGenre" />
+      <xs:element xmlns:q5="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataguidecategories/2007/01" minOccurs="0" name="GuideCategories" nillable="true" type="q5:ArrayOfTitleMetaDataGuideCategory" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Keywords" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LengthSec" type="xs:int" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostRoll" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PosterArt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PreRoll" nillable="true" type="xs:string" />
+      <xs:element xmlns:q6="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataprogramtypes/2007/01" minOccurs="0" name="ProgramTypes" nillable="true" type="q6:ArrayOfTitleMetaDataProgramType" />
+      <xs:element xmlns:q7="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataproviderContentTiers/2007/01" minOccurs="0" name="ProviderContentTiers" nillable="true" type="q7:ArrayOfTitleMetaDataProviderContentTier" />
+      <xs:element minOccurs="0" name="ReleaseYear" type="xs:int" />
+      <xs:element minOccurs="0" name="SeasonNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="SeriesID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SeriesName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeriesOverride" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Spots" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Storyline" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StorylineUseSeries" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Studio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TVRatingCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TVRatingID" type="xs:int" />
+      <xs:element minOccurs="0" name="TVRatingUseSeries" type="xs:boolean" />
+      <xs:element xmlns:q8="http://schemas.turner.com/ea/augusta/schedules/TitleMetaData/TitleMetaDataTags/2007/01" minOccurs="0" name="Tags" nillable="true" type="q8:ArrayOfTitleMetaDataTag" />
+      <xs:element minOccurs="0" name="TitleBrief" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TitleID" type="xs:int" />
+      <xs:element minOccurs="0" name="TitleMetaDataID" type="xs:int" />
+      <xs:element minOccurs="0" name="TitleVOD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TurnerBrandingReq" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TitleMetaData" nillable="true" type="tns:TitleMetaData" />
+  <xs:simpleType name="FlightDurationEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Day" />
+      <xs:enumeration value="Week" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FlightDurationEnum" nillable="true" type="tns:FlightDurationEnum" />
+  <xs:complexType name="ReleasableTitleMetaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EpisodeNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeriesName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Storyline" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TVRatingCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReleasableTitleMetaData" nillable="true" type="tns:ReleasableTitleMetaData" />
+</xs:schema>

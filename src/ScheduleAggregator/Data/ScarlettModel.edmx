@@ -1,0 +1,1626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="Devart.Data.Oracle" ProviderManifestToken="ORA" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="T_FRAN" EntityType="Model.Store.T_FRAN" store:Type="Tables" Schema="SCARDBA" />
+          <EntitySet Name="T_FRAN_AIR" EntityType="Model.Store.T_FRAN_AIR" store:Type="Tables" Schema="SCARDBA" />
+          <EntitySet Name="T_NETWRK_TITLE" EntityType="Model.Store.T_NETWRK_TITLE" store:Type="Tables" Schema="SCARDBA" />
+          <EntitySet Name="T_SCHED" EntityType="Model.Store.T_SCHED" store:Type="Tables" Schema="SCARDBA" />
+          <EntitySet Name="T_TITLE" EntityType="Model.Store.T_TITLE" store:Type="Tables" Schema="SCARDBA" />
+          <EntitySet Name="T_TITLE_AIR" EntityType="Model.Store.T_TITLE_AIR" store:Type="Tables" Schema="SCARDBA" />
+          <EntitySet Name="T_TITLE_TYPE" EntityType="Model.Store.T_TITLE_TYPE" store:Type="Tables" Schema="SCARDBA" />
+          <EntitySet Name="T_V_CHIP" EntityType="Model.Store.T_V_CHIP" store:Type="Tables" Schema="SCARDBA" />
+          <AssociationSet Name="SCARDBA_FK1_FRAN_TITLE" Association="Model.Store.SCARDBA_FK1_FRAN_TITLE">
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+            <End Role="T_FRAN" EntitySet="T_FRAN" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_FRANAIR_FRAN" Association="Model.Store.SCARDBA_FK1_FRANAIR_FRAN">
+            <End Role="T_FRAN" EntitySet="T_FRAN" />
+            <End Role="T_FRAN_AIR" EntitySet="T_FRAN_AIR" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_NETTITLE_VCHIP" Association="Model.Store.SCARDBA_FK1_NETTITLE_VCHIP">
+            <End Role="T_V_CHIP" EntitySet="T_V_CHIP" />
+            <End Role="T_NETWRK_TITLE" EntitySet="T_NETWRK_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_NETWRKTITLE_TITLE" Association="Model.Store.SCARDBA_FK1_NETWRKTITLE_TITLE">
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+            <End Role="T_NETWRK_TITLE" EntitySet="T_NETWRK_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLE_EPISODE" Association="Model.Store.SCARDBA_FK1_TITLE_EPISODE">
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+            <End Role="T_TITLE1" EntitySet="T_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLE_MULTIPART" Association="Model.Store.SCARDBA_FK1_TITLE_MULTIPART">
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+            <End Role="T_TITLE1" EntitySet="T_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLE_ORIG_REL_TITLE" Association="Model.Store.SCARDBA_FK1_TITLE_ORIG_REL_TITLE">
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+            <End Role="T_TITLE1" EntitySet="T_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLE_SERIESTITLE" Association="Model.Store.SCARDBA_FK1_TITLE_SERIESTITLE">
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+            <End Role="T_TITLE1" EntitySet="T_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLE_SHORTTRAILER" Association="Model.Store.SCARDBA_FK1_TITLE_SHORTTRAILER">
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+            <End Role="T_TITLE1" EntitySet="T_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLE_TITLETYPE" Association="Model.Store.SCARDBA_FK1_TITLE_TITLETYPE">
+            <End Role="T_TITLE_TYPE" EntitySet="T_TITLE_TYPE" />
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLEAIR_FRANAIR" Association="Model.Store.SCARDBA_FK1_TITLEAIR_FRANAIR">
+            <End Role="T_FRAN_AIR" EntitySet="T_FRAN_AIR" />
+            <End Role="T_TITLE_AIR" EntitySet="T_TITLE_AIR" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLEAIR_SCHED" Association="Model.Store.SCARDBA_FK1_TITLEAIR_SCHED">
+            <End Role="T_SCHED" EntitySet="T_SCHED" />
+            <End Role="T_TITLE_AIR" EntitySet="T_TITLE_AIR" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLEAIR_TITLE" Association="Model.Store.SCARDBA_FK1_TITLEAIR_TITLE">
+            <End Role="T_TITLE" EntitySet="T_TITLE" />
+            <End Role="T_TITLE_AIR" EntitySet="T_TITLE_AIR" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_TITLETYPE_TITLETYPE" Association="Model.Store.SCARDBA_FK1_TITLETYPE_TITLETYPE">
+            <End Role="T_TITLE_TYPE" EntitySet="T_TITLE_TYPE" />
+            <End Role="T_TITLE_TYPE1" EntitySet="T_TITLE_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK2_FRAN_TITLETYPE" Association="Model.Store.SCARDBA_FK2_FRAN_TITLETYPE">
+            <End Role="T_TITLE_TYPE" EntitySet="T_TITLE_TYPE" />
+            <End Role="T_FRAN" EntitySet="T_FRAN" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK2_FRANAIR_FRAN" Association="Model.Store.SCARDBA_FK2_FRANAIR_FRAN">
+            <End Role="T_FRAN" EntitySet="T_FRAN" />
+            <End Role="T_FRAN_AIR" EntitySet="T_FRAN_AIR" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK2_FRANAIR_SCHED" Association="Model.Store.SCARDBA_FK2_FRANAIR_SCHED">
+            <End Role="T_SCHED" EntitySet="T_SCHED" />
+            <End Role="T_FRAN_AIR" EntitySet="T_FRAN_AIR" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="T_FRAN">
+          <Key>
+            <PropertyRef Name="FRANCHISE_ID" />
+          </Key>
+          <Property Name="FRANCHISE_ID" Type="int64" Nullable="false" />
+          <Property Name="NAME" Type="VARCHAR2" Nullable="false" MaxLength="100" />
+          <Property Name="LANGUAGE_ID" Type="int64" Nullable="false" />
+          <Property Name="NETWORK_CD" Type="VARCHAR2" Nullable="false" MaxLength="5" />
+          <Property Name="LENGTH" Type="int" Nullable="false" />
+          <Property Name="FRANCHISE_TYPE_CD" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="PHONE_NUM" Type="VARCHAR2" MaxLength="20" />
+          <Property Name="DEFAULT_TITLE_TYPE_CD" Type="VARCHAR2" Nullable="false" MaxLength="3" />
+          <Property Name="SEARCH_NAME" Type="VARCHAR2" Nullable="false" MaxLength="100" />
+          <Property Name="ACTIVE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="TITLE_ID" Type="int64" />
+          <Property Name="CREATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="DEFAULT_BREAK_STRUCTURE" Type="VARCHAR2" MaxLength="75" />
+          <Property Name="DEFAULT_NEWS_UPDATE" Type="int" />
+          <Property Name="DEFAULT_SPONSOR" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="DEFAULT_GENRE_ID" Type="int64" />
+          <Property Name="CREATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="SPECIAL_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="T_FRAN_AIR">
+          <Key>
+            <PropertyRef Name="SCHEDULE_ID" />
+            <PropertyRef Name="FRANCHISE_AIRING_ID" />
+          </Key>
+          <Property Name="SCHEDULE_ID" Type="int64" Nullable="false" />
+          <Property Name="FRANCHISE_AIRING_ID" Type="int64" Nullable="false" />
+          <Property Name="FRANCHISE_AIRING_START_TIME" Type="int" Nullable="false" />
+          <Property Name="SCHEDULE_AIR_DATE" Type="DATE" />
+          <Property Name="LENGTH" Type="int" />
+          <Property Name="FRANCHISE_ID" Type="int64" />
+          <Property Name="ACTION_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="UMBRELLA_ID" Type="int64" />
+          <Property Name="CROSSOVER_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="ALTERNATE_TEXT" Type="VARCHAR2" MaxLength="2000" />
+          <Property Name="CREATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="SHADED_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="FRANCHISE_NAME" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="PRE_DISPLAY_TEXT" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="POST_DISPLAY_TEXT" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="PRIMARY_FRANCHISE_AIRING_ID" Type="int64" />
+          <Property Name="SHOW_ON_CALENDAR_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="SHOW_FRAN_NAME_ON_CALENDAR_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="PLACEHOLDER_TITLE_NAME" Type="VARCHAR2" MaxLength="200" />
+          <Property Name="PLACEHOLDER_TITLE_RELEASE_YEAR" Type="int" />
+          <Property Name="CALENDAR_FRANCHISE_NAME" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="SHOW_TITLE_NAME_ON_CALENDR_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="LISTING_ALTERNATE_TEXT" Type="VARCHAR2" MaxLength="2000" />
+          <Property Name="INVENTORY_AIRING_BACK_COLOR" Type="int64" />
+          <Property Name="INVENTORY_AIRING_TEXT_COLOR" Type="int64" />
+          <Property Name="INVENTORY_AVAIL_BACK_COLOR" Type="int64" />
+          <Property Name="INVENTORY_AVAIL_TEXT_COLOR" Type="int64" />
+          <Property Name="INVENTORY_PBUY_BACK_COLOR" Type="int64" />
+          <Property Name="INVENTORY_PBUY_TEXT_COLOR" Type="int64" />
+          <Property Name="SHOW_ON_INVENT_GAPS_REPORT_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="BREAK_STRUCTURE" Type="VARCHAR2" MaxLength="75" />
+          <Property Name="NEWS_UPDATE" Type="int" />
+          <Property Name="SPONSOR" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="BREAKOUT_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="NEWS_PRIMARY_SCHEDULE_ID" Type="int64" />
+          <Property Name="NEWS_PRIMARY_FRAN_AIRING_ID" Type="int64" />
+          <Property Name="CREATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="APPLIED_FROM_MASTER_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="PREEMPTION_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="OVERRIDE_PREEMPTION_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_NETWRK_TITLE">
+          <Key>
+            <PropertyRef Name="TITLE_ID" />
+            <PropertyRef Name="NETWORK_CD" />
+          </Key>
+          <Property Name="TITLE_ID" Type="int64" Nullable="false" />
+          <Property Name="NETWORK_CD" Type="VARCHAR2" Nullable="false" MaxLength="5" />
+          <Property Name="NETWORK_GRADE_DECAY_CURVE_ID" Type="int64" />
+          <Property Name="NETWRK_TITLE_COMMENT" Type="VARCHAR2" MaxLength="2000" />
+          <Property Name="REPOSITIONING_ID" Type="int64" />
+          <Property Name="V_CHIP_ID" Type="int64" />
+          <Property Name="INITIAL_GRADE_ID" Type="int64" />
+          <Property Name="AVAIL_FOR_SCHED_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="INITIAL_GRADE_START_YEAR" Type="int" />
+          <Property Name="DISP_CMNTS_RPT_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="CREATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="S_AND_P_COMMENT" Type="VARCHAR2" MaxLength="2000" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="DISPLAY_EPISODE_NAME" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="DISPLAY_EPISODE_NUMBER" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="DEFAULT_OZ_VERSION_ID" Type="int64" />
+          <Property Name="AUTO_OZ_DEFAULT_VERSION_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="LAST_LOCKED_USER_ID" Type="int64" />
+          <Property Name="SCHEDULING_COMMENT" Type="VARCHAR2" MaxLength="2000" />
+          <Property Name="DISPLAY_EPISODE_TV_RATING" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="PREMIERE_DATE" Type="DATE" />
+          <Property Name="PREMIERE_DATE_PENDING_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="ACQUISITION_GRADE_ID" Type="int64" />
+          <Property Name="PREMIERE_GRADE_ID" Type="int64" />
+          <Property Name="PREAIR_GRADE_ID" Type="int64" />
+          <Property Name="ACQUISITION_SALES_GRADE_ID" Type="int64" />
+          <Property Name="ONLINE_MERCHANDISE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="BLENDED_GRADE_ID" Type="int64" />
+          <Property Name="NETWORK_TITLE_DECAY_RATE_ID" Type="int" />
+          <Property Name="AVAILABLE_GRADE_ID" Type="int64" />
+          <Property Name="DEMO_BLENDED_GRADE_ID" Type="int64" />
+          <Property Name="CREATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_SCHED">
+          <Key>
+            <PropertyRef Name="SCHEDULE_ID" />
+          </Key>
+          <Property Name="SCHEDULE_ID" Type="int64" Nullable="false" />
+          <Property Name="SCHED_TYPE_CD" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="NETWORK_FEED_CD" Type="VARCHAR2" Nullable="false" MaxLength="3" />
+          <Property Name="NETWORK_CD" Type="VARCHAR2" Nullable="false" MaxLength="5" />
+          <Property Name="SCHEDULE_COMMENT" Type="VARCHAR2" MaxLength="2000" />
+          <Property Name="POSTED_THRU_DATE" Type="DATE" />
+          <Property Name="CREATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="GRID_VIEWABLE_THRU_DATE" Type="DATE" />
+          <Property Name="LISTING_VIEWABLE_THRU_DATE" Type="DATE" />
+          <Property Name="NON_SERIES_SCHEDULED_THRU_DATE" Type="DATE" />
+          <Property Name="SERIES_SCHEDULED_THRU_DATE" Type="DATE" />
+          <Property Name="REQUIRED_RUN_PLAN_COMMENT" Type="VARCHAR2" />
+          <Property Name="MASTER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="MASTER_START_DATE" Type="DATE" />
+          <Property Name="MASTER_END_DATE" Type="DATE" />
+          <Property Name="MASTER_LAST_UPDATE_DATE" Type="DATE" />
+          <Property Name="MASTER_LAST_APPLIED_DATE" Type="DATE" />
+          <Property Name="MASTER_LAST_APPLIED_START_DATE" Type="DATE" />
+          <Property Name="MASTER_LAST_APPLIED_END_DATE" Type="DATE" />
+          <Property Name="MASTER_ACTION_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="CREATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_TITLE">
+          <Key>
+            <PropertyRef Name="TITLE_ID" />
+          </Key>
+          <Property Name="TITLE_ID" Type="int64" Nullable="false" />
+          <Property Name="SHORT_TRAILER_PARENT_ID" Type="int64" />
+          <Property Name="TITLE_NAME" Type="VARCHAR2" Nullable="false" MaxLength="250" />
+          <Property Name="SERIES_TITLE_ID" Type="int64" />
+          <Property Name="SALES_GRADE_ID" Type="int64" />
+          <Property Name="MPAA_RATING_ID" Type="int64" />
+          <Property Name="EPISODE_TITLE_ID" Type="int64" />
+          <Property Name="TITLE_TYPE_CD" Type="VARCHAR2" Nullable="false" MaxLength="3" />
+          <Property Name="HOME_TEAM_ID" Type="int64" />
+          <Property Name="AWAY_TEAM_ID" Type="int64" />
+          <Property Name="MALTIN_RATING_ID" Type="int64" />
+          <Property Name="SPORT_ID" Type="int64" />
+          <Property Name="TITLE_SUBTYPE_ID" Type="int64" />
+          <Property Name="TITLE_SEARCH_NAME" Type="VARCHAR2" Nullable="false" MaxLength="250" />
+          <Property Name="MULTI_PART_TITLE_ID" Type="int64" />
+          <Property Name="MULTI_PART_SEQUENCE_NUM" Type="int" />
+          <Property Name="SHORT_TRAILER_CATEGORY_ID" Type="int64" />
+          <Property Name="HOLIDAY_ID" Type="int64" />
+          <Property Name="BIB_RATING_ID" Type="int64" />
+          <Property Name="RELEASE_YEAR" Type="int" Nullable="false" />
+          <Property Name="EI_RATING_ID" Type="int64" />
+          <Property Name="ACTIVE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="KIDVID_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="LENGTH" Type="int" />
+          <Property Name="TAPED_LIVE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="EVENT_DATE" Type="DATE" />
+          <Property Name="REFERENCE_NUM" Type="VARCHAR2" MaxLength="15" />
+          <Property Name="AIRING_ORDER_NUM" Type="int64" />
+          <Property Name="STUB_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="STUB_CD" Type="VARCHAR2" MaxLength="10" />
+          <Property Name="DISTRIBUTION_YEAR" Type="int" />
+          <Property Name="ACTIVE_FOR_ORION_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="KILLED_FOR_ORION_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="DELETED_IN_TITLE_MASTER_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="CONTRACTUALLY_LOCKED_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="CREATE_SYSTEM_CD" Type="VARCHAR2" MaxLength="12" />
+          <Property Name="CREATE_USER" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="CREATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="LAST_UPDATE_SYSTEM_CD" Type="VARCHAR2" MaxLength="12" />
+          <Property Name="LAST_UPDATE_USER" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="LANGUAGE_ID" Type="int64" />
+          <Property Name="CREATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="int64" />
+          <Property Name="NLSN_NAME_ID" Type="int64" />
+          <Property Name="INTERSTITIAL_TYPE_ID" Type="int64" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" />
+          <Property Name="CONTENT_ADVISORY_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="ORIGINAL_RELEASE_TITLE_ID" Type="int64" />
+          <Property Name="INTERNAL_REFERENCE_NUM" Type="VARCHAR2" MaxLength="15" />
+          <Property Name="INTERNATIONAL_REFERENCE_NUM" Type="VARCHAR2" MaxLength="15" />
+          <Property Name="ORIGINAL_NETWORK_CD" Type="VARCHAR2" MaxLength="5" />
+          <Property Name="LOGLINE" Type="VARCHAR2" MaxLength="510" />
+          <Property Name="BL_PROJECT_ID" Type="int64" />
+          <Property Name="MOVIE_OF_THE_WEEK_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="TV_MINI_SERIES_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="IMDB_PLOT_OUTLINE" Type="VARCHAR2" />
+          <Property Name="PRODUCTION_COMPANY" Type="VARCHAR2" MaxLength="2000" />
+          <Property Name="THEATRICAL_ASPECT_RATIO" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="THEATRICAL_COLOR" Type="VARCHAR2" MaxLength="250" />
+          <Property Name="THEATRICAL_SOUND" Type="VARCHAR2" MaxLength="250" />
+          <Property Name="IMDB_TITLE_ID" Type="VARCHAR2" MaxLength="20" />
+          <Property Name="AFI_TITLE_ID" Type="int64" />
+          <Property Name="ONLINE_MERCHANDISE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="MATERIAL_ID" Type="VARCHAR2" MaxLength="10" />
+          <Property Name="TOTAL_RUNNING_TIME" Type="VARCHAR2" MaxLength="5" />
+          <Property Name="INT_STANDARD_AUDIO_VIDEO_NUM" Type="VARCHAR2" MaxLength="96" />
+          <Property Name="INT_STD_AUD_VID_SEARCH_NAME" Type="VARCHAR2" MaxLength="96" />
+          <Property Name="PROJECT_START_DATE" Type="DATE" />
+          <Property Name="PROJECT_END_DATE" Type="DATE" />
+          <Property Name="FILMING_START_SEASON" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="FILMING_START_DATE" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="FILMING_END_SEASON" Type="VARCHAR2" MaxLength="100" />
+          <Property Name="FILMING_END_DATE" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="BL_EPISODE_ID" Type="int64" />
+          <Property Name="BL_TITLE_TYPE_NAME" Type="VARCHAR2" MaxLength="30" />
+          <Property Name="SEASON_NUM" Type="int" />
+          <Property Name="SEASON_PREMIERE_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="SEASON_FINALE_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="SEASON_PILOT_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="ELEMENT_REFERENCE_NUM" Type="VARCHAR2" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="T_TITLE_AIR">
+          <Key>
+            <PropertyRef Name="TITLE_AIRING_ID" />
+            <PropertyRef Name="SCHEDULE_ID" />
+          </Key>
+          <Property Name="TITLE_AIRING_ID" Type="int64" Nullable="false" />
+          <Property Name="SCHEDULE_ID" Type="int64" Nullable="false" />
+          <Property Name="FRANCHISE_AIRING_ID" Type="int64" Nullable="false" />
+          <Property Name="TITLE_ID" Type="int64" Nullable="false" />
+          <Property Name="PLAY_ID" Type="int64" />
+          <Property Name="SCHEDULE_AIR_TIME" Type="int" Nullable="false" />
+          <Property Name="ACTION_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="CREATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LENGTH" Type="int" />
+          <Property Name="CREATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="TITLE_AIR_COMMENT" Type="VARCHAR2" MaxLength="2000" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="OZ_VERSION_ID" Type="int" />
+          <Property Name="OVERWRITTEN_OZ_VERSION_ID" Type="int" />
+          <Property Name="TEMP_TITLE_AVAIL_WIN_ID" Type="int64" />
+          <Property Name="NEWS_AIR_TYPE" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="CREATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="APPLIED_FROM_MASTER_IND" Type="VARCHAR2" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="T_TITLE_TYPE">
+          <Key>
+            <PropertyRef Name="TITLE_TYPE_CD" />
+          </Key>
+          <Property Name="TITLE_TYPE_CD" Type="VARCHAR2" Nullable="false" MaxLength="3" />
+          <Property Name="NAME" Type="VARCHAR2" MaxLength="30" />
+          <Property Name="SERIES_TYPE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="PACKAGE_TYPE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="SERIES_TYPE_CD" Type="VARCHAR2" MaxLength="3" />
+          <Property Name="ACTIVE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="NIELSEN_NAME_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="VERSIONABLE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="VARCHAR2" Nullable="false" MaxLength="50" />
+          <Property Name="OPEN_TITLE_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="DEFAULT_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="CREATE_DATE" Type="DATE" />
+          <Property Name="CREATE_USER_ID" Type="int64" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" />
+        </EntityType>
+        <EntityType Name="T_V_CHIP">
+          <Key>
+            <PropertyRef Name="V_CHIP_ID" />
+          </Key>
+          <Property Name="V_CHIP_ID" Type="int64" Nullable="false" />
+          <Property Name="V_CHIP_CD" Type="VARCHAR2" Nullable="false" MaxLength="5" />
+          <Property Name="V_CHIP_NAME" Type="VARCHAR2" MaxLength="50" />
+          <Property Name="CREATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="ACTIVE_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="CREATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" Nullable="false" />
+        </EntityType>
+        <Association Name="SCARDBA_FK1_FRAN_TITLE">
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="0..1" />
+          <End Role="T_FRAN" Type="Model.Store.T_FRAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_FRAN">
+              <PropertyRef Name="TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_FRANAIR_FRAN">
+          <End Role="T_FRAN" Type="Model.Store.T_FRAN" Multiplicity="0..1" />
+          <End Role="T_FRAN_AIR" Type="Model.Store.T_FRAN_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_FRAN">
+              <PropertyRef Name="FRANCHISE_ID" />
+            </Principal>
+            <Dependent Role="T_FRAN_AIR">
+              <PropertyRef Name="FRANCHISE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_NETTITLE_VCHIP">
+          <End Role="T_V_CHIP" Type="Model.Store.T_V_CHIP" Multiplicity="0..1" />
+          <End Role="T_NETWRK_TITLE" Type="Model.Store.T_NETWRK_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_V_CHIP">
+              <PropertyRef Name="V_CHIP_ID" />
+            </Principal>
+            <Dependent Role="T_NETWRK_TITLE">
+              <PropertyRef Name="V_CHIP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_NETWRKTITLE_TITLE">
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="1" />
+          <End Role="T_NETWRK_TITLE" Type="Model.Store.T_NETWRK_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_NETWRK_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLE_EPISODE">
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="0..1" />
+          <End Role="T_TITLE1" Type="Model.Store.T_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="EPISODE_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLE_MULTIPART">
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="0..1" />
+          <End Role="T_TITLE1" Type="Model.Store.T_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="MULTI_PART_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLE_ORIG_REL_TITLE">
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="0..1" />
+          <End Role="T_TITLE1" Type="Model.Store.T_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="ORIGINAL_RELEASE_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLE_SERIESTITLE">
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="0..1" />
+          <End Role="T_TITLE1" Type="Model.Store.T_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="SERIES_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLE_SHORTTRAILER">
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="0..1" />
+          <End Role="T_TITLE1" Type="Model.Store.T_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="SHORT_TRAILER_PARENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLE_TITLETYPE">
+          <End Role="T_TITLE_TYPE" Type="Model.Store.T_TITLE_TYPE" Multiplicity="1" />
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE_TYPE">
+              <PropertyRef Name="TITLE_TYPE_CD" />
+            </Principal>
+            <Dependent Role="T_TITLE">
+              <PropertyRef Name="TITLE_TYPE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLEAIR_FRANAIR">
+          <End Role="T_FRAN_AIR" Type="Model.Store.T_FRAN_AIR" Multiplicity="1" />
+          <End Role="T_TITLE_AIR" Type="Model.Store.T_TITLE_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_FRAN_AIR">
+              <PropertyRef Name="FRANCHISE_AIRING_ID" />
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE_AIR">
+              <PropertyRef Name="FRANCHISE_AIRING_ID" />
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLEAIR_SCHED">
+          <End Role="T_SCHED" Type="Model.Store.T_SCHED" Multiplicity="1" />
+          <End Role="T_TITLE_AIR" Type="Model.Store.T_TITLE_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_SCHED">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE_AIR">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLEAIR_TITLE">
+          <End Role="T_TITLE" Type="Model.Store.T_TITLE" Multiplicity="1" />
+          <End Role="T_TITLE_AIR" Type="Model.Store.T_TITLE_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE_AIR">
+              <PropertyRef Name="TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_TITLETYPE_TITLETYPE">
+          <End Role="T_TITLE_TYPE" Type="Model.Store.T_TITLE_TYPE" Multiplicity="0..1" />
+          <End Role="T_TITLE_TYPE1" Type="Model.Store.T_TITLE_TYPE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE_TYPE">
+              <PropertyRef Name="TITLE_TYPE_CD" />
+            </Principal>
+            <Dependent Role="T_TITLE_TYPE1">
+              <PropertyRef Name="SERIES_TYPE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK2_FRAN_TITLETYPE">
+          <End Role="T_TITLE_TYPE" Type="Model.Store.T_TITLE_TYPE" Multiplicity="1" />
+          <End Role="T_FRAN" Type="Model.Store.T_FRAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE_TYPE">
+              <PropertyRef Name="TITLE_TYPE_CD" />
+            </Principal>
+            <Dependent Role="T_FRAN">
+              <PropertyRef Name="DEFAULT_TITLE_TYPE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK2_FRANAIR_FRAN">
+          <End Role="T_FRAN" Type="Model.Store.T_FRAN" Multiplicity="0..1" />
+          <End Role="T_FRAN_AIR" Type="Model.Store.T_FRAN_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_FRAN">
+              <PropertyRef Name="FRANCHISE_ID" />
+            </Principal>
+            <Dependent Role="T_FRAN_AIR">
+              <PropertyRef Name="UMBRELLA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK2_FRANAIR_SCHED">
+          <End Role="T_SCHED" Type="Model.Store.T_SCHED" Multiplicity="1" />
+          <End Role="T_FRAN_AIR" Type="Model.Store.T_FRAN_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_SCHED">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Principal>
+            <Dependent Role="T_FRAN_AIR">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Scarlett" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ScarlettEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Franchises" EntityType="Scarlett.Franchise" />
+          <EntitySet Name="FranchiseAirings" EntityType="Scarlett.FranchiseAiring" />
+          <EntitySet Name="LinearSchedules" EntityType="Scarlett.LinearSchedule" />
+          <AssociationSet Name="C1" Association="Scarlett.C1">
+            <End Role="T_FRAN" EntitySet="Franchises" />
+            <End Role="T_FRAN_AIR" EntitySet="FranchiseAirings" />
+          </AssociationSet>
+          <AssociationSet Name="C11" Association="Scarlett.C11">
+            <End Role="T_FRAN" EntitySet="Franchises" />
+            <End Role="T_FRAN_AIR" EntitySet="FranchiseAirings" />
+          </AssociationSet>
+          <AssociationSet Name="C12" Association="Scarlett.C12">
+            <End Role="T_SCHED" EntitySet="LinearSchedules" />
+            <End Role="T_FRAN_AIR" EntitySet="FranchiseAirings" />
+          </AssociationSet>
+          <EntitySet Name="Titles" EntityType="Scarlett.Title" />
+          <AssociationSet Name="C13" Association="Scarlett.C13">
+            <End Role="T_TITLE" EntitySet="Titles" />
+            <End Role="Franchise" EntitySet="Franchises" />
+          </AssociationSet>
+          <AssociationSet Name="C14" Association="Scarlett.C14">
+            <End Role="T_TITLE" EntitySet="Titles" />
+            <End Role="T_TITLE1" EntitySet="Titles" />
+          </AssociationSet>
+          <AssociationSet Name="C15" Association="Scarlett.C15">
+            <End Role="T_TITLE" EntitySet="Titles" />
+            <End Role="T_TITLE1" EntitySet="Titles" />
+          </AssociationSet>
+          <AssociationSet Name="C16" Association="Scarlett.C16">
+            <End Role="T_TITLE" EntitySet="Titles" />
+            <End Role="T_TITLE1" EntitySet="Titles" />
+          </AssociationSet>
+          <AssociationSet Name="C17" Association="Scarlett.C17">
+            <End Role="T_TITLE" EntitySet="Titles" />
+            <End Role="T_TITLE1" EntitySet="Titles" />
+          </AssociationSet>
+          <AssociationSet Name="C18" Association="Scarlett.C18">
+            <End Role="T_TITLE" EntitySet="Titles" />
+            <End Role="T_TITLE1" EntitySet="Titles" />
+          </AssociationSet>
+          <EntitySet Name="TitleAirings" EntityType="Scarlett.TitleAiring" />
+          <EntitySet Name="TitleTypes" EntityType="Scarlett.TitleType" />
+          <AssociationSet Name="C114" Association="Scarlett.C114">
+            <End Role="T_TITLE_TYPE" EntitySet="TitleTypes" />
+            <End Role="Franchise" EntitySet="Franchises" />
+          </AssociationSet>
+          <AssociationSet Name="C121" Association="Scarlett.C121">
+            <End Role="FranchiseAiring" EntitySet="FranchiseAirings" />
+            <End Role="T_TITLE_AIR" EntitySet="TitleAirings" />
+          </AssociationSet>
+          <AssociationSet Name="C131" Association="Scarlett.C131">
+            <End Role="Schedule" EntitySet="LinearSchedules" />
+            <End Role="T_TITLE_AIR" EntitySet="TitleAirings" />
+          </AssociationSet>
+          <AssociationSet Name="C161" Association="Scarlett.C161">
+            <End Role="Title" EntitySet="Titles" />
+            <End Role="T_TITLE_AIR" EntitySet="TitleAirings" />
+          </AssociationSet>
+          <AssociationSet Name="C113" Association="Scarlett.C113">
+            <End Role="T_TITLE_TYPE" EntitySet="TitleTypes" />
+            <End Role="Title" EntitySet="Titles" />
+          </AssociationSet>
+          <AssociationSet Name="C112" Association="Scarlett.C112">
+            <End Role="T_TITLE_TYPE" EntitySet="TitleTypes" />
+            <End Role="T_TITLE_TYPE1" EntitySet="TitleTypes" />
+          </AssociationSet>
+          <EntitySet Name="Ratings" EntityType="Scarlett.Rating" />
+          <EntitySet Name="NetworkTitles" EntityType="Scarlett.NetworkTitle" />
+          <AssociationSet Name="SCARDBA_FK1_NETTITLE_VCHIP" Association="Scarlett.SCARDBA_FK1_NETTITLE_VCHIP">
+            <End Role="T_V_CHIP" EntitySet="Ratings" />
+            <End Role="T_NETWRK_TITLE" EntitySet="NetworkTitles" />
+          </AssociationSet>
+          <AssociationSet Name="SCARDBA_FK1_NETWRKTITLE_TITLE" Association="Scarlett.SCARDBA_FK1_NETWRKTITLE_TITLE">
+            <End Role="Title" EntitySet="Titles" />
+            <End Role="T_NETWRK_TITLE" EntitySet="NetworkTitles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Franchise">
+          <Key>
+            <PropertyRef Name="FRANCHISE_ID" />
+          </Key>
+          <Property Name="FRANCHISE_ID" Type="Int64" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="LANGUAGE_ID" Type="Int64" Nullable="false" />
+          <Property Name="NETWORK_CD" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="LENGTH" Type="Int32" Nullable="false" />
+          <Property Name="FRANCHISE_TYPE_CD" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="PHONE_NUM" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="DEFAULT_TITLE_TYPE_CD" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="SEARCH_NAME" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ACTIVE_IND" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="TITLE_ID" Type="Int64" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="Int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="Int64" Nullable="false" />
+          <Property Name="DEFAULT_BREAK_STRUCTURE" Type="String" MaxLength="75" Unicode="true" FixedLength="false" />
+          <Property Name="DEFAULT_NEWS_UPDATE" Type="Int32" />
+          <Property Name="DEFAULT_SPONSOR" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DEFAULT_GENRE_ID" Type="Int64" />
+          <Property Name="CREATE_USER_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SPECIAL_IND" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_FRAN_AIR" Relationship="Scarlett.C1" FromRole="T_FRAN" ToRole="T_FRAN_AIR" />
+          <NavigationProperty Name="T_FRAN_AIR1" Relationship="Scarlett.C11" FromRole="T_FRAN" ToRole="T_FRAN_AIR" />
+          <NavigationProperty Name="T_TITLE" Relationship="Scarlett.C13" FromRole="Franchise" ToRole="T_TITLE" />
+          <NavigationProperty Name="T_TITLE_TYPE" Relationship="Scarlett.C114" FromRole="Franchise" ToRole="T_TITLE_TYPE" />
+        </EntityType>
+        <EntityType Name="FranchiseAiring">
+          <Key>
+            <PropertyRef Name="SCHEDULE_ID" />
+            <PropertyRef Name="FRANCHISE_AIRING_ID" />
+          </Key>
+          <Property Name="SCHEDULE_ID" Type="Int64" Nullable="false" />
+          <Property Name="FRANCHISE_AIRING_ID" Type="Int64" Nullable="false" />
+          <Property Name="FRANCHISE_AIRING_START_TIME" Type="Int32" Nullable="false" />
+          <Property Name="SCHEDULE_AIR_DATE" Type="DateTime" />
+          <Property Name="LENGTH" Type="Int32" />
+          <Property Name="FRANCHISE_ID" Type="Int64" />
+          <Property Name="ACTION_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="UMBRELLA_ID" Type="Int64" />
+          <Property Name="CROSSOVER_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="ALTERNATE_TEXT" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="Int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="Int64" Nullable="false" />
+          <Property Name="SHADED_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="FRANCHISE_NAME" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="PRE_DISPLAY_TEXT" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="POST_DISPLAY_TEXT" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="PRIMARY_FRANCHISE_AIRING_ID" Type="Int64" />
+          <Property Name="SHOW_ON_CALENDAR_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="SHOW_FRAN_NAME_ON_CALENDAR_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="PLACEHOLDER_TITLE_NAME" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PLACEHOLDER_TITLE_RELEASE_YEAR" Type="Int32" />
+          <Property Name="CALENDAR_FRANCHISE_NAME" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="SHOW_TITLE_NAME_ON_CALENDR_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="LISTING_ALTERNATE_TEXT" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="INVENTORY_AIRING_BACK_COLOR" Type="Int64" />
+          <Property Name="INVENTORY_AIRING_TEXT_COLOR" Type="Int64" />
+          <Property Name="INVENTORY_AVAIL_BACK_COLOR" Type="Int64" />
+          <Property Name="INVENTORY_AVAIL_TEXT_COLOR" Type="Int64" />
+          <Property Name="INVENTORY_PBUY_BACK_COLOR" Type="Int64" />
+          <Property Name="INVENTORY_PBUY_TEXT_COLOR" Type="Int64" />
+          <Property Name="SHOW_ON_INVENT_GAPS_REPORT_IND" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="BREAK_STRUCTURE" Type="String" MaxLength="75" Unicode="true" FixedLength="false" />
+          <Property Name="NEWS_UPDATE" Type="Int32" />
+          <Property Name="SPONSOR" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="BREAKOUT_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="NEWS_PRIMARY_SCHEDULE_ID" Type="Int64" />
+          <Property Name="NEWS_PRIMARY_FRAN_AIRING_ID" Type="Int64" />
+          <Property Name="CREATE_USER_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="APPLIED_FROM_MASTER_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="PREEMPTION_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="OVERRIDE_PREEMPTION_USER_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_FRAN" Relationship="Scarlett.C1" FromRole="T_FRAN_AIR" ToRole="T_FRAN" />
+          <NavigationProperty Name="T_FRAN1" Relationship="Scarlett.C11" FromRole="T_FRAN_AIR" ToRole="T_FRAN" />
+          <NavigationProperty Name="T_SCHED" Relationship="Scarlett.C12" FromRole="T_FRAN_AIR" ToRole="T_SCHED" />
+          <NavigationProperty Name="T_TITLE_AIR" Relationship="Scarlett.C121" FromRole="FranchiseAiring" ToRole="T_TITLE_AIR" />
+        </EntityType>
+        <EntityType Name="LinearSchedule">
+          <Key>
+            <PropertyRef Name="SCHEDULE_ID" />
+          </Key>
+          <Property Name="SCHEDULE_ID" Type="Int64" Nullable="false" />
+          <Property Name="SCHED_TYPE_CD" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="NETWORK_FEED_CD" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="NETWORK_CD" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="SCHEDULE_COMMENT" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="POSTED_THRU_DATE" Type="DateTime" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="Int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="Int64" Nullable="false" />
+          <Property Name="GRID_VIEWABLE_THRU_DATE" Type="DateTime" />
+          <Property Name="LISTING_VIEWABLE_THRU_DATE" Type="DateTime" />
+          <Property Name="NON_SERIES_SCHEDULED_THRU_DATE" Type="DateTime" />
+          <Property Name="SERIES_SCHEDULED_THRU_DATE" Type="DateTime" />
+          <Property Name="REQUIRED_RUN_PLAN_COMMENT" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="MASTER_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MASTER_START_DATE" Type="DateTime" />
+          <Property Name="MASTER_END_DATE" Type="DateTime" />
+          <Property Name="MASTER_LAST_UPDATE_DATE" Type="DateTime" />
+          <Property Name="MASTER_LAST_APPLIED_DATE" Type="DateTime" />
+          <Property Name="MASTER_LAST_APPLIED_START_DATE" Type="DateTime" />
+          <Property Name="MASTER_LAST_APPLIED_END_DATE" Type="DateTime" />
+          <Property Name="MASTER_ACTION_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CREATE_USER_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LAST_UPDATE_USER_NAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_FRAN_AIR" Relationship="Scarlett.C12" FromRole="T_SCHED" ToRole="T_FRAN_AIR" />
+          <NavigationProperty Name="T_TITLE_AIR" Relationship="Scarlett.C131" FromRole="Schedule" ToRole="T_TITLE_AIR" />
+        </EntityType>
+        <Association Name="C1">
+          <End Role="T_FRAN" Type="Scarlett.Franchise" Multiplicity="0..1" />
+          <End Role="T_FRAN_AIR" Type="Scarlett.FranchiseAiring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_FRAN">
+              <PropertyRef Name="FRANCHISE_ID" />
+            </Principal>
+            <Dependent Role="T_FRAN_AIR">
+              <PropertyRef Name="FRANCHISE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C11">
+          <End Role="T_FRAN" Type="Scarlett.Franchise" Multiplicity="0..1" />
+          <End Role="T_FRAN_AIR" Type="Scarlett.FranchiseAiring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_FRAN">
+              <PropertyRef Name="FRANCHISE_ID" />
+            </Principal>
+            <Dependent Role="T_FRAN_AIR">
+              <PropertyRef Name="UMBRELLA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C12">
+          <End Role="T_SCHED" Type="Scarlett.LinearSchedule" Multiplicity="1" />
+          <End Role="T_FRAN_AIR" Type="Scarlett.FranchiseAiring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_SCHED">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Principal>
+            <Dependent Role="T_FRAN_AIR">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Title">
+          <Key>
+            <PropertyRef Name="TITLE_ID" />
+          </Key>
+          <Property Type="Int64" Name="TITLE_ID" Nullable="false" />
+          <Property Type="Int64" Name="SHORT_TRAILER_PARENT_ID" />
+          <Property Type="String" Name="TITLE_NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="SERIES_TITLE_ID" />
+          <Property Type="Int64" Name="SALES_GRADE_ID" />
+          <Property Type="Int64" Name="MPAA_RATING_ID" />
+          <Property Type="Int64" Name="EPISODE_TITLE_ID" />
+          <Property Type="String" Name="TITLE_TYPE_CD" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="HOME_TEAM_ID" />
+          <Property Type="Int64" Name="AWAY_TEAM_ID" />
+          <Property Type="Int64" Name="MALTIN_RATING_ID" />
+          <Property Type="Int64" Name="SPORT_ID" />
+          <Property Type="Int64" Name="TITLE_SUBTYPE_ID" />
+          <Property Type="String" Name="SearchName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="MULTI_PART_TITLE_ID" />
+          <Property Type="Int32" Name="MULTI_PART_SEQUENCE_NUM" />
+          <Property Type="Int64" Name="SHORT_TRAILER_CATEGORY_ID" />
+          <Property Type="Int64" Name="HOLIDAY_ID" />
+          <Property Type="Int64" Name="BIB_RATING_ID" />
+          <Property Type="Int32" Name="RELEASE_YEAR" Nullable="false" />
+          <Property Type="Int64" Name="EI_RATING_ID" />
+          <Property Type="String" Name="ACTIVE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KIDVID_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LENGTH" />
+          <Property Type="String" Name="TAPED_LIVE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EVENT_DATE" />
+          <Property Type="String" Name="REFERENCE_NUM" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="AIRING_ORDER_NUM" />
+          <Property Type="String" Name="STUB_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="STUB_CD" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DISTRIBUTION_YEAR" />
+          <Property Type="String" Name="ACTIVE_FOR_ORION_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="KILLED_FOR_ORION_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DELETED_IN_TITLE_MASTER_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CONTRACTUALLY_LOCKED_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CREATE_SYSTEM_CD" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CREATE_USER" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CREATE_USER_NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LAST_UPDATE_SYSTEM_CD" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LAST_UPDATE_USER" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LAST_UPDATE_USER_NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="LANGUAGE_ID" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" />
+          <Property Type="Int64" Name="CREATE_USER_ID" />
+          <Property Type="Int64" Name="NLSN_NAME_ID" />
+          <Property Type="Int64" Name="INTERSTITIAL_TYPE_ID" />
+          <Property Type="DateTime" Name="LAST_UPDATE_DATE" Nullable="false" />
+          <Property Type="Int64" Name="LAST_UPDATE_USER_ID" />
+          <Property Type="String" Name="CONTENT_ADVISORY_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="ORIGINAL_RELEASE_TITLE_ID" />
+          <Property Type="String" Name="INTERNAL_REFERENCE_NUM" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="INTERNATIONAL_REFERENCE_NUM" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ORIGINAL_NETWORK_CD" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LOGLINE" MaxLength="510" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="BL_PROJECT_ID" />
+          <Property Type="String" Name="MOVIE_OF_THE_WEEK_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TV_MINI_SERIES_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IMDB_PLOT_OUTLINE" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PRODUCTION_COMPANY" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="THEATRICAL_ASPECT_RATIO" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="THEATRICAL_COLOR" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="THEATRICAL_SOUND" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IMDB_TITLE_ID" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="AFI_TITLE_ID" />
+          <Property Type="String" Name="ONLINE_MERCHANDISE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MATERIAL_ID" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TOTAL_RUNNING_TIME" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="INT_STANDARD_AUDIO_VIDEO_NUM" MaxLength="96" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="INT_STD_AUD_VID_SEARCH_NAME" MaxLength="96" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PROJECT_START_DATE" />
+          <Property Type="DateTime" Name="PROJECT_END_DATE" />
+          <Property Type="String" Name="FILMING_START_SEASON" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FILMING_START_DATE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FILMING_END_SEASON" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FILMING_END_DATE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="BL_EPISODE_ID" />
+          <Property Type="String" Name="BL_TITLE_TYPE_NAME" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SEASON_NUM" />
+          <Property Type="String" Name="SEASON_PREMIERE_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SEASON_FINALE_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SEASON_PILOT_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ELEMENT_REFERENCE_NUM" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_FRAN" Relationship="Scarlett.C13" FromRole="T_TITLE" ToRole="Franchise" />
+          <NavigationProperty Name="T_TITLE1" Relationship="Scarlett.C14" FromRole="T_TITLE" ToRole="T_TITLE1" />
+          <NavigationProperty Name="T_TITLE2" Relationship="Scarlett.C14" FromRole="T_TITLE1" ToRole="T_TITLE" />
+          <NavigationProperty Name="T_TITLE11" Relationship="Scarlett.C15" FromRole="T_TITLE" ToRole="T_TITLE1" />
+          <NavigationProperty Name="T_TITLE3" Relationship="Scarlett.C15" FromRole="T_TITLE1" ToRole="T_TITLE" />
+          <NavigationProperty Name="T_TITLE12" Relationship="Scarlett.C16" FromRole="T_TITLE" ToRole="T_TITLE1" />
+          <NavigationProperty Name="T_TITLE4" Relationship="Scarlett.C16" FromRole="T_TITLE1" ToRole="T_TITLE" />
+          <NavigationProperty Name="T_TITLE13" Relationship="Scarlett.C17" FromRole="T_TITLE" ToRole="T_TITLE1" />
+          <NavigationProperty Name="T_TITLE5" Relationship="Scarlett.C17" FromRole="T_TITLE1" ToRole="T_TITLE" />
+          <NavigationProperty Name="T_TITLE14" Relationship="Scarlett.C18" FromRole="T_TITLE" ToRole="T_TITLE1" />
+          <NavigationProperty Name="T_TITLE6" Relationship="Scarlett.C18" FromRole="T_TITLE1" ToRole="T_TITLE" />
+          <NavigationProperty Name="T_TITLE_AIR" Relationship="Scarlett.C161" FromRole="Title" ToRole="T_TITLE_AIR" />
+          <NavigationProperty Name="T_TITLE_TYPE" Relationship="Scarlett.C113" FromRole="Title" ToRole="T_TITLE_TYPE" />
+          <NavigationProperty Name="T_NETWRK_TITLE" Relationship="Scarlett.SCARDBA_FK1_NETWRKTITLE_TITLE" FromRole="Title" ToRole="T_NETWRK_TITLE" />
+        </EntityType>
+        <Association Name="C13">
+          <End Type="Scarlett.Title" Role="T_TITLE" Multiplicity="0..1" />
+          <End Type="Scarlett.Franchise" Role="Franchise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="Franchise">
+              <PropertyRef Name="TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C14">
+          <End Type="Scarlett.Title" Role="T_TITLE" Multiplicity="0..1" />
+          <End Type="Scarlett.Title" Role="T_TITLE1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="EPISODE_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C15">
+          <End Type="Scarlett.Title" Role="T_TITLE" Multiplicity="0..1" />
+          <End Type="Scarlett.Title" Role="T_TITLE1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="MULTI_PART_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C16">
+          <End Type="Scarlett.Title" Role="T_TITLE" Multiplicity="0..1" />
+          <End Type="Scarlett.Title" Role="T_TITLE1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="ORIGINAL_RELEASE_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C17">
+          <End Type="Scarlett.Title" Role="T_TITLE" Multiplicity="0..1" />
+          <End Type="Scarlett.Title" Role="T_TITLE1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="SERIES_TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C18">
+          <End Type="Scarlett.Title" Role="T_TITLE" Multiplicity="0..1" />
+          <End Type="Scarlett.Title" Role="T_TITLE1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE1">
+              <PropertyRef Name="SHORT_TRAILER_PARENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TitleAiring">
+          <Key>
+            <PropertyRef Name="TITLE_AIRING_ID" />
+            <PropertyRef Name="SCHEDULE_ID" />
+          </Key>
+          <Property Type="Int64" Name="TITLE_AIRING_ID" Nullable="false" />
+          <Property Type="Int64" Name="SCHEDULE_ID" Nullable="false" />
+          <Property Type="Int64" Name="FRANCHISE_AIRING_ID" Nullable="false" />
+          <Property Type="Int64" Name="TITLE_ID" Nullable="false" />
+          <Property Type="Int64" Name="PLAY_ID" />
+          <Property Type="Int32" Name="SCHEDULE_AIR_TIME" Nullable="false" />
+          <Property Type="String" Name="ACTION_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" />
+          <Property Type="Int32" Name="LENGTH" />
+          <Property Type="Int64" Name="CREATE_USER_ID" Nullable="false" />
+          <Property Type="String" Name="TITLE_AIR_COMMENT" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LAST_UPDATE_DATE" Nullable="false" />
+          <Property Type="Int64" Name="LAST_UPDATE_USER_ID" Nullable="false" />
+          <Property Type="Int32" Name="OZ_VERSION_ID" />
+          <Property Type="Int32" Name="OVERWRITTEN_OZ_VERSION_ID" />
+          <Property Type="Int64" Name="TEMP_TITLE_AVAIL_WIN_ID" />
+          <Property Type="String" Name="NEWS_AIR_TYPE" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CREATE_USER_NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LAST_UPDATE_USER_NAME" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="APPLIED_FROM_MASTER_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="T_FRAN_AIR" Relationship="Scarlett.C121" FromRole="T_TITLE_AIR" ToRole="FranchiseAiring" />
+          <NavigationProperty Name="T_SCHED" Relationship="Scarlett.C131" FromRole="T_TITLE_AIR" ToRole="Schedule" />
+          <NavigationProperty Name="T_TITLE" Relationship="Scarlett.C161" FromRole="T_TITLE_AIR" ToRole="Title" />
+        </EntityType>
+        <EntityType Name="TitleType">
+          <Key>
+            <PropertyRef Name="TITLE_TYPE_CD" />
+          </Key>
+          <Property Type="String" Name="TITLE_TYPE_CD" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NAME" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SERIES_TYPE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PACKAGE_TYPE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SERIES_TYPE_CD" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ACTIVE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="NIELSEN_NAME_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LAST_UPDATE_DATE" Nullable="false" />
+          <Property Type="String" Name="VERSIONABLE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LAST_UPDATE_USER_NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OPEN_TITLE_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DEFAULT_IND" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CREATE_DATE" />
+          <Property Type="Int64" Name="CREATE_USER_ID" />
+          <Property Type="Int64" Name="LAST_UPDATE_USER_ID" />
+          <NavigationProperty Name="T_FRAN" Relationship="Scarlett.C114" FromRole="T_TITLE_TYPE" ToRole="Franchise" />
+          <NavigationProperty Name="T_TITLE" Relationship="Scarlett.C113" FromRole="T_TITLE_TYPE" ToRole="Title" />
+          <NavigationProperty Name="T_TITLE_TYPE1" Relationship="Scarlett.C112" FromRole="T_TITLE_TYPE" ToRole="T_TITLE_TYPE1" />
+          <NavigationProperty Name="T_TITLE_TYPE2" Relationship="Scarlett.C112" FromRole="T_TITLE_TYPE1" ToRole="T_TITLE_TYPE" />
+        </EntityType>
+        <Association Name="C114">
+          <End Type="Scarlett.TitleType" Role="T_TITLE_TYPE" Multiplicity="1" />
+          <End Type="Scarlett.Franchise" Role="Franchise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE_TYPE">
+              <PropertyRef Name="TITLE_TYPE_CD" />
+            </Principal>
+            <Dependent Role="Franchise">
+              <PropertyRef Name="DEFAULT_TITLE_TYPE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C121">
+          <End Type="Scarlett.FranchiseAiring" Role="FranchiseAiring" Multiplicity="1" />
+          <End Type="Scarlett.TitleAiring" Role="T_TITLE_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FranchiseAiring">
+              <PropertyRef Name="FRANCHISE_AIRING_ID" />
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE_AIR">
+              <PropertyRef Name="FRANCHISE_AIRING_ID" />
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C131">
+          <End Type="Scarlett.LinearSchedule" Role="Schedule" Multiplicity="1" />
+          <End Type="Scarlett.TitleAiring" Role="T_TITLE_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE_AIR">
+              <PropertyRef Name="SCHEDULE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C161">
+          <End Type="Scarlett.Title" Role="Title" Multiplicity="1" />
+          <End Type="Scarlett.TitleAiring" Role="T_TITLE_AIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Title">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_TITLE_AIR">
+              <PropertyRef Name="TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C113">
+          <End Type="Scarlett.TitleType" Role="T_TITLE_TYPE" Multiplicity="1" />
+          <End Type="Scarlett.Title" Role="Title" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE_TYPE">
+              <PropertyRef Name="TITLE_TYPE_CD" />
+            </Principal>
+            <Dependent Role="Title">
+              <PropertyRef Name="TITLE_TYPE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C112">
+          <End Type="Scarlett.TitleType" Role="T_TITLE_TYPE" Multiplicity="0..1" />
+          <End Type="Scarlett.TitleType" Role="T_TITLE_TYPE1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TITLE_TYPE">
+              <PropertyRef Name="TITLE_TYPE_CD" />
+            </Principal>
+            <Dependent Role="T_TITLE_TYPE1">
+              <PropertyRef Name="SERIES_TYPE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="V_CHIP_ID" />
+          </Key>
+          <Property Type="Int64" Name="V_CHIP_ID" Nullable="false" />
+          <Property Type="String" Name="V_CHIP_CD" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="V_CHIP_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" />
+          <Property Type="String" Name="ACTIVE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="CREATE_USER_ID" Nullable="false" />
+          <Property Type="DateTime" Name="LAST_UPDATE_DATE" Nullable="false" />
+          <Property Type="Int64" Name="LAST_UPDATE_USER_ID" Nullable="false" />
+          <NavigationProperty Name="T_NETWRK_TITLE" Relationship="Scarlett.SCARDBA_FK1_NETTITLE_VCHIP" FromRole="T_V_CHIP" ToRole="T_NETWRK_TITLE" />
+        </EntityType>
+        <EntityType Name="NetworkTitle">
+          <Key>
+            <PropertyRef Name="TITLE_ID" />
+            <PropertyRef Name="NETWORK_CD" />
+          </Key>
+          <Property Type="Int64" Name="TITLE_ID" Nullable="false" />
+          <Property Type="String" Name="NETWORK_CD" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="NETWORK_GRADE_DECAY_CURVE_ID" />
+          <Property Type="String" Name="NETWRK_TITLE_COMMENT" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="REPOSITIONING_ID" />
+          <Property Type="Int64" Name="V_CHIP_ID" />
+          <Property Type="Int64" Name="INITIAL_GRADE_ID" />
+          <Property Type="String" Name="AVAIL_FOR_SCHED_IND" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="INITIAL_GRADE_START_YEAR" />
+          <Property Type="String" Name="DISP_CMNTS_RPT_IND" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CREATE_DATE" Nullable="false" />
+          <Property Type="Int64" Name="CREATE_USER_ID" Nullable="false" />
+          <Property Type="String" Name="S_AND_P_COMMENT" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="LAST_UPDATE_DATE" Nullable="false" />
+          <Property Type="Int64" Name="LAST_UPDATE_USER_ID" Nullable="false" />
+          <Property Type="String" Name="DISPLAY_EPISODE_NAME" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DISPLAY_EPISODE_NUMBER" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="DEFAULT_OZ_VERSION_ID" />
+          <Property Type="String" Name="AUTO_OZ_DEFAULT_VERSION_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="LAST_LOCKED_USER_ID" />
+          <Property Type="String" Name="SCHEDULING_COMMENT" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DISPLAY_EPISODE_TV_RATING" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="PREMIERE_DATE" />
+          <Property Type="String" Name="PREMIERE_DATE_PENDING_IND" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="ACQUISITION_GRADE_ID" />
+          <Property Type="Int64" Name="PREMIERE_GRADE_ID" />
+          <Property Type="Int64" Name="PREAIR_GRADE_ID" />
+          <Property Type="Int64" Name="ACQUISITION_SALES_GRADE_ID" />
+          <Property Type="String" Name="ONLINE_MERCHANDISE_IND" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="BLENDED_GRADE_ID" />
+          <Property Type="Int32" Name="NETWORK_TITLE_DECAY_RATE_ID" />
+          <Property Type="Int64" Name="AVAILABLE_GRADE_ID" />
+          <Property Type="Int64" Name="DEMO_BLENDED_GRADE_ID" />
+          <Property Type="String" Name="CREATE_USER_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LAST_UPDATE_USER_NAME" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_V_CHIP" Relationship="Scarlett.SCARDBA_FK1_NETTITLE_VCHIP" FromRole="T_NETWRK_TITLE" ToRole="T_V_CHIP" />
+          <NavigationProperty Name="T_TITLE" Relationship="Scarlett.SCARDBA_FK1_NETWRKTITLE_TITLE" FromRole="T_NETWRK_TITLE" ToRole="Title" />
+        </EntityType>
+        <Association Name="SCARDBA_FK1_NETTITLE_VCHIP">
+          <End Type="Scarlett.Rating" Role="T_V_CHIP" Multiplicity="0..1" />
+          <End Type="Scarlett.NetworkTitle" Role="T_NETWRK_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_V_CHIP">
+              <PropertyRef Name="V_CHIP_ID" />
+            </Principal>
+            <Dependent Role="T_NETWRK_TITLE">
+              <PropertyRef Name="V_CHIP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SCARDBA_FK1_NETWRKTITLE_TITLE">
+          <End Type="Scarlett.Title" Role="Title" Multiplicity="1" />
+          <End Type="Scarlett.NetworkTitle" Role="T_NETWRK_TITLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Title">
+              <PropertyRef Name="TITLE_ID" />
+            </Principal>
+            <Dependent Role="T_NETWRK_TITLE">
+              <PropertyRef Name="TITLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>      
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ScarlettEntities">
+          <EntitySetMapping Name="Franchises"><EntityTypeMapping TypeName="Scarlett.Franchise"><MappingFragment StoreEntitySet="T_FRAN">
+            <ScalarProperty Name="FRANCHISE_ID" ColumnName="FRANCHISE_ID" />
+            <ScalarProperty Name="NAME" ColumnName="NAME" />
+            <ScalarProperty Name="LANGUAGE_ID" ColumnName="LANGUAGE_ID" />
+            <ScalarProperty Name="NETWORK_CD" ColumnName="NETWORK_CD" />
+            <ScalarProperty Name="LENGTH" ColumnName="LENGTH" />
+            <ScalarProperty Name="FRANCHISE_TYPE_CD" ColumnName="FRANCHISE_TYPE_CD" />
+            <ScalarProperty Name="PHONE_NUM" ColumnName="PHONE_NUM" />
+            <ScalarProperty Name="DEFAULT_TITLE_TYPE_CD" ColumnName="DEFAULT_TITLE_TYPE_CD" />
+            <ScalarProperty Name="SEARCH_NAME" ColumnName="SEARCH_NAME" />
+            <ScalarProperty Name="ACTIVE_IND" ColumnName="ACTIVE_IND" />
+            <ScalarProperty Name="TITLE_ID" ColumnName="TITLE_ID" />
+            <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+            <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+            <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+            <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+            <ScalarProperty Name="DEFAULT_BREAK_STRUCTURE" ColumnName="DEFAULT_BREAK_STRUCTURE" />
+            <ScalarProperty Name="DEFAULT_NEWS_UPDATE" ColumnName="DEFAULT_NEWS_UPDATE" />
+            <ScalarProperty Name="DEFAULT_SPONSOR" ColumnName="DEFAULT_SPONSOR" />
+            <ScalarProperty Name="DEFAULT_GENRE_ID" ColumnName="DEFAULT_GENRE_ID" />
+            <ScalarProperty Name="CREATE_USER_NAME" ColumnName="CREATE_USER_NAME" />
+            <ScalarProperty Name="LAST_UPDATE_USER_NAME" ColumnName="LAST_UPDATE_USER_NAME" />
+            <ScalarProperty Name="SPECIAL_IND" ColumnName="SPECIAL_IND" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FranchiseAirings"><EntityTypeMapping TypeName="Scarlett.FranchiseAiring"><MappingFragment StoreEntitySet="T_FRAN_AIR">
+            <ScalarProperty Name="SCHEDULE_ID" ColumnName="SCHEDULE_ID" />
+            <ScalarProperty Name="FRANCHISE_AIRING_ID" ColumnName="FRANCHISE_AIRING_ID" />
+            <ScalarProperty Name="FRANCHISE_AIRING_START_TIME" ColumnName="FRANCHISE_AIRING_START_TIME" />
+            <ScalarProperty Name="SCHEDULE_AIR_DATE" ColumnName="SCHEDULE_AIR_DATE" />
+            <ScalarProperty Name="LENGTH" ColumnName="LENGTH" />
+            <ScalarProperty Name="FRANCHISE_ID" ColumnName="FRANCHISE_ID" />
+            <ScalarProperty Name="ACTION_IND" ColumnName="ACTION_IND" />
+            <ScalarProperty Name="UMBRELLA_ID" ColumnName="UMBRELLA_ID" />
+            <ScalarProperty Name="CROSSOVER_IND" ColumnName="CROSSOVER_IND" />
+            <ScalarProperty Name="ALTERNATE_TEXT" ColumnName="ALTERNATE_TEXT" />
+            <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+            <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+            <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+            <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+            <ScalarProperty Name="SHADED_IND" ColumnName="SHADED_IND" />
+            <ScalarProperty Name="FRANCHISE_NAME" ColumnName="FRANCHISE_NAME" />
+            <ScalarProperty Name="PRE_DISPLAY_TEXT" ColumnName="PRE_DISPLAY_TEXT" />
+            <ScalarProperty Name="POST_DISPLAY_TEXT" ColumnName="POST_DISPLAY_TEXT" />
+            <ScalarProperty Name="PRIMARY_FRANCHISE_AIRING_ID" ColumnName="PRIMARY_FRANCHISE_AIRING_ID" />
+            <ScalarProperty Name="SHOW_ON_CALENDAR_IND" ColumnName="SHOW_ON_CALENDAR_IND" />
+            <ScalarProperty Name="SHOW_FRAN_NAME_ON_CALENDAR_IND" ColumnName="SHOW_FRAN_NAME_ON_CALENDAR_IND" />
+            <ScalarProperty Name="PLACEHOLDER_TITLE_NAME" ColumnName="PLACEHOLDER_TITLE_NAME" />
+            <ScalarProperty Name="PLACEHOLDER_TITLE_RELEASE_YEAR" ColumnName="PLACEHOLDER_TITLE_RELEASE_YEAR" />
+            <ScalarProperty Name="CALENDAR_FRANCHISE_NAME" ColumnName="CALENDAR_FRANCHISE_NAME" />
+            <ScalarProperty Name="SHOW_TITLE_NAME_ON_CALENDR_IND" ColumnName="SHOW_TITLE_NAME_ON_CALENDR_IND" />
+            <ScalarProperty Name="LISTING_ALTERNATE_TEXT" ColumnName="LISTING_ALTERNATE_TEXT" />
+            <ScalarProperty Name="INVENTORY_AIRING_BACK_COLOR" ColumnName="INVENTORY_AIRING_BACK_COLOR" />
+            <ScalarProperty Name="INVENTORY_AIRING_TEXT_COLOR" ColumnName="INVENTORY_AIRING_TEXT_COLOR" />
+            <ScalarProperty Name="INVENTORY_AVAIL_BACK_COLOR" ColumnName="INVENTORY_AVAIL_BACK_COLOR" />
+            <ScalarProperty Name="INVENTORY_AVAIL_TEXT_COLOR" ColumnName="INVENTORY_AVAIL_TEXT_COLOR" />
+            <ScalarProperty Name="INVENTORY_PBUY_BACK_COLOR" ColumnName="INVENTORY_PBUY_BACK_COLOR" />
+            <ScalarProperty Name="INVENTORY_PBUY_TEXT_COLOR" ColumnName="INVENTORY_PBUY_TEXT_COLOR" />
+            <ScalarProperty Name="SHOW_ON_INVENT_GAPS_REPORT_IND" ColumnName="SHOW_ON_INVENT_GAPS_REPORT_IND" />
+            <ScalarProperty Name="BREAK_STRUCTURE" ColumnName="BREAK_STRUCTURE" />
+            <ScalarProperty Name="NEWS_UPDATE" ColumnName="NEWS_UPDATE" />
+            <ScalarProperty Name="SPONSOR" ColumnName="SPONSOR" />
+            <ScalarProperty Name="BREAKOUT_IND" ColumnName="BREAKOUT_IND" />
+            <ScalarProperty Name="NEWS_PRIMARY_SCHEDULE_ID" ColumnName="NEWS_PRIMARY_SCHEDULE_ID" />
+            <ScalarProperty Name="NEWS_PRIMARY_FRAN_AIRING_ID" ColumnName="NEWS_PRIMARY_FRAN_AIRING_ID" />
+            <ScalarProperty Name="CREATE_USER_NAME" ColumnName="CREATE_USER_NAME" />
+            <ScalarProperty Name="LAST_UPDATE_USER_NAME" ColumnName="LAST_UPDATE_USER_NAME" />
+            <ScalarProperty Name="APPLIED_FROM_MASTER_IND" ColumnName="APPLIED_FROM_MASTER_IND" />
+            <ScalarProperty Name="PREEMPTION_IND" ColumnName="PREEMPTION_IND" />
+            <ScalarProperty Name="OVERRIDE_PREEMPTION_USER_NAME" ColumnName="OVERRIDE_PREEMPTION_USER_NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LinearSchedules"><EntityTypeMapping TypeName="Scarlett.LinearSchedule"><MappingFragment StoreEntitySet="T_SCHED">
+            <ScalarProperty Name="SCHEDULE_ID" ColumnName="SCHEDULE_ID" />
+            <ScalarProperty Name="SCHED_TYPE_CD" ColumnName="SCHED_TYPE_CD" />
+            <ScalarProperty Name="NETWORK_FEED_CD" ColumnName="NETWORK_FEED_CD" />
+            <ScalarProperty Name="NETWORK_CD" ColumnName="NETWORK_CD" />
+            <ScalarProperty Name="SCHEDULE_COMMENT" ColumnName="SCHEDULE_COMMENT" />
+            <ScalarProperty Name="POSTED_THRU_DATE" ColumnName="POSTED_THRU_DATE" />
+            <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+            <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+            <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+            <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+            <ScalarProperty Name="GRID_VIEWABLE_THRU_DATE" ColumnName="GRID_VIEWABLE_THRU_DATE" />
+            <ScalarProperty Name="LISTING_VIEWABLE_THRU_DATE" ColumnName="LISTING_VIEWABLE_THRU_DATE" />
+            <ScalarProperty Name="NON_SERIES_SCHEDULED_THRU_DATE" ColumnName="NON_SERIES_SCHEDULED_THRU_DATE" />
+            <ScalarProperty Name="SERIES_SCHEDULED_THRU_DATE" ColumnName="SERIES_SCHEDULED_THRU_DATE" />
+            <ScalarProperty Name="REQUIRED_RUN_PLAN_COMMENT" ColumnName="REQUIRED_RUN_PLAN_COMMENT" />
+            <ScalarProperty Name="MASTER_NAME" ColumnName="MASTER_NAME" />
+            <ScalarProperty Name="MASTER_START_DATE" ColumnName="MASTER_START_DATE" />
+            <ScalarProperty Name="MASTER_END_DATE" ColumnName="MASTER_END_DATE" />
+            <ScalarProperty Name="MASTER_LAST_UPDATE_DATE" ColumnName="MASTER_LAST_UPDATE_DATE" />
+            <ScalarProperty Name="MASTER_LAST_APPLIED_DATE" ColumnName="MASTER_LAST_APPLIED_DATE" />
+            <ScalarProperty Name="MASTER_LAST_APPLIED_START_DATE" ColumnName="MASTER_LAST_APPLIED_START_DATE" />
+            <ScalarProperty Name="MASTER_LAST_APPLIED_END_DATE" ColumnName="MASTER_LAST_APPLIED_END_DATE" />
+            <ScalarProperty Name="MASTER_ACTION_IND" ColumnName="MASTER_ACTION_IND" />
+            <ScalarProperty Name="CREATE_USER_NAME" ColumnName="CREATE_USER_NAME" />
+            <ScalarProperty Name="LAST_UPDATE_USER_NAME" ColumnName="LAST_UPDATE_USER_NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Titles">
+            <EntityTypeMapping TypeName="Scarlett.Title">
+              <MappingFragment StoreEntitySet="T_TITLE">
+                <ScalarProperty Name="ELEMENT_REFERENCE_NUM" ColumnName="ELEMENT_REFERENCE_NUM" />
+                <ScalarProperty Name="SEASON_PILOT_IND" ColumnName="SEASON_PILOT_IND" />
+                <ScalarProperty Name="SEASON_FINALE_IND" ColumnName="SEASON_FINALE_IND" />
+                <ScalarProperty Name="SEASON_PREMIERE_IND" ColumnName="SEASON_PREMIERE_IND" />
+                <ScalarProperty Name="SEASON_NUM" ColumnName="SEASON_NUM" />
+                <ScalarProperty Name="BL_TITLE_TYPE_NAME" ColumnName="BL_TITLE_TYPE_NAME" />
+                <ScalarProperty Name="BL_EPISODE_ID" ColumnName="BL_EPISODE_ID" />
+                <ScalarProperty Name="FILMING_END_DATE" ColumnName="FILMING_END_DATE" />
+                <ScalarProperty Name="FILMING_END_SEASON" ColumnName="FILMING_END_SEASON" />
+                <ScalarProperty Name="FILMING_START_DATE" ColumnName="FILMING_START_DATE" />
+                <ScalarProperty Name="FILMING_START_SEASON" ColumnName="FILMING_START_SEASON" />
+                <ScalarProperty Name="PROJECT_END_DATE" ColumnName="PROJECT_END_DATE" />
+                <ScalarProperty Name="PROJECT_START_DATE" ColumnName="PROJECT_START_DATE" />
+                <ScalarProperty Name="INT_STD_AUD_VID_SEARCH_NAME" ColumnName="INT_STD_AUD_VID_SEARCH_NAME" />
+                <ScalarProperty Name="INT_STANDARD_AUDIO_VIDEO_NUM" ColumnName="INT_STANDARD_AUDIO_VIDEO_NUM" />
+                <ScalarProperty Name="TOTAL_RUNNING_TIME" ColumnName="TOTAL_RUNNING_TIME" />
+                <ScalarProperty Name="MATERIAL_ID" ColumnName="MATERIAL_ID" />
+                <ScalarProperty Name="ONLINE_MERCHANDISE_IND" ColumnName="ONLINE_MERCHANDISE_IND" />
+                <ScalarProperty Name="AFI_TITLE_ID" ColumnName="AFI_TITLE_ID" />
+                <ScalarProperty Name="IMDB_TITLE_ID" ColumnName="IMDB_TITLE_ID" />
+                <ScalarProperty Name="THEATRICAL_SOUND" ColumnName="THEATRICAL_SOUND" />
+                <ScalarProperty Name="THEATRICAL_COLOR" ColumnName="THEATRICAL_COLOR" />
+                <ScalarProperty Name="THEATRICAL_ASPECT_RATIO" ColumnName="THEATRICAL_ASPECT_RATIO" />
+                <ScalarProperty Name="PRODUCTION_COMPANY" ColumnName="PRODUCTION_COMPANY" />
+                <ScalarProperty Name="IMDB_PLOT_OUTLINE" ColumnName="IMDB_PLOT_OUTLINE" />
+                <ScalarProperty Name="TV_MINI_SERIES_IND" ColumnName="TV_MINI_SERIES_IND" />
+                <ScalarProperty Name="MOVIE_OF_THE_WEEK_IND" ColumnName="MOVIE_OF_THE_WEEK_IND" />
+                <ScalarProperty Name="BL_PROJECT_ID" ColumnName="BL_PROJECT_ID" />
+                <ScalarProperty Name="LOGLINE" ColumnName="LOGLINE" />
+                <ScalarProperty Name="ORIGINAL_NETWORK_CD" ColumnName="ORIGINAL_NETWORK_CD" />
+                <ScalarProperty Name="INTERNATIONAL_REFERENCE_NUM" ColumnName="INTERNATIONAL_REFERENCE_NUM" />
+                <ScalarProperty Name="INTERNAL_REFERENCE_NUM" ColumnName="INTERNAL_REFERENCE_NUM" />
+                <ScalarProperty Name="ORIGINAL_RELEASE_TITLE_ID" ColumnName="ORIGINAL_RELEASE_TITLE_ID" />
+                <ScalarProperty Name="CONTENT_ADVISORY_IND" ColumnName="CONTENT_ADVISORY_IND" />
+                <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+                <ScalarProperty Name="INTERSTITIAL_TYPE_ID" ColumnName="INTERSTITIAL_TYPE_ID" />
+                <ScalarProperty Name="NLSN_NAME_ID" ColumnName="NLSN_NAME_ID" />
+                <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="LANGUAGE_ID" ColumnName="LANGUAGE_ID" />
+                <ScalarProperty Name="LAST_UPDATE_USER_NAME" ColumnName="LAST_UPDATE_USER_NAME" />
+                <ScalarProperty Name="LAST_UPDATE_USER" ColumnName="LAST_UPDATE_USER" />
+                <ScalarProperty Name="LAST_UPDATE_SYSTEM_CD" ColumnName="LAST_UPDATE_SYSTEM_CD" />
+                <ScalarProperty Name="CREATE_USER_NAME" ColumnName="CREATE_USER_NAME" />
+                <ScalarProperty Name="CREATE_USER" ColumnName="CREATE_USER" />
+                <ScalarProperty Name="CREATE_SYSTEM_CD" ColumnName="CREATE_SYSTEM_CD" />
+                <ScalarProperty Name="CONTRACTUALLY_LOCKED_IND" ColumnName="CONTRACTUALLY_LOCKED_IND" />
+                <ScalarProperty Name="DELETED_IN_TITLE_MASTER_IND" ColumnName="DELETED_IN_TITLE_MASTER_IND" />
+                <ScalarProperty Name="KILLED_FOR_ORION_IND" ColumnName="KILLED_FOR_ORION_IND" />
+                <ScalarProperty Name="ACTIVE_FOR_ORION_IND" ColumnName="ACTIVE_FOR_ORION_IND" />
+                <ScalarProperty Name="DISTRIBUTION_YEAR" ColumnName="DISTRIBUTION_YEAR" />
+                <ScalarProperty Name="STUB_CD" ColumnName="STUB_CD" />
+                <ScalarProperty Name="STUB_IND" ColumnName="STUB_IND" />
+                <ScalarProperty Name="AIRING_ORDER_NUM" ColumnName="AIRING_ORDER_NUM" />
+                <ScalarProperty Name="REFERENCE_NUM" ColumnName="REFERENCE_NUM" />
+                <ScalarProperty Name="EVENT_DATE" ColumnName="EVENT_DATE" />
+                <ScalarProperty Name="TAPED_LIVE_IND" ColumnName="TAPED_LIVE_IND" />
+                <ScalarProperty Name="LENGTH" ColumnName="LENGTH" />
+                <ScalarProperty Name="KIDVID_IND" ColumnName="KIDVID_IND" />
+                <ScalarProperty Name="ACTIVE_IND" ColumnName="ACTIVE_IND" />
+                <ScalarProperty Name="EI_RATING_ID" ColumnName="EI_RATING_ID" />
+                <ScalarProperty Name="RELEASE_YEAR" ColumnName="RELEASE_YEAR" />
+                <ScalarProperty Name="BIB_RATING_ID" ColumnName="BIB_RATING_ID" />
+                <ScalarProperty Name="HOLIDAY_ID" ColumnName="HOLIDAY_ID" />
+                <ScalarProperty Name="SHORT_TRAILER_CATEGORY_ID" ColumnName="SHORT_TRAILER_CATEGORY_ID" />
+                <ScalarProperty Name="MULTI_PART_SEQUENCE_NUM" ColumnName="MULTI_PART_SEQUENCE_NUM" />
+                <ScalarProperty Name="MULTI_PART_TITLE_ID" ColumnName="MULTI_PART_TITLE_ID" />
+                <ScalarProperty Name="SearchName" ColumnName="TITLE_SEARCH_NAME" />
+                <ScalarProperty Name="TITLE_SUBTYPE_ID" ColumnName="TITLE_SUBTYPE_ID" />
+                <ScalarProperty Name="SPORT_ID" ColumnName="SPORT_ID" />
+                <ScalarProperty Name="MALTIN_RATING_ID" ColumnName="MALTIN_RATING_ID" />
+                <ScalarProperty Name="AWAY_TEAM_ID" ColumnName="AWAY_TEAM_ID" />
+                <ScalarProperty Name="HOME_TEAM_ID" ColumnName="HOME_TEAM_ID" />
+                <ScalarProperty Name="TITLE_TYPE_CD" ColumnName="TITLE_TYPE_CD" />
+                <ScalarProperty Name="EPISODE_TITLE_ID" ColumnName="EPISODE_TITLE_ID" />
+                <ScalarProperty Name="MPAA_RATING_ID" ColumnName="MPAA_RATING_ID" />
+                <ScalarProperty Name="SALES_GRADE_ID" ColumnName="SALES_GRADE_ID" />
+                <ScalarProperty Name="SERIES_TITLE_ID" ColumnName="SERIES_TITLE_ID" />
+                <ScalarProperty Name="TITLE_NAME" ColumnName="TITLE_NAME" />
+                <ScalarProperty Name="SHORT_TRAILER_PARENT_ID" ColumnName="SHORT_TRAILER_PARENT_ID" />
+                <ScalarProperty Name="TITLE_ID" ColumnName="TITLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TitleAirings">
+            <EntityTypeMapping TypeName="Scarlett.TitleAiring">
+              <MappingFragment StoreEntitySet="T_TITLE_AIR">
+                <ScalarProperty Name="APPLIED_FROM_MASTER_IND" ColumnName="APPLIED_FROM_MASTER_IND" />
+                <ScalarProperty Name="LAST_UPDATE_USER_NAME" ColumnName="LAST_UPDATE_USER_NAME" />
+                <ScalarProperty Name="CREATE_USER_NAME" ColumnName="CREATE_USER_NAME" />
+                <ScalarProperty Name="NEWS_AIR_TYPE" ColumnName="NEWS_AIR_TYPE" />
+                <ScalarProperty Name="TEMP_TITLE_AVAIL_WIN_ID" ColumnName="TEMP_TITLE_AVAIL_WIN_ID" />
+                <ScalarProperty Name="OVERWRITTEN_OZ_VERSION_ID" ColumnName="OVERWRITTEN_OZ_VERSION_ID" />
+                <ScalarProperty Name="OZ_VERSION_ID" ColumnName="OZ_VERSION_ID" />
+                <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+                <ScalarProperty Name="TITLE_AIR_COMMENT" ColumnName="TITLE_AIR_COMMENT" />
+                <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+                <ScalarProperty Name="LENGTH" ColumnName="LENGTH" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="ACTION_IND" ColumnName="ACTION_IND" />
+                <ScalarProperty Name="SCHEDULE_AIR_TIME" ColumnName="SCHEDULE_AIR_TIME" />
+                <ScalarProperty Name="PLAY_ID" ColumnName="PLAY_ID" />
+                <ScalarProperty Name="TITLE_ID" ColumnName="TITLE_ID" />
+                <ScalarProperty Name="FRANCHISE_AIRING_ID" ColumnName="FRANCHISE_AIRING_ID" />
+                <ScalarProperty Name="SCHEDULE_ID" ColumnName="SCHEDULE_ID" />
+                <ScalarProperty Name="TITLE_AIRING_ID" ColumnName="TITLE_AIRING_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TitleTypes">
+            <EntityTypeMapping TypeName="Scarlett.TitleType">
+              <MappingFragment StoreEntitySet="T_TITLE_TYPE">
+                <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+                <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="DEFAULT_IND" ColumnName="DEFAULT_IND" />
+                <ScalarProperty Name="OPEN_TITLE_IND" ColumnName="OPEN_TITLE_IND" />
+                <ScalarProperty Name="LAST_UPDATE_USER_NAME" ColumnName="LAST_UPDATE_USER_NAME" />
+                <ScalarProperty Name="VERSIONABLE_IND" ColumnName="VERSIONABLE_IND" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+                <ScalarProperty Name="NIELSEN_NAME_IND" ColumnName="NIELSEN_NAME_IND" />
+                <ScalarProperty Name="ACTIVE_IND" ColumnName="ACTIVE_IND" />
+                <ScalarProperty Name="SERIES_TYPE_CD" ColumnName="SERIES_TYPE_CD" />
+                <ScalarProperty Name="PACKAGE_TYPE_IND" ColumnName="PACKAGE_TYPE_IND" />
+                <ScalarProperty Name="SERIES_TYPE_IND" ColumnName="SERIES_TYPE_IND" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="TITLE_TYPE_CD" ColumnName="TITLE_TYPE_CD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="Scarlett.Rating">
+              <MappingFragment StoreEntitySet="T_V_CHIP">
+                <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+                <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+                <ScalarProperty Name="ACTIVE_IND" ColumnName="ACTIVE_IND" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="V_CHIP_NAME" ColumnName="V_CHIP_NAME" />
+                <ScalarProperty Name="V_CHIP_CD" ColumnName="V_CHIP_CD" />
+                <ScalarProperty Name="V_CHIP_ID" ColumnName="V_CHIP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NetworkTitles">
+            <EntityTypeMapping TypeName="Scarlett.NetworkTitle">
+              <MappingFragment StoreEntitySet="T_NETWRK_TITLE">
+                <ScalarProperty Name="LAST_UPDATE_USER_NAME" ColumnName="LAST_UPDATE_USER_NAME" />
+                <ScalarProperty Name="CREATE_USER_NAME" ColumnName="CREATE_USER_NAME" />
+                <ScalarProperty Name="DEMO_BLENDED_GRADE_ID" ColumnName="DEMO_BLENDED_GRADE_ID" />
+                <ScalarProperty Name="AVAILABLE_GRADE_ID" ColumnName="AVAILABLE_GRADE_ID" />
+                <ScalarProperty Name="NETWORK_TITLE_DECAY_RATE_ID" ColumnName="NETWORK_TITLE_DECAY_RATE_ID" />
+                <ScalarProperty Name="BLENDED_GRADE_ID" ColumnName="BLENDED_GRADE_ID" />
+                <ScalarProperty Name="ONLINE_MERCHANDISE_IND" ColumnName="ONLINE_MERCHANDISE_IND" />
+                <ScalarProperty Name="ACQUISITION_SALES_GRADE_ID" ColumnName="ACQUISITION_SALES_GRADE_ID" />
+                <ScalarProperty Name="PREAIR_GRADE_ID" ColumnName="PREAIR_GRADE_ID" />
+                <ScalarProperty Name="PREMIERE_GRADE_ID" ColumnName="PREMIERE_GRADE_ID" />
+                <ScalarProperty Name="ACQUISITION_GRADE_ID" ColumnName="ACQUISITION_GRADE_ID" />
+                <ScalarProperty Name="PREMIERE_DATE_PENDING_IND" ColumnName="PREMIERE_DATE_PENDING_IND" />
+                <ScalarProperty Name="PREMIERE_DATE" ColumnName="PREMIERE_DATE" />
+                <ScalarProperty Name="DISPLAY_EPISODE_TV_RATING" ColumnName="DISPLAY_EPISODE_TV_RATING" />
+                <ScalarProperty Name="SCHEDULING_COMMENT" ColumnName="SCHEDULING_COMMENT" />
+                <ScalarProperty Name="LAST_LOCKED_USER_ID" ColumnName="LAST_LOCKED_USER_ID" />
+                <ScalarProperty Name="AUTO_OZ_DEFAULT_VERSION_IND" ColumnName="AUTO_OZ_DEFAULT_VERSION_IND" />
+                <ScalarProperty Name="DEFAULT_OZ_VERSION_ID" ColumnName="DEFAULT_OZ_VERSION_ID" />
+                <ScalarProperty Name="DISPLAY_EPISODE_NUMBER" ColumnName="DISPLAY_EPISODE_NUMBER" />
+                <ScalarProperty Name="DISPLAY_EPISODE_NAME" ColumnName="DISPLAY_EPISODE_NAME" />
+                <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+                <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+                <ScalarProperty Name="S_AND_P_COMMENT" ColumnName="S_AND_P_COMMENT" />
+                <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="DISP_CMNTS_RPT_IND" ColumnName="DISP_CMNTS_RPT_IND" />
+                <ScalarProperty Name="INITIAL_GRADE_START_YEAR" ColumnName="INITIAL_GRADE_START_YEAR" />
+                <ScalarProperty Name="AVAIL_FOR_SCHED_IND" ColumnName="AVAIL_FOR_SCHED_IND" />
+                <ScalarProperty Name="INITIAL_GRADE_ID" ColumnName="INITIAL_GRADE_ID" />
+                <ScalarProperty Name="V_CHIP_ID" ColumnName="V_CHIP_ID" />
+                <ScalarProperty Name="REPOSITIONING_ID" ColumnName="REPOSITIONING_ID" />
+                <ScalarProperty Name="NETWRK_TITLE_COMMENT" ColumnName="NETWRK_TITLE_COMMENT" />
+                <ScalarProperty Name="NETWORK_GRADE_DECAY_CURVE_ID" ColumnName="NETWORK_GRADE_DECAY_CURVE_ID" />
+                <ScalarProperty Name="NETWORK_CD" ColumnName="NETWORK_CD" />
+                <ScalarProperty Name="TITLE_ID" ColumnName="TITLE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ScarlettModel" ZoomLevel="100">
+        <EntityTypeShape EntityType="Scarlett.Franchise" Width="1.5" PointX="5.25" PointY="21.375" Height="6.0186165364583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="Scarlett.FranchiseAiring" Width="1.5" PointX="10.5" PointY="19.25" Height="10.249248046874996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Scarlett.LinearSchedule" Width="1.5" PointX="8.25" PointY="13.25" Height="6.210917968749996" IsExpanded="true" />
+        <AssociationConnector Association="Scarlett.C1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="27.393616536458332" />
+          <ConnectorPoint PointX="6" PointY="28.972840169270832" />
+          <ConnectorPoint PointX="10.5" PointY="28.972840169270832" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C11" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.4062525" PointY="27.393616536458332" />
+          <ConnectorPoint PointX="6.4062525" PointY="28.678383730468749" />
+          <ConnectorPoint PointX="10.5" PointY="28.678383730468749" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C12" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="16.2499995" />
+          <ConnectorPoint PointX="11.25" PointY="16.2499995" />
+          <ConnectorPoint PointX="11.25" PointY="19.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Scarlett.Title" Width="1.5" PointX="3" PointY="14.625" Height="19.479716796875" />
+        <AssociationConnector Association="Scarlett.C13" >
+          <ConnectorPoint PointX="4.5" PointY="24.384308268229166" />
+          <ConnectorPoint PointX="4.666666666666667" PointY="24.384308268229166" />
+          <ConnectorPoint PointX="4.833333333333333" PointY="24.384308268229166" />
+          <ConnectorPoint PointX="5.25" PointY="24.384308268229166" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C14" >
+          <ConnectorPoint PointX="3.345" PointY="34.104716796874996" />
+          <ConnectorPoint PointX="3.345" PointY="34.354716796651481" />
+          <ConnectorPoint PointX="3.6046153846153848" PointY="34.354716796651481" />
+          <ConnectorPoint PointX="3.6046153846153848" PointY="34.104716796874996" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C15" >
+          <ConnectorPoint PointX="3.5319230769230767" PointY="14.625" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="14.375000000223515" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="14.375000000223515" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="14.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C16" >
+          <ConnectorPoint PointX="3" PointY="21.242365685168366" />
+          <ConnectorPoint PointX="2.75" PointY="21.242365685168366" />
+          <ConnectorPoint PointX="2.75" PointY="27.636041240909922" />
+          <ConnectorPoint PointX="3" PointY="27.636041240909922" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C17" >
+          <ConnectorPoint PointX="4.5" PointY="21.242365685168366" />
+          <ConnectorPoint PointX="4.75" PointY="21.242365685168366" />
+          <ConnectorPoint PointX="4.75" PointY="27.636041240909922" />
+          <ConnectorPoint PointX="4.5" PointY="27.636041240909922" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C18" >
+          <ConnectorPoint PointX="3.8642307692307689" PointY="34.104716796874996" />
+          <ConnectorPoint PointX="3.8642307692307689" PointY="34.354716796651481" />
+          <ConnectorPoint PointX="4.1238461538461539" PointY="34.354716796651481" />
+          <ConnectorPoint PointX="4.1238461538461539" PointY="34.104716796874996" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Scarlett.TitleAiring" Width="1.5" PointX="12.75" PointY="21.625" Height="5.4417122395833317" />
+        <EntityTypeShape EntityType="Scarlett.TitleType" Width="1.5" PointX="0.75" PointY="15.25" Height="4.6725065104166674" />
+        <AssociationConnector Association="Scarlett.C114" >
+          <ConnectorPoint PointX="2.25" PointY="17.586253255208334" />
+          <ConnectorPoint PointX="2.75" PointY="17.586253255208334" />
+          <ConnectorPoint PointX="2.75" PointY="14.359375000223515" />
+          <ConnectorPoint PointX="5.75" PointY="14.359375000223515" />
+          <ConnectorPoint PointX="5.75" PointY="21" />
+          <ConnectorPoint PointX="6" PointY="21" />
+          <ConnectorPoint PointX="6" PointY="21.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C121" >
+          <ConnectorPoint PointX="12" PointY="24.345856119791666" />
+          <ConnectorPoint PointX="12.75" PointY="24.345856119791666" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C131" >
+          <ConnectorPoint PointX="9.75" PointY="14.71874725" />
+          <ConnectorPoint PointX="13.5" PointY="14.71874725" />
+          <ConnectorPoint PointX="13.5" PointY="21.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C161" >
+          <ConnectorPoint PointX="4.5" PointY="31.833232421763238" />
+          <ConnectorPoint PointX="13.5" PointY="31.833232421763238" />
+          <ConnectorPoint PointX="13.5" PointY="27.066712239583332" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C113" >
+          <ConnectorPoint PointX="2.25" PointY="16.355626627604167" />
+          <ConnectorPoint PointX="2.6666666666666665" PointY="16.355626627604167" />
+          <ConnectorPoint PointX="2.8333333333333335" PointY="16.355626627604167" />
+          <ConnectorPoint PointX="3" PointY="16.355626627604167" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.C112" >
+          <ConnectorPoint PointX="1.2819230769230767" PointY="19.922506510416667" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="20.172506510416667" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="20.172506510416667" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="19.922506510416667" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Scarlett.Rating" Width="1.5" PointX="6" PointY="17" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="Scarlett.NetworkTitle" Width="1.5" PointX="8.25" PointY="20.25" Height="8.1339322916666674" />
+        <AssociationConnector Association="Scarlett.SCARDBA_FK1_NETTITLE_VCHIP" >
+          <ConnectorPoint PointX="7.15625" PointY="19.749492187499996" />
+          <ConnectorPoint PointX="7.15625" PointY="20.78125" />
+          <ConnectorPoint PointX="8.25" PointY="20.78125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Scarlett.SCARDBA_FK1_NETWRKTITLE_TITLE" >
+          <ConnectorPoint PointX="4.5" PointY="28.072486766288293" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="28.072486766288293" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="28.072486766288293" />
+          <ConnectorPoint PointX="6.3229191666666669" PointY="28.072486766288293" />
+          <ConnectorPoint PointX="6.4895858333333329" PointY="28.072486766288293" />
+          <ConnectorPoint PointX="8.25" PointY="28.072486766288293" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

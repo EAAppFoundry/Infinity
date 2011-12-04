@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/versions/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/versions/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd6" namespace="http://schemas.turner.com/ea/augusta/schedules/scheduleitems/2007/01" />
+  <xs:complexType name="Version">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Breaks" nillable="true" type="tns:ArrayOfBreak" />
+      <xs:element minOccurs="0" name="ContentID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsCCEncode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCCFile" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOrderVersion" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LengthInSeconds" type="xs:int" />
+      <xs:element minOccurs="0" name="MediaLength" type="xs:int" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrionVersionID" type="xs:int" />
+      <xs:element minOccurs="0" name="ScheduleItemID" type="xs:int" />
+      <xs:element minOccurs="0" name="Segments" nillable="true" type="tns:ArrayOfSegment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Version" nillable="true" type="tns:Version" />
+  <xs:complexType name="ArrayOfBreak">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Break" nillable="true" type="tns:Break" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBreak" nillable="true" type="tns:ArrayOfBreak" />
+  <xs:complexType name="Break">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BreakID" type="xs:int" />
+      <xs:element minOccurs="0" name="BreakScheduleItems" nillable="true" type="tns:ArrayOfBreakScheduleItem" />
+      <xs:element minOccurs="0" name="OrderNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Break" nillable="true" type="tns:Break" />
+  <xs:complexType name="ArrayOfBreakScheduleItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BreakScheduleItem" nillable="true" type="tns:BreakScheduleItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBreakScheduleItem" nillable="true" type="tns:ArrayOfBreakScheduleItem" />
+  <xs:complexType name="BreakScheduleItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BreakID" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderNumber" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.turner.com/ea/augusta/schedules/scheduleitems/2007/01" minOccurs="0" name="ScheduleItem" nillable="true" type="q1:ScheduleItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BreakScheduleItem" nillable="true" type="tns:BreakScheduleItem" />
+  <xs:complexType name="ArrayOfSegment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Segment" nillable="true" type="tns:Segment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSegment" nillable="true" type="tns:ArrayOfSegment" />
+  <xs:complexType name="Segment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Length" type="xs:int" />
+      <xs:element minOccurs="0" name="MaterialID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="SegmentID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Segment" nillable="true" type="tns:Segment" />
+</xs:schema>

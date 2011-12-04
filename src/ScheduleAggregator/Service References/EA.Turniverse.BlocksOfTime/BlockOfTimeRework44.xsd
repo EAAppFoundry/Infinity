@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/turniverse/messaging/itemtypeenum/2009/08" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/turniverse/messaging/itemtypeenum/2009/08" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="ItemTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Airing" />
+      <xs:enumeration value="Package" />
+      <xs:enumeration value="VideoOnDemand" />
+      <xs:enumeration value="Title" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ItemTypeEnum" nillable="true" type="tns:ItemTypeEnum" />
+</xs:schema>

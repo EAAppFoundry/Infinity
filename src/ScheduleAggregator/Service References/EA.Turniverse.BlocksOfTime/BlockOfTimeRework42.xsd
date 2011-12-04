@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="SectionIndicatorEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PreOpen" />
+      <xs:enumeration value="ScheduleItem" />
+      <xs:enumeration value="PostClose" />
+      <xs:enumeration value="Break" />
+      <xs:enumeration value="Segment" />
+      <xs:enumeration value="SqueezeCredit" />
+      <xs:enumeration value="Unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SectionIndicatorEnum" nillable="true" type="tns:SectionIndicatorEnum" />
+  <xs:simpleType name="C3Indicator">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="C3" />
+      <xs:enumeration value="C3R" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="C3Indicator" nillable="true" type="tns:C3Indicator" />
+  <xs:complexType name="InvalidAiringFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Network" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TitleAiringId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InvalidAiringFaultDetail" nillable="true" type="tns:InvalidAiringFaultDetail" />
+  <xs:complexType name="FaultContractBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FaultContractBase" nillable="true" type="tns:FaultContractBase" />
+  <xs:complexType name="InvalidBlockOfTimeFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BlockOfTimeId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InvalidBlockOfTimeFaultContract" nillable="true" type="tns:InvalidBlockOfTimeFaultContract" />
+  <xs:complexType name="ReadBlockOfTimeByIDFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReadBlockOfTimeByIDFaultContract" nillable="true" type="tns:ReadBlockOfTimeByIDFaultContract" />
+  <xs:complexType name="ReadBlockOfTimeFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReadBlockOfTimeFaultContract" nillable="true" type="tns:ReadBlockOfTimeFaultContract" />
+  <xs:complexType name="SaveBlockOfTimeFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SaveBlockOfTimeFaultContract" nillable="true" type="tns:SaveBlockOfTimeFaultContract" />
+  <xs:complexType name="RemoveBlockOfTimeFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveBlockOfTimeFaultContract" nillable="true" type="tns:RemoveBlockOfTimeFaultContract" />
+  <xs:complexType name="CreateBlockOfTimeFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateBlockOfTimeFaultContract" nillable="true" type="tns:CreateBlockOfTimeFaultContract" />
+  <xs:complexType name="PatternExecutionFaultContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatternExecutionFaultContract" nillable="true" type="tns:PatternExecutionFaultContract" />
+  <xs:complexType name="UnexpectedErrorFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UnexpectedErrorFaultContract" nillable="true" type="tns:UnexpectedErrorFaultContract" />
+  <xs:complexType name="CreatePlaceholderBlockOfTimeFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreatePlaceholderBlockOfTimeFaultContract" nillable="true" type="tns:CreatePlaceholderBlockOfTimeFaultContract" />
+  <xs:complexType name="CopyAndPasteBlockOfTimeFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CopyAndPasteBlockOfTimeFaultContract" nillable="true" type="tns:CopyAndPasteBlockOfTimeFaultContract" />
+  <xs:complexType name="ReadReleasableBlocksOfTimeFaultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:FaultContractBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReadReleasableBlocksOfTimeFaultContract" nillable="true" type="tns:ReadReleasableBlocksOfTimeFaultContract" />
+</xs:schema>

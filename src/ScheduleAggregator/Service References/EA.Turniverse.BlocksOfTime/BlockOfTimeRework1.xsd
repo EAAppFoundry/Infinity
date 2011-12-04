@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/blockoftimelocks/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimelocks/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd5" namespace="http://schemas.turner.com/ea/turniverse/messaging/itemtypeenum/2009/08" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd2" namespace="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfBlockOfTimeLock">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BlockOfTimeLock" nillable="true" type="tns:BlockOfTimeLock" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBlockOfTimeLock" nillable="true" type="tns:ArrayOfBlockOfTimeLock" />
+  <xs:complexType name="BlockOfTimeLock">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockOfTimeID" type="xs:int" />
+      <xs:element minOccurs="0" name="BlockOfTimeLockID" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.turner.com/ea/turniverse/messaging/itemtypeenum/2009/08" minOccurs="0" name="ItemType" type="q1:ItemTypeEnum" />
+      <xs:element minOccurs="0" name="LockDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BlockOfTimeLock" nillable="true" type="tns:BlockOfTimeLock" />
+  <xs:complexType name="BlockOfTimeLockFaultDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q2:MetaExceptionResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BlockOfTimeLock" nillable="true" type="tns:BlockOfTimeLock" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BlockOfTimeLockFaultDetail" nillable="true" type="tns:BlockOfTimeLockFaultDetail" />
+  <xs:complexType name="ArrayOfBlockOfTimeLockDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BlockOfTimeLockDetail" nillable="true" type="tns:BlockOfTimeLockDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBlockOfTimeLockDetail" nillable="true" type="tns:ArrayOfBlockOfTimeLockDetail" />
+  <xs:complexType name="BlockOfTimeLockDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AiringName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockOfTimeId" type="xs:int" />
+      <xs:element minOccurs="0" name="BlockOfTimeLockId" type="xs:int" />
+      <xs:element minOccurs="0" name="Duration" type="ser:duration" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FeedId" type="xs:int" />
+      <xs:element xmlns:q3="http://schemas.turner.com/ea/turniverse/messaging/itemtypeenum/2009/08" minOccurs="0" name="ItemType" type="q3:ItemTypeEnum" />
+      <xs:element minOccurs="0" name="LockDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PackageName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BlockOfTimeLockDetail" nillable="true" type="tns:BlockOfTimeLockDetail" />
+</xs:schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/packages/packageguidecategories/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageguidecategories/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd21" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedguidecategories/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd36" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/2007/01" />
+  <xs:complexType name="ArrayOfPackageGuideCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PackageGuideCategory" nillable="true" type="tns:PackageGuideCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPackageGuideCategory" nillable="true" type="tns:ArrayOfPackageGuideCategory" />
+  <xs:complexType name="PackageGuideCategory">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.turner.com/ea/augusta/schedules/packages/2007/01" base="q1:BasePackageAggregator">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.turner.com/ea/augusta/schedules/feeds/feedguidecategories/2007/01" minOccurs="0" name="FeedCategory" nillable="true" type="q2:FeedGuideCategory" />
+          <xs:element minOccurs="0" name="PackageGuideCategoryId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PackageGuideCategory" nillable="true" type="tns:PackageGuideCategory" />
+</xs:schema>

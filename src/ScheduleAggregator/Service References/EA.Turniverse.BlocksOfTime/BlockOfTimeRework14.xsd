@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/feeds/feedprogramtypes/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedprogramtypes/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfFeedProgramType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FeedProgramType" nillable="true" type="tns:FeedProgramType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFeedProgramType" nillable="true" type="tns:ArrayOfFeedProgramType" />
+  <xs:complexType name="FeedProgramType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FeedID" type="xs:int" />
+      <xs:element minOccurs="0" name="FeedProgramTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FeedProgramType" nillable="true" type="tns:FeedProgramType" />
+</xs:schema>

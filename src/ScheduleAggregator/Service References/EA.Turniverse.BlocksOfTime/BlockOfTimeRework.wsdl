@@ -1,0 +1,873 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/Imports">
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd0" namespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd2" namespace="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd4" namespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimelocks/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd5" namespace="http://schemas.turner.com/ea/turniverse/messaging/itemtypeenum/2009/08" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd6" namespace="http://schemas.turner.com/ea/augusta/schedules/scheduleitems/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd7" namespace="http://schemas.turner.com/ea/augusta/schedules/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd8" namespace="http://schemas.turner.com/ea/augusta/schedules/promos/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd9" namespace="http://schemas.turner.com/ea/augusta/base/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/Turner.Architecture.Frameworks.Persistence.Entities" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd11" namespace="http://schemas.turner.com/ea/augusta/core/titles/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd12" namespace="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd13" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd14" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatacategories/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd15" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedcategories/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd16" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatadescriptors/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd17" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedtitlemetadata/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd18" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd19" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedgenres/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd20" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedgenres/feedsubgenres/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd21" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedguidecategories/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd22" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedproductcodes/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd23" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedprogramtypes/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd24" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedprovidercontenttiers/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd25" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatagenres/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd26" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadatasubgenres/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd27" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataguidecategories/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd28" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataprogramtypes/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd29" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataproviderContentTiers/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd30" namespace="http://schemas.turner.com/ea/augusta/schedules/TitleMetaData/TitleMetaDataTags/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd31" namespace="http://schemas.turner.com/ea/augusta/schedules/versions/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd32" namespace="http://schemas.datacontract.org/2004/07/Dfc.Core" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd33" namespace="http://schemas.turner.com/ea/augusta/schedules/commercials/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd34" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/package/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd35" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packagecategory/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd36" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd37" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packagegenre/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd38" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packagesubgenre/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd39" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageguidecategories/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd40" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageproductcodes/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd41" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageprogramtypes/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd42" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageprovidercontenttiers/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd43" namespace="http://schemas.turner.com/ea/augusta/schedules/schedules/blockoftimes/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd44" namespace="http://schemas.datacontract.org/2004/07/Turniverse.Services.Schedules.BlockOfTimeTags" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd45" namespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimegroups/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd46" namespace="http://schemas.turner.com/ea/augusta/base/blockoftimes/2007/01" />
+      <xsd:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd47" namespace="http://schemas.turner.com/ea/augusta/base/blockoftimelocks/2007/01" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLinkedBlocksOfTimeByAssetIdsRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetLinkedBlocksOfTimeByAssetIdsRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedBlocksOfTimeByAssetIdsRequestMessage_Headers">
+    <wsdl:part xmlns:q1="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q1:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedBlocksOfTimeByAssetIdsResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetLinkedBlocksOfTimeByAssetIdsResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedBlocksOfTimeByAssetIdsResponseMessage_Headers">
+    <wsdl:part xmlns:q2="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q2:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedBlocksOfTimeByDateRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetLinkedBlocksOfTimeByDateRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedBlocksOfTimeByDateRequestMessage_Headers">
+    <wsdl:part xmlns:q3="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q3:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedBlocksOfTimeByDateResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetLinkedBlocksOfTimeByDateResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetLinkedBlocksOfTimeByDateResponseMessage_Headers">
+    <wsdl:part xmlns:q4="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q4:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBlocksOfTimeByLinkIdRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetBlocksOfTimeByLinkIdRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetBlocksOfTimeByLinkIdRequestMessage_Headers">
+    <wsdl:part xmlns:q5="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q5:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetBlocksOfTimeByLinkIdResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetBlocksOfTimeByLinkIdResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetBlocksOfTimeByLinkIdResponseMessage_Headers">
+    <wsdl:part xmlns:q6="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q6:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateBlockofTimeExternalAiringIdRequestMessage">
+    <wsdl:part name="parameters" element="tns:ValidateBlockofTimeExternalAiringIdRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ValidateBlockofTimeExternalAiringIdRequestMessage_Headers">
+    <wsdl:part xmlns:q7="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q7:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ValidateBlockofTimeExternalAiringIdResponseMessage">
+    <wsdl:part name="parameters" element="tns:ValidateBlockofTimeExternalAiringIdResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ValidateBlockofTimeExternalAiringIdResponseMessage_Headers">
+    <wsdl:part xmlns:q8="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q8:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GroupBlockOfTimesRequestMessage">
+    <wsdl:part name="parameters" element="tns:GroupBlockOfTimesRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GroupBlockOfTimesRequestMessage_Headers">
+    <wsdl:part xmlns:q9="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q9:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GroupBlockOfTimesResponseMessage">
+    <wsdl:part name="parameters" element="tns:GroupBlockOfTimesResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GroupBlockOfTimesResponseMessage_Headers">
+    <wsdl:part xmlns:q10="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q10:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnGroupBlockOfTimesRequestMessage">
+    <wsdl:part name="parameters" element="tns:UnGroupBlockOfTimesRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnGroupBlockOfTimesRequestMessage_Headers">
+    <wsdl:part xmlns:q11="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q11:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnGroupBlockOfTimesResponseMessage">
+    <wsdl:part name="parameters" element="tns:UnGroupBlockOfTimesResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnGroupBlockOfTimesResponseMessage_Headers">
+    <wsdl:part xmlns:q12="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q12:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkToExternalAiringRequestMessage">
+    <wsdl:part name="parameters" element="tns:LinkToExternalAiringRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="LinkToExternalAiringRequestMessage_Headers">
+    <wsdl:part xmlns:q13="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q13:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="LinkToExternalAiringResponseMessage">
+    <wsdl:part name="parameters" element="tns:LinkToExternalAiringResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="LinkToExternalAiringResponseMessage_Headers">
+    <wsdl:part xmlns:q14="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q14:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_LinkToExternalAiring_InvalidAiringFaultDetailFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q15:InvalidAiringFaultDetail" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_LinkToExternalAiring_InvalidBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q16:InvalidBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="LinkBlockofTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:LinkBlockofTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="LinkBlockofTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q17="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q17:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="LinkBlockOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:LinkBlockOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="LinkBlockOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q18="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q18:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTveBlockOfTimeSummaryRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadTveBlockOfTimeSummaryRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadTveBlockOfTimeSummaryRequestMessage_Headers">
+    <wsdl:part xmlns:q19="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q19:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadTveBlockOfTimeSummaryResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadTveBlockOfTimeSummaryResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadTveBlockOfTimeSummaryResponseMessage_Headers">
+    <wsdl:part xmlns:q20="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q20:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage_Headers">
+    <wsdl:part xmlns:q21="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q21:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage_Headers">
+    <wsdl:part xmlns:q22="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q22:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByC3IndicatorRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadReleasedBlockOfTimeByC3IndicatorRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByC3IndicatorRequestMessage_Headers">
+    <wsdl:part xmlns:q23="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q23:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByC3IndicatorResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadReleasedBlockOfTimeByC3IndicatorResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByC3IndicatorResponseMessage_Headers">
+    <wsdl:part xmlns:q24="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q24:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDMIIndicatorRequestMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDMIIndicatorRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDMIIndicatorRequestMessage_Headers">
+    <wsdl:part xmlns:q25="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q25:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDMIIndicatorResponseMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDMIIndicatorResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDMIIndicatorResponseMessage_Headers">
+    <wsdl:part xmlns:q26="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q26:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage_Headers">
+    <wsdl:part xmlns:q27="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q27:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage_Headers">
+    <wsdl:part xmlns:q28="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q28:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="FirstNonC3BlockOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:FirstNonC3BlockOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="FirstNonC3BlockOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q29="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q29:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="FirstNonC3BlockOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:FirstNonC3BlockOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="FirstNonC3BlockOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q30="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q30:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetMissingMetaDataRequestMessage">
+    <wsdl:part name="parameters" element="tns:SetMissingMetaDataRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="SetMissingMetaDataRequestMessage_Headers">
+    <wsdl:part xmlns:q31="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q31:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="SetMissingMetaDataResponseMessage">
+    <wsdl:part name="parameters" element="tns:SetMissingMetaDataResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="SetMissingMetaDataResponseMessage_Headers">
+    <wsdl:part xmlns:q32="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q32:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeByIDRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeByIDRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeByIDRequestMessage_Headers">
+    <wsdl:part xmlns:q33="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q33:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeByIDResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeByIDResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeByIDResponseMessage_Headers">
+    <wsdl:part xmlns:q34="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q34:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_ReadBlockOfTimeByID_ReadBlockOfTimeByIDFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q35="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q35:ReadBlockOfTimeByIDFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q36="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q36:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q37="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q37:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_ReadBlockOfTime_ReadBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q38="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q38:ReadBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeWithoutOverlapRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeWithoutOverlapRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeWithoutOverlapRequestMessage_Headers">
+    <wsdl:part xmlns:q39="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q39:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeWithoutOverlapResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeWithoutOverlapResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeWithoutOverlapResponseMessage_Headers">
+    <wsdl:part xmlns:q40="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q40:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_ReadBlockOfTimeWithoutOverlap_ReadBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q41="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q41:ReadBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="SaveBlockOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:SaveBlockOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="SaveBlockOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q42="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q42:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="SaveBlockOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:SaveBlockOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="SaveBlockOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q43="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q43:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_SaveBlockOfTime_SaveBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q44="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q44:SaveBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBlockOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBlockOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBlockOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q45="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q45:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBlockOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBlockOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="RemoveBlockOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q46="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q46:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_RemoveBlockOfTime_RemoveBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q47="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q47:RemoveBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="CreateBlockOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:CreateBlockOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="CreateBlockOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q48="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q48:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateBlockOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:CreateBlockOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="CreateBlockOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q49="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q49:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_CreateBlockOfTime_CreateBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q50="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q50:CreateBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="CreateBlockOfTimeWithOnDemandPatternRequestMessage">
+    <wsdl:part name="parameters" element="tns:CreateBlockOfTimeWithOnDemandPatternRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="CreateBlockOfTimeWithOnDemandPatternRequestMessage_Headers">
+    <wsdl:part xmlns:q51="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q51:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateBlockOfTimeWithOnDemandPatternResponseMessage">
+    <wsdl:part name="parameters" element="tns:CreateBlockOfTimeWithOnDemandPatternResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="CreateBlockOfTimeWithOnDemandPatternResponseMessage_Headers">
+    <wsdl:part xmlns:q52="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q52:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_CreateBlockOfTimeWithOnDemandPattern_PatternExecutionFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q53="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q53:PatternExecutionFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_CreateBlockOfTimeWithOnDemandPattern_UnexpectedErrorFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q54="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q54:UnexpectedErrorFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="CreatePlaceholderBlockOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:CreatePlaceholderBlockOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="CreatePlaceholderBlockOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q55="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q55:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreatePlaceholderBlockOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:CreatePlaceholderBlockOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="CreatePlaceholderBlockOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q56="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q56:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_CreatePlaceholderBlockOfTime_CreatePlaceholderBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q57="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q57:CreatePlaceholderBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="CopyAndPasteBlockOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:CopyAndPasteBlockOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="CopyAndPasteBlockOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q58="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q58:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="CopyAndPasteBlockOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:CopyAndPasteBlockOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="CopyAndPasteBlockOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q59="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q59:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_CopyAndPasteBlockOfTime_CopyAndPasteBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q60="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q60:CopyAndPasteBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasableBlocksOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadReleasableBlocksOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasableBlocksOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q61="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q61:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasableBlocksOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadReleasableBlocksOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadReleasableBlocksOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q62="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q62:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_ReadReleasableBlocksOfTime_ReadReleasableBlocksOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q63="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q63:ReadReleasableBlocksOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_ReadPublishableBlocksOfTime_ReadReleasableBlocksOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q64="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q64:ReadReleasableBlocksOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="LockBlockOfTimeItemRequestMessage">
+    <wsdl:part name="parameters" element="tns:LockBlockOfTimeItemRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="LockBlockOfTimeItemRequestMessage_Headers">
+    <wsdl:part xmlns:q65="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q65:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="LockBlockOfTimeItemResponseMessage">
+    <wsdl:part name="parameters" element="tns:LockBlockOfTimeItemResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="LockBlockOfTimeItemResponseMessage_Headers">
+    <wsdl:part xmlns:q66="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q66:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_LockBlockOfTime_BlockOfTimeLockFaultDetailFault_FaultMessage">
+    <wsdl:part xmlns:q67="http://schemas.turner.com/ea/augusta/schedules/blockoftimelocks/2007/01" name="detail" element="q67:BlockOfTimeLockFaultDetail" />
+  </wsdl:message>
+  <wsdl:message name="UnLockBlockOfTimeItemRequestMessage">
+    <wsdl:part name="parameters" element="tns:UnLockBlockOfTimeItemRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnLockBlockOfTimeItemRequestMessage_Headers">
+    <wsdl:part xmlns:q68="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q68:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnLockBlockOfTimeItemResponseMessage">
+    <wsdl:part name="parameters" element="tns:UnLockBlockOfTimeItemResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnLockBlockOfTimeItemResponseMessage_Headers">
+    <wsdl:part xmlns:q69="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q69:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlockOfTimeByUserRequestMessage">
+    <wsdl:part name="parameters" element="tns:UnlockBlockOfTimeByUserRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlockOfTimeByUserRequestMessage_Headers">
+    <wsdl:part xmlns:q70="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q70:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlockOfTimeByUserResponseMessage">
+    <wsdl:part name="parameters" element="tns:UnlockBlockOfTimeByUserResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlockOfTimeByUserResponseMessage_Headers">
+    <wsdl:part xmlns:q71="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q71:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage">
+    <wsdl:part name="parameters" element="tns:UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage_Headers">
+    <wsdl:part xmlns:q72="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q72:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage">
+    <wsdl:part name="parameters" element="tns:UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage_Headers">
+    <wsdl:part xmlns:q73="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q73:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlocksOfTimeByUserFeedRequestMessage">
+    <wsdl:part name="parameters" element="tns:UnlockBlocksOfTimeByUserFeedRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlocksOfTimeByUserFeedRequestMessage_Headers">
+    <wsdl:part xmlns:q74="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q74:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlocksOfTimeByUserFeedResponseMessage">
+    <wsdl:part name="parameters" element="tns:UnlockBlocksOfTimeByUserFeedResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlocksOfTimeByUserFeedResponseMessage_Headers">
+    <wsdl:part xmlns:q75="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q75:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlocksOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:UnlockBlocksOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlocksOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q76="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q76:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlocksOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:UnlockBlocksOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UnlockBlocksOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q77="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q77:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PushToSecondaryBlockofTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:PushToSecondaryBlockofTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="PushToSecondaryBlockofTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q78="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q78:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="PushToSecondaryBlockofTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:PushToSecondaryBlockofTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="PushToSecondaryBlockofTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q79="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q79:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadFullSchedulesRequestMessage">
+    <wsdl:part name="parameters" element="tns:LoadFullSchedulesRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="LoadFullSchedulesRequestMessage_Headers">
+    <wsdl:part xmlns:q80="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q80:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="LoadFullSchedulesResponseMessage">
+    <wsdl:part name="parameters" element="tns:LoadFullSchedulesResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="LoadFullSchedulesResponseMessage_Headers">
+    <wsdl:part xmlns:q81="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q81:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_LoadFullSchedules_ReadBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q82="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q82:ReadBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeSummaryRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeSummaryRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeSummaryRequestMessage_Headers">
+    <wsdl:part xmlns:q83="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q83:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeSummaryResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeSummaryResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeSummaryResponseMessage_Headers">
+    <wsdl:part xmlns:q84="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q84:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_ReadBlockOfTimeSummary_ReadBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q85="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q85:ReadBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="GetBlockOfTimeSummariesRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetBlockOfTimeSummariesRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetBlockOfTimeSummariesRequestMessage_Headers">
+    <wsdl:part xmlns:q86="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q86:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetBlockOfTimeSummariesResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetBlockOfTimeSummariesResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetBlockOfTimeSummariesResponseMessage_Headers">
+    <wsdl:part xmlns:q87="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q87:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_GetBlockOfTimeSummaries_ReadBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q88="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q88:ReadBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="SearchBlockOfTimeSummaryRequestMessage">
+    <wsdl:part name="parameters" element="tns:SearchBlockOfTimeSummaryRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="SearchBlockOfTimeSummaryRequestMessage_Headers">
+    <wsdl:part xmlns:q89="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q89:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="SearchBlockOfTimeSummaryResponseMessage">
+    <wsdl:part name="parameters" element="tns:SearchBlockOfTimeSummaryResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="SearchBlockOfTimeSummaryResponseMessage_Headers">
+    <wsdl:part xmlns:q90="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q90:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBlockOfTimeService_SearchBlockOfTimeSummary_ReadBlockOfTimeFaultContractFault_FaultMessage">
+    <wsdl:part xmlns:q91="http://schemas.turner.com/ea/augusta/schedules/2007/01" name="detail" element="q91:ReadBlockOfTimeFaultContract" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBlockofTimeAiringInfoRequestMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBlockofTimeAiringInfoRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBlockofTimeAiringInfoRequestMessage_Headers">
+    <wsdl:part xmlns:q92="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q92:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBlockofTimeAiringInfoResponseMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBlockofTimeAiringInfoResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBlockofTimeAiringInfoResponseMessage_Headers">
+    <wsdl:part xmlns:q93="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q93:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBlockOfTimeLanesRequestMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBlockOfTimeLanesRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBlockOfTimeLanesRequestMessage_Headers">
+    <wsdl:part xmlns:q94="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q94:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBlockOfTimeLanesResponseMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBlockOfTimeLanesResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateBlockOfTimeLanesResponseMessage_Headers">
+    <wsdl:part xmlns:q95="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q95:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReleaseBlocksOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReleaseBlocksOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReleaseBlocksOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q96="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q96:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReleaseBlocksOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReleaseBlocksOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReleaseBlocksOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q97="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q97:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PublishBlocksOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:PublishBlocksOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="PublishBlocksOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q98="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q98:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="PublishBlocksOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:PublishBlocksOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="PublishBlocksOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q99="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q99:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDeletedReleasedBlocksOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetDeletedReleasedBlocksOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetDeletedReleasedBlocksOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q100="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q100:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetDeletedReleasedBlocksOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetDeletedReleasedBlocksOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetDeletedReleasedBlocksOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q101="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q101:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeletedReleasedBlocksOfTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDeletedReleasedBlocksOfTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeletedReleasedBlocksOfTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q102="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q102:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeletedReleasedBlocksOfTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetAllDeletedReleasedBlocksOfTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetAllDeletedReleasedBlocksOfTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q103="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q103:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBlocksOfTimeByActualDatesRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetBlocksOfTimeByActualDatesRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetBlocksOfTimeByActualDatesRequestMessage_Headers">
+    <wsdl:part xmlns:q104="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q104:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetBlocksOfTimeByActualDatesResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetBlocksOfTimeByActualDatesResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetBlocksOfTimeByActualDatesResponseMessage_Headers">
+    <wsdl:part xmlns:q105="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q105:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBlockOfTimeLockDetailByFeedRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetBlockOfTimeLockDetailByFeedRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetBlockOfTimeLockDetailByFeedRequestMessage_Headers">
+    <wsdl:part xmlns:q106="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q106:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetBlockOfTimeLockDetailByFeedResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetBlockOfTimeLockDetailByFeedResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetBlockOfTimeLockDetailByFeedResponseMessage_Headers">
+    <wsdl:part xmlns:q107="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q107:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProgrammingTimeRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetProgrammingTimeRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetProgrammingTimeRequestMessage_Headers">
+    <wsdl:part xmlns:q108="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q108:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetProgrammingTimeResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetProgrammingTimeResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetProgrammingTimeResponseMessage_Headers">
+    <wsdl:part xmlns:q109="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q109:MetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeByAssetIdRequestMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeByAssetIdRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeByAssetIdRequestMessage_Headers">
+    <wsdl:part xmlns:q110="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaRequest" element="q110:MetaRequest" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeByAssetIdResponseMessage">
+    <wsdl:part name="parameters" element="tns:ReadBlockOfTimeByAssetIdResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="ReadBlockOfTimeByAssetIdResponseMessage_Headers">
+    <wsdl:part xmlns:q111="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" name="MetaResponse" element="q111:MetaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBlockOfTimeService">
+    <wsdl:operation name="GetLinkedBlocksOfTimeByAssetIds">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetLinkedBlocksOfTimeByAssetIds" name="GetLinkedBlocksOfTimeByAssetIdsRequestMessage" message="tns:GetLinkedBlocksOfTimeByAssetIdsRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetLinkedBlocksOfTimeByAssetIdsResponse" name="GetLinkedBlocksOfTimeByAssetIdsResponseMessage" message="tns:GetLinkedBlocksOfTimeByAssetIdsResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedBlocksOfTimeByDate">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetLinkedBlocksOfTimeByDate" name="GetLinkedBlocksOfTimeByDateRequestMessage" message="tns:GetLinkedBlocksOfTimeByDateRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetLinkedBlocksOfTimeByDateResponse" name="GetLinkedBlocksOfTimeByDateResponseMessage" message="tns:GetLinkedBlocksOfTimeByDateResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBlocksOfTimeByLinkId">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlocksOfTimeByLinkId" name="GetBlocksOfTimeByLinkIdRequestMessage" message="tns:GetBlocksOfTimeByLinkIdRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlocksOfTimeByLinkIdResponse" name="GetBlocksOfTimeByLinkIdResponseMessage" message="tns:GetBlocksOfTimeByLinkIdResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateBlockOfTimeExternalAiringId">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ValidateBlockOfTimeExternalAiringId" name="ValidateBlockofTimeExternalAiringIdRequestMessage" message="tns:ValidateBlockofTimeExternalAiringIdRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ValidateBlockOfTimeExternalAiringIdResponse" name="ValidateBlockofTimeExternalAiringIdResponseMessage" message="tns:ValidateBlockofTimeExternalAiringIdResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GroupBlockOfTimes">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GroupBlockOfTimes" name="GroupBlockOfTimesRequestMessage" message="tns:GroupBlockOfTimesRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GroupBlockOfTimesResponse" name="GroupBlockOfTimesResponseMessage" message="tns:GroupBlockOfTimesResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnGroupBlockOfTimes">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnGroupBlockOfTimes" name="UnGroupBlockOfTimesRequestMessage" message="tns:UnGroupBlockOfTimesRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnGroupBlockOfTimesResponse" name="UnGroupBlockOfTimesResponseMessage" message="tns:UnGroupBlockOfTimesResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkToExternalAiring">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkToExternalAiring" name="LinkToExternalAiringRequestMessage" message="tns:LinkToExternalAiringRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkToExternalAiringResponse" name="LinkToExternalAiringResponseMessage" message="tns:LinkToExternalAiringResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkToExternalAiringInvalidAiringFaultDetailFault" name="InvalidAiringFaultDetailFault" message="tns:IBlockOfTimeService_LinkToExternalAiring_InvalidAiringFaultDetailFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkToExternalAiringInvalidBlockOfTimeFaultContractFault" name="InvalidBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_LinkToExternalAiring_InvalidBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkBlocksOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkBlocksOfTime" name="LinkBlockofTimeRequestMessage" message="tns:LinkBlockofTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkBlocksOfTimeResponse" name="LinkBlockOfTimeResponseMessage" message="tns:LinkBlockOfTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTveBlockOfTimeSummary">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadTveBlockOfTimeSummary" name="ReadTveBlockOfTimeSummaryRequestMessage" message="tns:ReadTveBlockOfTimeSummaryRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadTveBlockOfTimeSummaryResponse" name="ReadTveBlockOfTimeSummaryResponseMessage" message="tns:ReadTveBlockOfTimeSummaryResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByLinearAiredDate">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByLinearAiredDate" name="ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage" message="tns:ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByLinearAiredDateResponse" name="ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage" message="tns:ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByC3Indicator">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByC3Indicator" name="ReadReleasedBlockOfTimeByC3IndicatorRequestMessage" message="tns:ReadReleasedBlockOfTimeByC3IndicatorRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByC3IndicatorResponse" name="ReadReleasedBlockOfTimeByC3IndicatorResponseMessage" message="tns:ReadReleasedBlockOfTimeByC3IndicatorResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDmiIndicator">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateDmiIndicator" name="UpdateDMIIndicatorRequestMessage" message="tns:UpdateDMIIndicatorRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateDmiIndicatorResponse" name="UpdateDMIIndicatorResponseMessage" message="tns:UpdateDMIIndicatorResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByWorkingUniqueID">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByWorkingUniqueID" name="ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage" message="tns:ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByWorkingUniqueIDResponse" name="ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage" message="tns:ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFirstNonC3BlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/IsFirstNonC3BlockOfTime" name="FirstNonC3BlockOfTimeRequestMessage" message="tns:FirstNonC3BlockOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/IsFirstNonC3BlockOfTimeResponse" name="FirstNonC3BlockOfTimeResponseMessage" message="tns:FirstNonC3BlockOfTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetMissingMetaData">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SetMissingMetaData" name="SetMissingMetaDataRequestMessage" message="tns:SetMissingMetaDataRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SetMissingMetaDataResponse" name="SetMissingMetaDataResponseMessage" message="tns:SetMissingMetaDataResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeByID">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByID" name="ReadBlockOfTimeByIDRequestMessage" message="tns:ReadBlockOfTimeByIDRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByIDResponse" name="ReadBlockOfTimeByIDResponseMessage" message="tns:ReadBlockOfTimeByIDResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByIDReadBlockOfTimeByIDFaultContractFault" name="ReadBlockOfTimeByIDFaultContractFault" message="tns:IBlockOfTimeService_ReadBlockOfTimeByID_ReadBlockOfTimeByIDFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTime" name="ReadBlockOfTimeRequestMessage" message="tns:ReadBlockOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeResponse" name="ReadBlockOfTimeResponseMessage" message="tns:ReadBlockOfTimeResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeReadBlockOfTimeFaultContractFault" name="ReadBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_ReadBlockOfTime_ReadBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeWithoutOverlap">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeWithoutOverlap" name="ReadBlockOfTimeWithoutOverlapRequestMessage" message="tns:ReadBlockOfTimeWithoutOverlapRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeWithoutOverlapResponse" name="ReadBlockOfTimeWithoutOverlapResponseMessage" message="tns:ReadBlockOfTimeWithoutOverlapResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeWithoutOverlapReadBlockOfTimeFaultContractFault" name="ReadBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_ReadBlockOfTimeWithoutOverlap_ReadBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SaveBlockOfTime" name="SaveBlockOfTimeRequestMessage" message="tns:SaveBlockOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SaveBlockOfTimeResponse" name="SaveBlockOfTimeResponseMessage" message="tns:SaveBlockOfTimeResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SaveBlockOfTimeSaveBlockOfTimeFaultContractFault" name="SaveBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_SaveBlockOfTime_SaveBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/RemoveBlockOfTime" name="RemoveBlockOfTimeRequestMessage" message="tns:RemoveBlockOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/RemoveBlockOfTimeResponse" name="RemoveBlockOfTimeResponseMessage" message="tns:RemoveBlockOfTimeResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/RemoveBlockOfTimeRemoveBlockOfTimeFaultContractFault" name="RemoveBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_RemoveBlockOfTime_RemoveBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTime" name="CreateBlockOfTimeRequestMessage" message="tns:CreateBlockOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTimeResponse" name="CreateBlockOfTimeResponseMessage" message="tns:CreateBlockOfTimeResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTimeCreateBlockOfTimeFaultContractFault" name="CreateBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_CreateBlockOfTime_CreateBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateBlockOfTimeWithOnDemandPattern">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTimeWithOnDemandPattern" name="CreateBlockOfTimeWithOnDemandPatternRequestMessage" message="tns:CreateBlockOfTimeWithOnDemandPatternRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTimeWithOnDemandPatternResponse" name="CreateBlockOfTimeWithOnDemandPatternResponseMessage" message="tns:CreateBlockOfTimeWithOnDemandPatternResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTimeWithOnDemandPatternPatternExecutionFaultContractFault" name="PatternExecutionFaultContractFault" message="tns:IBlockOfTimeService_CreateBlockOfTimeWithOnDemandPattern_PatternExecutionFaultContractFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTimeWithOnDemandPatternUnexpectedErrorFaultContractFault" name="UnexpectedErrorFaultContractFault" message="tns:IBlockOfTimeService_CreateBlockOfTimeWithOnDemandPattern_UnexpectedErrorFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlaceholderBlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreatePlaceholderBlockOfTime" name="CreatePlaceholderBlockOfTimeRequestMessage" message="tns:CreatePlaceholderBlockOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreatePlaceholderBlockOfTimeResponse" name="CreatePlaceholderBlockOfTimeResponseMessage" message="tns:CreatePlaceholderBlockOfTimeResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreatePlaceholderBlockOfTimeCreatePlaceholderBlockOfTimeFaultContractFault" name="CreatePlaceholderBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_CreatePlaceholderBlockOfTime_CreatePlaceholderBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyAndPasteBlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CopyAndPasteBlockOfTime" name="CopyAndPasteBlockOfTimeRequestMessage" message="tns:CopyAndPasteBlockOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CopyAndPasteBlockOfTimeResponse" name="CopyAndPasteBlockOfTimeResponseMessage" message="tns:CopyAndPasteBlockOfTimeResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CopyAndPasteBlockOfTimeCopyAndPasteBlockOfTimeFaultContractFault" name="CopyAndPasteBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_CopyAndPasteBlockOfTime_CopyAndPasteBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasableBlocksOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasableBlocksOfTime" name="ReadReleasableBlocksOfTimeRequestMessage" message="tns:ReadReleasableBlocksOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasableBlocksOfTimeResponse" name="ReadReleasableBlocksOfTimeResponseMessage" message="tns:ReadReleasableBlocksOfTimeResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasableBlocksOfTimeReadReleasableBlocksOfTimeFaultContractFault" name="ReadReleasableBlocksOfTimeFaultContractFault" message="tns:IBlockOfTimeService_ReadReleasableBlocksOfTime_ReadReleasableBlocksOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPublishableBlocksOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadPublishableBlocksOfTime" name="ReadReleasableBlocksOfTimeRequestMessage" message="tns:ReadReleasableBlocksOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadPublishableBlocksOfTimeResponse" name="ReadReleasableBlocksOfTimeResponseMessage" message="tns:ReadReleasableBlocksOfTimeResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadPublishableBlocksOfTimeReadReleasableBlocksOfTimeFaultContractFault" name="ReadReleasableBlocksOfTimeFaultContractFault" message="tns:IBlockOfTimeService_ReadPublishableBlocksOfTime_ReadReleasableBlocksOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LockBlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LockBlockOfTime" name="LockBlockOfTimeItemRequestMessage" message="tns:LockBlockOfTimeItemRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LockBlockOfTimeResponse" name="LockBlockOfTimeItemResponseMessage" message="tns:LockBlockOfTimeItemResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LockBlockOfTimeBlockOfTimeLockFaultDetailFault" name="BlockOfTimeLockFaultDetailFault" message="tns:IBlockOfTimeService_LockBlockOfTime_BlockOfTimeLockFaultDetailFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnLockBlockOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnLockBlockOfTime" name="UnLockBlockOfTimeItemRequestMessage" message="tns:UnLockBlockOfTimeItemRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnLockBlockOfTimeResponse" name="UnLockBlockOfTimeItemResponseMessage" message="tns:UnLockBlockOfTimeItemResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlockOfTimeByUser">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlockOfTimeByUser" name="UnlockBlockOfTimeByUserRequestMessage" message="tns:UnlockBlockOfTimeByUserRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlockOfTimeByUserResponse" name="UnlockBlockOfTimeByUserResponseMessage" message="tns:UnlockBlockOfTimeByUserResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlockOfTimeByUsernameAndItemType">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlockOfTimeByUsernameAndItemType" name="UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage" message="tns:UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlockOfTimeByUsernameAndItemTypeResponse" name="UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage" message="tns:UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlocksOfTimeByUserFeed">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlocksOfTimeByUserFeed" name="UnlockBlocksOfTimeByUserFeedRequestMessage" message="tns:UnlockBlocksOfTimeByUserFeedRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlocksOfTimeByUserFeedResponse" name="UnlockBlocksOfTimeByUserFeedResponseMessage" message="tns:UnlockBlocksOfTimeByUserFeedResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlocksOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlocksOfTime" name="UnlockBlocksOfTimeRequestMessage" message="tns:UnlockBlocksOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlocksOfTimeResponse" name="UnlockBlocksOfTimeResponseMessage" message="tns:UnlockBlocksOfTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PushSecondary">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/PushSecondary" name="PushToSecondaryBlockofTimeRequestMessage" message="tns:PushToSecondaryBlockofTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/PushSecondaryResponse" name="PushToSecondaryBlockofTimeResponseMessage" message="tns:PushToSecondaryBlockofTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadFullSchedules">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LoadFullSchedules" name="LoadFullSchedulesRequestMessage" message="tns:LoadFullSchedulesRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LoadFullSchedulesResponse" name="LoadFullSchedulesResponseMessage" message="tns:LoadFullSchedulesResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LoadFullSchedulesReadBlockOfTimeFaultContractFault" name="ReadBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_LoadFullSchedules_ReadBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeSummary">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeSummary" name="ReadBlockOfTimeSummaryRequestMessage" message="tns:ReadBlockOfTimeSummaryRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeSummaryResponse" name="ReadBlockOfTimeSummaryResponseMessage" message="tns:ReadBlockOfTimeSummaryResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeSummaryReadBlockOfTimeFaultContractFault" name="ReadBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_ReadBlockOfTimeSummary_ReadBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockOfTimeSummaries">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeSummaries" name="GetBlockOfTimeSummariesRequestMessage" message="tns:GetBlockOfTimeSummariesRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeSummariesResponse" name="GetBlockOfTimeSummariesResponseMessage" message="tns:GetBlockOfTimeSummariesResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeSummariesReadBlockOfTimeFaultContractFault" name="ReadBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_GetBlockOfTimeSummaries_ReadBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchBlockOfTimeSummary">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SearchBlockOfTimeSummary" name="SearchBlockOfTimeSummaryRequestMessage" message="tns:SearchBlockOfTimeSummaryRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SearchBlockOfTimeSummaryResponse" name="SearchBlockOfTimeSummaryResponseMessage" message="tns:SearchBlockOfTimeSummaryResponseMessage" />
+      <wsdl:fault wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SearchBlockOfTimeSummaryReadBlockOfTimeFaultContractFault" name="ReadBlockOfTimeFaultContractFault" message="tns:IBlockOfTimeService_SearchBlockOfTimeSummary_ReadBlockOfTimeFaultContractFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBlockOfTimeAiringInfo">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateBlockOfTimeAiringInfo" name="UpdateBlockofTimeAiringInfoRequestMessage" message="tns:UpdateBlockofTimeAiringInfoRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateBlockOfTimeAiringInfoResponse" name="UpdateBlockofTimeAiringInfoResponseMessage" message="tns:UpdateBlockofTimeAiringInfoResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBlockOfTimeLanesInfo">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateBlockOfTimeLanesInfo" name="UpdateBlockOfTimeLanesRequestMessage" message="tns:UpdateBlockOfTimeLanesRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateBlockOfTimeLanesInfoResponse" name="UpdateBlockOfTimeLanesResponseMessage" message="tns:UpdateBlockOfTimeLanesResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseBlocksOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReleaseBlocksOfTime" name="ReleaseBlocksOfTimeRequestMessage" message="tns:ReleaseBlocksOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReleaseBlocksOfTimeResponse" name="ReleaseBlocksOfTimeResponseMessage" message="tns:ReleaseBlocksOfTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PublishBlocksOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/PublishBlocksOfTime" name="PublishBlocksOfTimeRequestMessage" message="tns:PublishBlocksOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/PublishBlocksOfTimeResponse" name="PublishBlocksOfTimeResponseMessage" message="tns:PublishBlocksOfTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeletedReleasedBlocksOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetDeletedReleasedBlocksOfTime" name="GetDeletedReleasedBlocksOfTimeRequestMessage" message="tns:GetDeletedReleasedBlocksOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetDeletedReleasedBlocksOfTimeResponse" name="GetDeletedReleasedBlocksOfTimeResponseMessage" message="tns:GetDeletedReleasedBlocksOfTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeletedReleasedBlocksOfTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetAllDeletedReleasedBlocksOfTime" name="GetAllDeletedReleasedBlocksOfTimeRequestMessage" message="tns:GetAllDeletedReleasedBlocksOfTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetAllDeletedReleasedBlocksOfTimeResponse" name="GetAllDeletedReleasedBlocksOfTimeResponseMessage" message="tns:GetAllDeletedReleasedBlocksOfTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBlocksOfTimeByActualDate">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlocksOfTimeByActualDate" name="GetBlocksOfTimeByActualDatesRequestMessage" message="tns:GetBlocksOfTimeByActualDatesRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlocksOfTimeByActualDateResponse" name="GetBlocksOfTimeByActualDatesResponseMessage" message="tns:GetBlocksOfTimeByActualDatesResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockOfTimeLockDetailByFeed">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeLockDetailByFeed" name="GetBlockOfTimeLockDetailByFeedRequestMessage" message="tns:GetBlockOfTimeLockDetailByFeedRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeLockDetailByFeedResponse" name="GetBlockOfTimeLockDetailByFeedResponseMessage" message="tns:GetBlockOfTimeLockDetailByFeedResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProgrammingTime">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetProgrammingTime" name="GetProgrammingTimeRequestMessage" message="tns:GetProgrammingTimeRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetProgrammingTimeResponse" name="GetProgrammingTimeResponseMessage" message="tns:GetProgrammingTimeResponseMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeByAssetID">
+      <wsdl:input wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByAssetID" name="ReadBlockOfTimeByAssetIdRequestMessage" message="tns:ReadBlockOfTimeByAssetIdRequestMessage" />
+      <wsdl:output wsaw:Action="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByAssetIDResponse" name="ReadBlockOfTimeByAssetIdResponseMessage" message="tns:ReadBlockOfTimeByAssetIdResponseMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAD6378F-B346-4E7B-8C8F-86B4B245CEA8}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScheduleAggregator</RootNamespace>
+    <AssemblyName>ScheduleAggregator</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Devart.Data, Version=5.0.227.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.Oracle, Version=6.10.126.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Devart.Data.Oracle.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.Oracle.Entity, Version=6.10.126.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Devart.Data.Oracle.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Airing.cs" />
+    <Compile Include="Harvesters\CompetitiveAiringHarvester.cs" />
+    <Compile Include="Data\CompGrid1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompGrid.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Harvesters\DigitalAiringHarvester.cs" />
+    <Compile Include="Harvesters\LinearAiringHarvester.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\ScarlettModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScarlettModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EA.Turniverse.BlocksOfTime\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Title.cs" />
+    <Compile Include="Data\Turniverse.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Turniverse.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Data\CompGrid.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CompGrid1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <EntityDeploy Include="Data\Turniverse.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Turniverse.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Data\ScarlettModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ScarlettModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework.wsdl" />
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework17.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework18.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework19.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework20.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework25.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework26.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework27.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework28.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework29.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework30.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework33.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework34.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework35.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework36.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework37.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework38.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework39.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework40.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework43.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework44.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework45.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework46.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework47.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeService.wsdl" />
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.CopyAndPasteBlockOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.CreateBlockOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.CreateBlockOfTimeWithOnDemandPatternResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.CreatePlaceholderBlockOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.FirstNonC3BlockOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetAllDeletedReleasedBlocksOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetBlockOfTimeLockDetailByFeedResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetBlockOfTimeSummariesResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetBlocksOfTimeByActualDatesResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetBlocksOfTimeByLinkIdResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetDeletedReleasedBlocksOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetLinkedBlocksOfTimeByAssetIdsResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetLinkedBlocksOfTimeByDateResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GetProgrammingTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.GroupBlockOfTimesResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.LinkBlockOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.LinkToExternalAiringResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.LoadFullSchedulesResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.LockBlockOfTimeItemResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.PublishBlocksOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.PushToSecondaryBlockofTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadBlockOfTimeByAssetIdResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadBlockOfTimeByIDResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadBlockOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadBlockOfTimeSummaryResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadBlockOfTimeWithoutOverlapResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadReleasableBlocksOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadReleasedBlockOfTimeByC3IndicatorResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReadTveBlockOfTimeSummaryResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ReleaseBlocksOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.RemoveBlockOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.SaveBlockOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.SearchBlockOfTimeSummaryResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.SetMissingMetaDataResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UnGroupBlockOfTimesResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UnlockBlockOfTimeByUserResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UnLockBlockOfTimeItemResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UnlockBlocksOfTimeByUserFeedResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UnlockBlocksOfTimeResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UpdateBlockofTimeAiringInfoResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UpdateBlockOfTimeLanesResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.UpdateDMIIndicatorResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\ScheduleAggregator.EA.Turniverse.BlocksOfTime.ValidateBlockofTimeExternalAiringIdResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\EA.Turniverse.BlocksOfTime\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\BlockOfTimeRework.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\EA.Turniverse.BlocksOfTime\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

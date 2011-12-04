@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/packages/package/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/packages/package/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd35" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packagecategory/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd37" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packagegenre/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd39" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageguidecategories/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd40" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageproductcodes/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd41" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageprogramtypes/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd42" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/packageprovidercontenttiers/2007/01" />
+  <xs:complexType name="Package">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AssetID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillingID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockOfTimeID" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Filename" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element xmlns:q1="http://schemas.turner.com/ea/augusta/schedules/packages/packagecategory/2007/01" minOccurs="0" name="PackageCategories" nillable="true" type="q1:ArrayOfPackageCategory" />
+      <xs:element xmlns:q2="http://schemas.turner.com/ea/augusta/schedules/packages/packagegenre/2007/01" minOccurs="0" name="PackageGenres" nillable="true" type="q2:ArrayOfPackageGenre" />
+      <xs:element xmlns:q3="http://schemas.turner.com/ea/augusta/schedules/packages/packageguidecategories/2007/01" minOccurs="0" name="PackageGuideCategories" nillable="true" type="q3:ArrayOfPackageGuideCategory" />
+      <xs:element minOccurs="0" name="PackageID" type="xs:int" />
+      <xs:element minOccurs="0" name="PackageName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.turner.com/ea/augusta/schedules/packages/packageproductcodes/2007/01" minOccurs="0" name="PackageProductCodes" nillable="true" type="q4:ArrayOfPackageProductCode" />
+      <xs:element xmlns:q5="http://schemas.turner.com/ea/augusta/schedules/packages/packageprogramtypes/2007/01" minOccurs="0" name="PackageProgramTypes" nillable="true" type="q5:ArrayOfPackageProgramType" />
+      <xs:element xmlns:q6="http://schemas.turner.com/ea/augusta/schedules/packages/packageprovidercontenttiers/2007/01" minOccurs="0" name="PackageProviderContentTiers" nillable="true" type="q6:ArrayOfPackageProviderContentTier" />
+      <xs:element minOccurs="0" name="TitleBrief" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TitleDigital" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Package" nillable="true" type="tns:Package" />
+</xs:schema>

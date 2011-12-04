@@ -1,0 +1,978 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GridModel.Store" Alias="Self" Provider="Devart.Data.Oracle" ProviderManifestToken="ORA" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GridModelStoreContainer">
+          <EntitySet Name="T_NETWRK_COMP_GRID_COMMENTS" EntityType="GridModel.Store.T_NETWRK_COMP_GRID_COMMENTS" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIBUNE_PROGRAM" EntityType="GridModel.Store.T_TRIBUNE_PROGRAM" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIBUNE_SCHEDULE" EntityType="GridModel.Store.T_TRIBUNE_SCHEDULE" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIBUNE_STATION" EntityType="GridModel.Store.T_TRIBUNE_STATION" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIB_AIRING" EntityType="GridModel.Store.T_TRIB_AIRING" store:Type="Tables" store:Schema="GRID" store:Name="T_TRIB_AIRING">
+            <DefiningQuery>SELECT 
+      T_TRIB_AIRING.NETWORK_ID AS NETWORK_ID, 
+      T_TRIB_AIRING.PROGRAM_ID AS PROGRAM_ID, 
+      T_TRIB_AIRING.AIR_DATE AS AIR_DATE, 
+      T_TRIB_AIRING.AIR_TIME AS AIR_TIME, 
+      T_TRIB_AIRING.DURATION_SEC AS DURATION_SEC, 
+      T_TRIB_AIRING.PREMIERE_TYPE AS PREMIERE_TYPE, 
+      T_TRIB_AIRING.FEATURES AS FEATURES, 
+      T_TRIB_AIRING.PART_NUMBER AS PART_NUMBER, 
+      T_TRIB_AIRING.NR_OF_PARTS AS NR_OF_PARTS
+      FROM GRID.T_TRIB_AIRING T_TRIB_AIRING</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="T_TRIB_GENRE" EntityType="GridModel.Store.T_TRIB_GENRE" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIB_LOAD_HISTORY" EntityType="GridModel.Store.T_TRIB_LOAD_HISTORY" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIB_NETWORK" EntityType="GridModel.Store.T_TRIB_NETWORK" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIB_PART" EntityType="GridModel.Store.T_TRIB_PART" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIB_PROGRAM" EntityType="GridModel.Store.T_TRIB_PROGRAM" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIB_PROGRAM_PART_ROLE" EntityType="GridModel.Store.T_TRIB_PROGRAM_PART_ROLE" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIB_PROGRAM_TYPE" EntityType="GridModel.Store.T_TRIB_PROGRAM_TYPE" store:Type="Tables" Schema="GRID" />
+          <EntitySet Name="T_TRIB_ROLE" EntityType="GridModel.Store.T_TRIB_ROLE" store:Type="Tables" Schema="GRID" />
+          <AssociationSet Name="1" Association="GridModel.Store.1">
+            <End Role="T_TRIB_GENRE" EntitySet="T_TRIB_GENRE" />
+            <End Role="T_TRIB_PROGRAM" EntitySet="T_TRIB_PROGRAM" />
+          </AssociationSet>
+          <AssociationSet Name="11" Association="GridModel.Store.11">
+            <End Role="T_TRIB_NETWORK" EntitySet="T_TRIB_NETWORK" />
+            <End Role="T_TRIB_AIRING" EntitySet="T_TRIB_AIRING" />
+          </AssociationSet>
+          <AssociationSet Name="12" Association="GridModel.Store.12">
+            <End Role="T_TRIB_PART" EntitySet="T_TRIB_PART" />
+            <End Role="T_TRIB_PROGRAM_PART_ROLE" EntitySet="T_TRIB_PROGRAM_PART_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="13" Association="GridModel.Store.13">
+            <End Role="T_TRIB_PROGRAM" EntitySet="T_TRIB_PROGRAM" />
+            <End Role="T_TRIB_AIRING" EntitySet="T_TRIB_AIRING" />
+          </AssociationSet>
+          <AssociationSet Name="14" Association="GridModel.Store.14">
+            <End Role="T_TRIB_PROGRAM" EntitySet="T_TRIB_PROGRAM" />
+            <End Role="T_TRIB_PROGRAM_PART_ROLE" EntitySet="T_TRIB_PROGRAM_PART_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="15" Association="GridModel.Store.15">
+            <End Role="T_TRIB_PROGRAM_TYPE" EntitySet="T_TRIB_PROGRAM_TYPE" />
+            <End Role="T_TRIB_PROGRAM" EntitySet="T_TRIB_PROGRAM" />
+          </AssociationSet>
+          <AssociationSet Name="16" Association="GridModel.Store.16">
+            <End Role="T_TRIB_ROLE" EntitySet="T_TRIB_ROLE" />
+            <End Role="T_TRIB_PROGRAM_PART_ROLE" EntitySet="T_TRIB_PROGRAM_PART_ROLE" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="T_NETWRK_COMP_GRID_COMMENTS">
+          <Key>
+            <PropertyRef Name="NETWORK_CD" />
+            <PropertyRef Name="COMMENT_DATE" />
+            <PropertyRef Name="SYNOPSIS_TYPE_CD" />
+          </Key>
+          <Property Name="NETWORK_CD" Type="VARCHAR2" Nullable="false" MaxLength="5" />
+          <Property Name="COMMENT_DATE" Type="DATE" Nullable="false" />
+          <Property Name="SYNOPSIS_TYPE_CD" Type="VARCHAR2" Nullable="false" MaxLength="12" />
+          <Property Name="COMMENTS" Type="CLOB" />
+          <Property Name="CREATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DATE" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TRIBUNE_PROGRAM">
+          <Key>
+            <PropertyRef Name="PROGRAM_ID" />
+          </Key>
+          <Property Name="PROGRAM_ID" Type="VARCHAR2" Nullable="false" MaxLength="12" />
+          <Property Name="SCARLETT_TITLE_ID" Type="int64" />
+          <Property Name="TITLE_NAME" Type="VARCHAR2" MaxLength="250" />
+          <Property Name="ALTERNATE_TITLE_NAME" Type="VARCHAR2" MaxLength="250" />
+          <Property Name="STORYLINE1" Type="VARCHAR2" MaxLength="250" />
+          <Property Name="STORYLINE2" Type="VARCHAR2" MaxLength="250" />
+          <Property Name="RELEASE_YEAR" Type="int" />
+          <Property Name="MPAA_RATING" Type="VARCHAR2" MaxLength="5" />
+          <Property Name="STAR_RATING" Type="VARCHAR2" MaxLength="5" />
+          <Property Name="RUN_TIME" Type="int64" />
+          <Property Name="COLOR_CODE" Type="VARCHAR2" MaxLength="20" />
+          <Property Name="PROGRAM_LANGUAGE" Type="VARCHAR2" MaxLength="10" />
+          <Property Name="PROGRAM_ORIGIN" Type="VARCHAR2" MaxLength="15" />
+          <Property Name="MADE_FOR_TV_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="SOURCE_TYPE" Type="VARCHAR2" MaxLength="10" />
+          <Property Name="SHOW_TYPE" Type="VARCHAR2" MaxLength="30" />
+          <Property Name="HOLIDAY" Type="VARCHAR2" MaxLength="30" />
+          <Property Name="SYN_EPISODE_NUMBER" Type="VARCHAR2" MaxLength="20" />
+          <Property Name="ALT_SYN_EPISODE_NUMBER" Type="VARCHAR2" MaxLength="20" />
+          <Property Name="SUBTITLE_NAME" Type="VARCHAR2" MaxLength="250" />
+          <Property Name="ORIGINATING_NETWORK" Type="VARCHAR2" MaxLength="10" />
+          <Property Name="NETWORK_SYNDICATE_TYPE" Type="VARCHAR2" MaxLength="21" />
+          <Property Name="STORYLINE3" Type="VARCHAR2" MaxLength="250" />
+          <Property Name="ORIGINATING_STUDIO" Type="VARCHAR2" MaxLength="25" />
+          <Property Name="GAME_DATE" Type="DATE" />
+          <Property Name="GAME_TIME" Type="int" />
+          <Property Name="GAME_TIME_ZONE" Type="VARCHAR2" MaxLength="30" />
+          <Property Name="ORIGINAL_AIR_DATE" Type="DATE" />
+          <Property Name="UNIQUE_PROGRAM_ID" Type="VARCHAR2" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="T_TRIBUNE_SCHEDULE">
+          <Key>
+            <PropertyRef Name="STATION_NUMBER" />
+            <PropertyRef Name="PROGRAM_ID" />
+            <PropertyRef Name="SCHEDULE_AIR_DATE" />
+            <PropertyRef Name="SCHEDULE_START_TIME" />
+          </Key>
+          <Property Name="STATION_NUMBER" Type="int64" Nullable="false" />
+          <Property Name="PROGRAM_ID" Type="VARCHAR2" Nullable="false" MaxLength="12" />
+          <Property Name="SCHEDULE_AIR_DATE" Type="DATE" Nullable="false" />
+          <Property Name="SCHEDULE_START_TIME" Type="int" Nullable="false" />
+          <Property Name="LENGTH" Type="int" />
+          <Property Name="PART_NUMBER" Type="int" />
+          <Property Name="NUMBER_OF_PARTS" Type="int" />
+          <Property Name="CLOSED_CAPTION_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="STEREO_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="REPEAT_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="LIVE_TAPE_DELAY" Type="VARCHAR2" MaxLength="5" />
+          <Property Name="SUBTITLED_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="PREMIERE_FINALE" Type="VARCHAR2" MaxLength="15" />
+          <Property Name="JOINED_IN_PROCESS_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="CABLE_IN_THE_CLASSROOM_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="TV_RATING" Type="VARCHAR2" MaxLength="4" />
+          <Property Name="SAP_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="BLACK_OUT_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="SEX_RATING_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="VIOLENCE_RATING_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="STRONG_LANGUAGE_RATING_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="DIALOGUE_RATING_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="FV_RATING_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="ENHANCED_PROGRAM_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="THREE_D_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="LETTER_BOX_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="HDTV_IND" Type="VARCHAR2" MaxLength="1" />
+          <Property Name="DOLBY" Type="VARCHAR2" MaxLength="5" />
+          <Property Name="DVS_IND" Type="VARCHAR2" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="T_TRIBUNE_STATION">
+          <Key>
+            <PropertyRef Name="STATION_NUMBER" />
+          </Key>
+          <Property Name="STATION_NUMBER" Type="int64" Nullable="false" />
+          <Property Name="STATION_TIME_ZONE" Type="VARCHAR2" MaxLength="30" />
+          <Property Name="STATION_NAME" Type="VARCHAR2" MaxLength="40" />
+          <Property Name="STATION_CALL_SIGN" Type="VARCHAR2" Nullable="false" MaxLength="10" />
+          <Property Name="STATION_AFFILIATE" Type="VARCHAR2" MaxLength="25" />
+          <Property Name="STATION_CITY" Type="VARCHAR2" MaxLength="20" />
+          <Property Name="STATION_STATE" Type="VARCHAR2" MaxLength="20" />
+          <Property Name="STATION_ZIP_CODE" Type="VARCHAR2" MaxLength="10" />
+          <Property Name="STATION_COUNTRY" Type="VARCHAR2" MaxLength="15" />
+          <Property Name="DESIGNATED_MARKET_AREA_NAME" Type="VARCHAR2" MaxLength="70" />
+          <Property Name="DESIGNATED_MARKET_AREA_NUMBER" Type="int64" />
+          <Property Name="FCC_CHANNEL_NUMBER" Type="int64" />
+          <Property Name="STATION_LOGO" Type="BLOB" />
+          <Property Name="STATION_TYPE" Type="VARCHAR2" Nullable="false" MaxLength="2" />
+          <Property Name="NIELSEN_ID" Type="int64" Nullable="false" />
+          <Property Name="NIELSEN_CD" Type="VARCHAR2" MaxLength="40" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Catalog1.GRID.T_TRIB_AIRING' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="T_TRIB_AIRING">
+          <Key>
+            <PropertyRef Name="NETWORK_ID" />
+            <PropertyRef Name="PROGRAM_ID" />
+            <PropertyRef Name="AIR_DATE" />
+            <PropertyRef Name="AIR_TIME" />
+            <PropertyRef Name="DURATION_SEC" />
+            <PropertyRef Name="PREMIERE_TYPE" />
+            <PropertyRef Name="FEATURES" />
+          </Key>
+          <Property Name="NETWORK_ID" Type="int64" Nullable="false" />
+          <Property Name="PROGRAM_ID" Type="int64" Nullable="false" />
+          <Property Name="AIR_DATE" Type="DATE" Nullable="false" />
+          <Property Name="AIR_TIME" Type="int" Nullable="false" />
+          <Property Name="DURATION_SEC" Type="int64" Nullable="false" />
+          <Property Name="PREMIERE_TYPE" Type="int" Nullable="false" />
+          <Property Name="FEATURES" Type="int64" Nullable="false" />
+          <Property Name="PART_NUMBER" Type="int" />
+          <Property Name="NR_OF_PARTS" Type="int" />
+        </EntityType>
+        <EntityType Name="T_TRIB_GENRE">
+          <Key>
+            <PropertyRef Name="GENRE_ID" />
+          </Key>
+          <Property Name="GENRE_ID" Type="int64" Nullable="false" />
+          <Property Name="GENRE_NAME" Type="VARCHAR2" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="T_TRIB_LOAD_HISTORY">
+          <Key>
+            <PropertyRef Name="LOAD_ID" />
+          </Key>
+          <Property Name="LOAD_ID" Type="int64" Nullable="false" />
+          <Property Name="FILE_NAME" Type="VARCHAR2" Nullable="false" MaxLength="40" />
+          <Property Name="FILE_TYPE" Type="bool" Nullable="false" />
+          <Property Name="LOAD_TIME" Type="DATE" Nullable="false" />
+          <Property Name="NETS_DELTA" Type="int64" />
+          <Property Name="PROG_DELTA" Type="int64" />
+          <Property Name="AIRING_DELTA" Type="int64" />
+          <Property Name="RESULT" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TRIB_NETWORK">
+          <Key>
+            <PropertyRef Name="NETWORK_ID" />
+          </Key>
+          <Property Name="NETWORK_ID" Type="int64" Nullable="false" />
+          <Property Name="NIELSEN_ID" Type="int64" />
+          <Property Name="NIELSEN_CD" Type="VARCHAR2" MaxLength="40" />
+          <Property Name="CALL_SIGN" Type="VARCHAR2" Nullable="false" MaxLength="10" />
+          <Property Name="AFFILIATE" Type="VARCHAR2" MaxLength="40" />
+          <Property Name="CLASS" Type="VARCHAR2" MaxLength="30" />
+          <Property Name="BROADCAST_CHANNEL" Type="int" />
+          <Property Name="TIME_ZONE" Type="VARCHAR2" MaxLength="4" />
+          <Property Name="DST_IND" Type="VARCHAR2" Nullable="false" MaxLength="1" />
+          <Property Name="CITY" Type="VARCHAR2" MaxLength="37" />
+          <Property Name="STATE" Type="VARCHAR2" MaxLength="21" />
+          <Property Name="DMA_MARKET_NAME" Type="VARCHAR2" MaxLength="32" />
+          <Property Name="DMA_MARKET_RANK" Type="int" />
+          <Property Name="LOGO_IMAGE" Type="BLOB" />
+        </EntityType>
+        <EntityType Name="T_TRIB_PART">
+          <Key>
+            <PropertyRef Name="PART_ID" />
+          </Key>
+          <Property Name="PART_ID" Type="int64" Nullable="false" />
+          <Property Name="PART_NAME" Type="VARCHAR2" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="T_TRIB_PROGRAM">
+          <Key>
+            <PropertyRef Name="PROGRAM_ID" />
+          </Key>
+          <Property Name="PROGRAM_ID" Type="int64" Nullable="false" />
+          <Property Name="DURATION_SEC" Type="int64" />
+          <Property Name="FEATURES" Type="int64" Nullable="false" />
+          <Property Name="TYPE_CD" Type="CHAR" Nullable="false" MaxLength="2" />
+          <Property Name="GENRE_ID" Type="int64" />
+          <Property Name="SUBGENRE" Type="VARCHAR2" MaxLength="18" />
+          <Property Name="MPAA_RATING" Type="CHAR" MaxLength="2" />
+          <Property Name="VCHIP_RATING" Type="CHAR" MaxLength="2" />
+          <Property Name="RATING_FLAGS" Type="int" />
+          <Property Name="RELEASE_YEAR" Type="int" />
+          <Property Name="STAR_RATING" Type="double" />
+          <Property Name="TITLE_NAME" Type="VARCHAR2" MaxLength="128" />
+          <Property Name="SUBTITLE_NAME" Type="VARCHAR2" MaxLength="128" />
+          <Property Name="EPISODE_NAME" Type="VARCHAR2" MaxLength="70" />
+          <Property Name="DESCRIPTION" Type="VARCHAR2" MaxLength="440" />
+        </EntityType>
+        <EntityType Name="T_TRIB_PROGRAM_PART_ROLE">
+          <Key>
+            <PropertyRef Name="PROGRAM_ID" />
+            <PropertyRef Name="ROLE_ID" />
+            <PropertyRef Name="PART_ID" />
+          </Key>
+          <Property Name="PROGRAM_ID" Type="int64" Nullable="false" />
+          <Property Name="ROLE_ID" Type="int64" Nullable="false" />
+          <Property Name="PART_ID" Type="int64" Nullable="false" />
+          <Property Name="ORDER_NUM" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TRIB_PROGRAM_TYPE">
+          <Key>
+            <PropertyRef Name="TYPE_CD" />
+          </Key>
+          <Property Name="TYPE_CD" Type="CHAR" Nullable="false" MaxLength="2" />
+          <Property Name="TYPE_NAME" Type="VARCHAR2" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="T_TRIB_ROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="int64" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="VARCHAR2" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <Association Name="1">
+          <End Role="T_TRIB_GENRE" Type="GridModel.Store.T_TRIB_GENRE" Multiplicity="0..1" />
+          <End Role="T_TRIB_PROGRAM" Type="GridModel.Store.T_TRIB_PROGRAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_GENRE">
+              <PropertyRef Name="GENRE_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM">
+              <PropertyRef Name="GENRE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="11">
+          <End Role="T_TRIB_NETWORK" Type="GridModel.Store.T_TRIB_NETWORK" Multiplicity="1" />
+          <End Role="T_TRIB_AIRING" Type="GridModel.Store.T_TRIB_AIRING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_NETWORK">
+              <PropertyRef Name="NETWORK_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_AIRING">
+              <PropertyRef Name="NETWORK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="12">
+          <End Role="T_TRIB_PART" Type="GridModel.Store.T_TRIB_PART" Multiplicity="1" />
+          <End Role="T_TRIB_PROGRAM_PART_ROLE" Type="GridModel.Store.T_TRIB_PROGRAM_PART_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_PART">
+              <PropertyRef Name="PART_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM_PART_ROLE">
+              <PropertyRef Name="PART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="13">
+          <End Role="T_TRIB_PROGRAM" Type="GridModel.Store.T_TRIB_PROGRAM" Multiplicity="1" />
+          <End Role="T_TRIB_AIRING" Type="GridModel.Store.T_TRIB_AIRING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_PROGRAM">
+              <PropertyRef Name="PROGRAM_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_AIRING">
+              <PropertyRef Name="PROGRAM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="14">
+          <End Role="T_TRIB_PROGRAM" Type="GridModel.Store.T_TRIB_PROGRAM" Multiplicity="1" />
+          <End Role="T_TRIB_PROGRAM_PART_ROLE" Type="GridModel.Store.T_TRIB_PROGRAM_PART_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_PROGRAM">
+              <PropertyRef Name="PROGRAM_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM_PART_ROLE">
+              <PropertyRef Name="PROGRAM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="15">
+          <End Role="T_TRIB_PROGRAM_TYPE" Type="GridModel.Store.T_TRIB_PROGRAM_TYPE" Multiplicity="1" />
+          <End Role="T_TRIB_PROGRAM" Type="GridModel.Store.T_TRIB_PROGRAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_PROGRAM_TYPE">
+              <PropertyRef Name="TYPE_CD" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM">
+              <PropertyRef Name="TYPE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="16">
+          <End Role="T_TRIB_ROLE" Type="GridModel.Store.T_TRIB_ROLE" Multiplicity="1" />
+          <End Role="T_TRIB_PROGRAM_PART_ROLE" Type="GridModel.Store.T_TRIB_PROGRAM_PART_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM_PART_ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GridModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CompGridEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_NETWRK_COMP_GRID_COMMENTS" EntityType="GridModel.T_NETWRK_COMP_GRID_COMMENTS" />
+          <EntitySet Name="T_TRIBUNE_PROGRAM" EntityType="GridModel.T_TRIBUNE_PROGRAM" />
+          <EntitySet Name="T_TRIBUNE_SCHEDULE" EntityType="GridModel.T_TRIBUNE_SCHEDULE" />
+          <EntitySet Name="T_TRIBUNE_STATION" EntityType="GridModel.T_TRIBUNE_STATION" />
+          <EntitySet Name="T_TRIB_AIRING" EntityType="GridModel.T_TRIB_AIRING" />
+          <EntitySet Name="T_TRIB_GENRE" EntityType="GridModel.T_TRIB_GENRE" />
+          <EntitySet Name="T_TRIB_LOAD_HISTORY" EntityType="GridModel.T_TRIB_LOAD_HISTORY" />
+          <EntitySet Name="T_TRIB_NETWORK" EntityType="GridModel.T_TRIB_NETWORK" />
+          <EntitySet Name="T_TRIB_PART" EntityType="GridModel.T_TRIB_PART" />
+          <EntitySet Name="T_TRIB_PROGRAM" EntityType="GridModel.T_TRIB_PROGRAM" />
+          <EntitySet Name="T_TRIB_PROGRAM_PART_ROLE" EntityType="GridModel.T_TRIB_PROGRAM_PART_ROLE" />
+          <EntitySet Name="T_TRIB_PROGRAM_TYPE" EntityType="GridModel.T_TRIB_PROGRAM_TYPE" />
+          <EntitySet Name="T_TRIB_ROLE" EntityType="GridModel.T_TRIB_ROLE" />
+          <AssociationSet Name="C11" Association="GridModel.C11">
+            <End Role="T_TRIB_NETWORK" EntitySet="T_TRIB_NETWORK" />
+            <End Role="T_TRIB_AIRING" EntitySet="T_TRIB_AIRING" />
+          </AssociationSet>
+          <AssociationSet Name="C13" Association="GridModel.C13">
+            <End Role="T_TRIB_PROGRAM" EntitySet="T_TRIB_PROGRAM" />
+            <End Role="T_TRIB_AIRING" EntitySet="T_TRIB_AIRING" />
+          </AssociationSet>
+          <AssociationSet Name="C1" Association="GridModel.C1">
+            <End Role="T_TRIB_GENRE" EntitySet="T_TRIB_GENRE" />
+            <End Role="T_TRIB_PROGRAM" EntitySet="T_TRIB_PROGRAM" />
+          </AssociationSet>
+          <AssociationSet Name="C12" Association="GridModel.C12">
+            <End Role="T_TRIB_PART" EntitySet="T_TRIB_PART" />
+            <End Role="T_TRIB_PROGRAM_PART_ROLE" EntitySet="T_TRIB_PROGRAM_PART_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="C14" Association="GridModel.C14">
+            <End Role="T_TRIB_PROGRAM" EntitySet="T_TRIB_PROGRAM" />
+            <End Role="T_TRIB_PROGRAM_PART_ROLE" EntitySet="T_TRIB_PROGRAM_PART_ROLE" />
+          </AssociationSet>
+          <AssociationSet Name="C15" Association="GridModel.C15">
+            <End Role="T_TRIB_PROGRAM_TYPE" EntitySet="T_TRIB_PROGRAM_TYPE" />
+            <End Role="T_TRIB_PROGRAM" EntitySet="T_TRIB_PROGRAM" />
+          </AssociationSet>
+          <AssociationSet Name="C16" Association="GridModel.C16">
+            <End Role="T_TRIB_ROLE" EntitySet="T_TRIB_ROLE" />
+            <End Role="T_TRIB_PROGRAM_PART_ROLE" EntitySet="T_TRIB_PROGRAM_PART_ROLE" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="T_NETWRK_COMP_GRID_COMMENTS">
+          <Key>
+            <PropertyRef Name="NETWORK_CD" />
+            <PropertyRef Name="COMMENT_DATE" />
+            <PropertyRef Name="SYNOPSIS_TYPE_CD" />
+          </Key>
+          <Property Name="NETWORK_CD" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="COMMENT_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="SYNOPSIS_TYPE_CD" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="COMMENTS" Type="String" MaxLength="2147483643" Unicode="true" FixedLength="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="CREATE_USER_ID" Type="Int64" Nullable="false" />
+          <Property Name="LAST_UPDATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE_USER_ID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TRIBUNE_PROGRAM">
+          <Key>
+            <PropertyRef Name="PROGRAM_ID" />
+          </Key>
+          <Property Name="PROGRAM_ID" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="SCARLETT_TITLE_ID" Type="Int64" />
+          <Property Name="TITLE_NAME" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="ALTERNATE_TITLE_NAME" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="STORYLINE1" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="STORYLINE2" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="RELEASE_YEAR" Type="Int32" />
+          <Property Name="MPAA_RATING" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="STAR_RATING" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="RUN_TIME" Type="Int64" />
+          <Property Name="COLOR_CODE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PROGRAM_LANGUAGE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="PROGRAM_ORIGIN" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="MADE_FOR_TV_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="SOURCE_TYPE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="SHOW_TYPE" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="HOLIDAY" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="SYN_EPISODE_NUMBER" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="ALT_SYN_EPISODE_NUMBER" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="SUBTITLE_NAME" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="ORIGINATING_NETWORK" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="NETWORK_SYNDICATE_TYPE" Type="String" MaxLength="21" Unicode="true" FixedLength="false" />
+          <Property Name="STORYLINE3" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="ORIGINATING_STUDIO" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="GAME_DATE" Type="DateTime" />
+          <Property Name="GAME_TIME" Type="Int32" />
+          <Property Name="GAME_TIME_ZONE" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ORIGINAL_AIR_DATE" Type="DateTime" />
+          <Property Name="UNIQUE_PROGRAM_ID" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="T_TRIBUNE_SCHEDULE">
+          <Key>
+            <PropertyRef Name="STATION_NUMBER" />
+            <PropertyRef Name="PROGRAM_ID" />
+            <PropertyRef Name="SCHEDULE_AIR_DATE" />
+            <PropertyRef Name="SCHEDULE_START_TIME" />
+          </Key>
+          <Property Name="STATION_NUMBER" Type="Int64" Nullable="false" />
+          <Property Name="PROGRAM_ID" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="SCHEDULE_AIR_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="SCHEDULE_START_TIME" Type="Int32" Nullable="false" />
+          <Property Name="LENGTH" Type="Int32" />
+          <Property Name="PART_NUMBER" Type="Int32" />
+          <Property Name="NUMBER_OF_PARTS" Type="Int32" />
+          <Property Name="CLOSED_CAPTION_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="STEREO_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="REPEAT_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="LIVE_TAPE_DELAY" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="SUBTITLED_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="PREMIERE_FINALE" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="JOINED_IN_PROCESS_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CABLE_IN_THE_CLASSROOM_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="TV_RATING" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="SAP_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="BLACK_OUT_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="SEX_RATING_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="VIOLENCE_RATING_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="STRONG_LANGUAGE_RATING_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="DIALOGUE_RATING_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="FV_RATING_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="ENHANCED_PROGRAM_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="THREE_D_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="LETTER_BOX_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="HDTV_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="DOLBY" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="DVS_IND" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="T_TRIBUNE_STATION">
+          <Key>
+            <PropertyRef Name="STATION_NUMBER" />
+          </Key>
+          <Property Name="STATION_NUMBER" Type="Int64" Nullable="false" />
+          <Property Name="STATION_TIME_ZONE" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="STATION_NAME" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="STATION_CALL_SIGN" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="STATION_AFFILIATE" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="STATION_CITY" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="STATION_STATE" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="STATION_ZIP_CODE" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="STATION_COUNTRY" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="DESIGNATED_MARKET_AREA_NAME" Type="String" MaxLength="70" Unicode="true" FixedLength="false" />
+          <Property Name="DESIGNATED_MARKET_AREA_NUMBER" Type="Int64" />
+          <Property Name="FCC_CHANNEL_NUMBER" Type="Int64" />
+          <Property Name="STATION_LOGO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="STATION_TYPE" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="NIELSEN_ID" Type="Int64" Nullable="false" />
+          <Property Name="NIELSEN_CD" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="T_TRIB_AIRING">
+          <Key>
+            <PropertyRef Name="NETWORK_ID" />
+            <PropertyRef Name="PROGRAM_ID" />
+            <PropertyRef Name="AIR_DATE" />
+            <PropertyRef Name="AIR_TIME" />
+            <PropertyRef Name="DURATION_SEC" />
+            <PropertyRef Name="PREMIERE_TYPE" />
+            <PropertyRef Name="FEATURES" />
+          </Key>
+          <Property Name="NETWORK_ID" Type="Int64" Nullable="false" />
+          <Property Name="PROGRAM_ID" Type="Int64" Nullable="false" />
+          <Property Name="AIR_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="AIR_TIME" Type="Int32" Nullable="false" />
+          <Property Name="DURATION_SEC" Type="Int64" Nullable="false" />
+          <Property Name="PREMIERE_TYPE" Type="Int32" Nullable="false" />
+          <Property Name="FEATURES" Type="Int64" Nullable="false" />
+          <Property Name="PART_NUMBER" Type="Int32" />
+          <Property Name="NR_OF_PARTS" Type="Int32" />
+          <NavigationProperty Name="T_TRIB_NETWORK" Relationship="GridModel.C11" FromRole="T_TRIB_AIRING" ToRole="T_TRIB_NETWORK" />
+          <NavigationProperty Name="T_TRIB_PROGRAM" Relationship="GridModel.C13" FromRole="T_TRIB_AIRING" ToRole="T_TRIB_PROGRAM" />
+        </EntityType>
+        <EntityType Name="T_TRIB_GENRE">
+          <Key>
+            <PropertyRef Name="GENRE_ID" />
+          </Key>
+          <Property Name="GENRE_ID" Type="Int64" Nullable="false" />
+          <Property Name="GENRE_NAME" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_TRIB_PROGRAM" Relationship="GridModel.C1" FromRole="T_TRIB_GENRE" ToRole="T_TRIB_PROGRAM" />
+        </EntityType>
+        <EntityType Name="T_TRIB_LOAD_HISTORY">
+          <Key>
+            <PropertyRef Name="LOAD_ID" />
+          </Key>
+          <Property Name="LOAD_ID" Type="Int64" Nullable="false" />
+          <Property Name="FILE_NAME" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="FILE_TYPE" Type="Boolean" Nullable="false" />
+          <Property Name="LOAD_TIME" Type="DateTime" Nullable="false" />
+          <Property Name="NETS_DELTA" Type="Int64" />
+          <Property Name="PROG_DELTA" Type="Int64" />
+          <Property Name="AIRING_DELTA" Type="Int64" />
+          <Property Name="RESULT" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_TRIB_NETWORK">
+          <Key>
+            <PropertyRef Name="NETWORK_ID" />
+          </Key>
+          <Property Name="NETWORK_ID" Type="Int64" Nullable="false" />
+          <Property Name="NIELSEN_ID" Type="Int64" />
+          <Property Name="NIELSEN_CD" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="CALL_SIGN" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="AFFILIATE" Type="String" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="CLASS" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="BROADCAST_CHANNEL" Type="Int32" />
+          <Property Name="TIME_ZONE" Type="String" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="DST_IND" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="CITY" Type="String" MaxLength="37" Unicode="true" FixedLength="false" />
+          <Property Name="STATE" Type="String" MaxLength="21" Unicode="true" FixedLength="false" />
+          <Property Name="DMA_MARKET_NAME" Type="String" MaxLength="32" Unicode="true" FixedLength="false" />
+          <Property Name="DMA_MARKET_RANK" Type="Int32" />
+          <Property Name="LOGO_IMAGE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="T_TRIB_AIRING" Relationship="GridModel.C11" FromRole="T_TRIB_NETWORK" ToRole="T_TRIB_AIRING" />
+        </EntityType>
+        <EntityType Name="T_TRIB_PART">
+          <Key>
+            <PropertyRef Name="PART_ID" />
+          </Key>
+          <Property Name="PART_ID" Type="Int64" Nullable="false" />
+          <Property Name="PART_NAME" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_TRIB_PROGRAM_PART_ROLE" Relationship="GridModel.C12" FromRole="T_TRIB_PART" ToRole="T_TRIB_PROGRAM_PART_ROLE" />
+        </EntityType>
+        <EntityType Name="T_TRIB_PROGRAM">
+          <Key>
+            <PropertyRef Name="PROGRAM_ID" />
+          </Key>
+          <Property Name="PROGRAM_ID" Type="Int64" Nullable="false" />
+          <Property Name="DURATION_SEC" Type="Int64" />
+          <Property Name="FEATURES" Type="Int64" Nullable="false" />
+          <Property Name="TYPE_CD" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="true" />
+          <Property Name="GENRE_ID" Type="Int64" />
+          <Property Name="SUBGENRE" Type="String" MaxLength="18" Unicode="true" FixedLength="false" />
+          <Property Name="MPAA_RATING" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+          <Property Name="VCHIP_RATING" Type="String" MaxLength="2" Unicode="true" FixedLength="true" />
+          <Property Name="RATING_FLAGS" Type="Int32" />
+          <Property Name="RELEASE_YEAR" Type="Int32" />
+          <Property Name="STAR_RATING" Type="Double" />
+          <Property Name="TITLE_NAME" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="SUBTITLE_NAME" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="EPISODE_NAME" Type="String" MaxLength="70" Unicode="true" FixedLength="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="440" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_TRIB_AIRING" Relationship="GridModel.C13" FromRole="T_TRIB_PROGRAM" ToRole="T_TRIB_AIRING" />
+          <NavigationProperty Name="T_TRIB_GENRE" Relationship="GridModel.C1" FromRole="T_TRIB_PROGRAM" ToRole="T_TRIB_GENRE" />
+          <NavigationProperty Name="T_TRIB_PROGRAM_PART_ROLE" Relationship="GridModel.C14" FromRole="T_TRIB_PROGRAM" ToRole="T_TRIB_PROGRAM_PART_ROLE" />
+          <NavigationProperty Name="T_TRIB_PROGRAM_TYPE" Relationship="GridModel.C15" FromRole="T_TRIB_PROGRAM" ToRole="T_TRIB_PROGRAM_TYPE" />
+        </EntityType>
+        <EntityType Name="T_TRIB_PROGRAM_PART_ROLE">
+          <Key>
+            <PropertyRef Name="PROGRAM_ID" />
+            <PropertyRef Name="ROLE_ID" />
+            <PropertyRef Name="PART_ID" />
+          </Key>
+          <Property Name="PROGRAM_ID" Type="Int64" Nullable="false" />
+          <Property Name="ROLE_ID" Type="Int64" Nullable="false" />
+          <Property Name="PART_ID" Type="Int64" Nullable="false" />
+          <Property Name="ORDER_NUM" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_TRIB_PART" Relationship="GridModel.C12" FromRole="T_TRIB_PROGRAM_PART_ROLE" ToRole="T_TRIB_PART" />
+          <NavigationProperty Name="T_TRIB_PROGRAM" Relationship="GridModel.C14" FromRole="T_TRIB_PROGRAM_PART_ROLE" ToRole="T_TRIB_PROGRAM" />
+          <NavigationProperty Name="T_TRIB_ROLE" Relationship="GridModel.C16" FromRole="T_TRIB_PROGRAM_PART_ROLE" ToRole="T_TRIB_ROLE" />
+        </EntityType>
+        <EntityType Name="T_TRIB_PROGRAM_TYPE">
+          <Key>
+            <PropertyRef Name="TYPE_CD" />
+          </Key>
+          <Property Name="TYPE_CD" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="true" />
+          <Property Name="TYPE_NAME" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_TRIB_PROGRAM" Relationship="GridModel.C15" FromRole="T_TRIB_PROGRAM_TYPE" ToRole="T_TRIB_PROGRAM" />
+        </EntityType>
+        <EntityType Name="T_TRIB_ROLE">
+          <Key>
+            <PropertyRef Name="ROLE_ID" />
+          </Key>
+          <Property Name="ROLE_ID" Type="Int64" Nullable="false" />
+          <Property Name="ROLE_NAME" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="T_TRIB_PROGRAM_PART_ROLE" Relationship="GridModel.C16" FromRole="T_TRIB_ROLE" ToRole="T_TRIB_PROGRAM_PART_ROLE" />
+        </EntityType>
+        <Association Name="C11">
+          <End Role="T_TRIB_NETWORK" Type="GridModel.T_TRIB_NETWORK" Multiplicity="1" />
+          <End Role="T_TRIB_AIRING" Type="GridModel.T_TRIB_AIRING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_NETWORK">
+              <PropertyRef Name="NETWORK_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_AIRING">
+              <PropertyRef Name="NETWORK_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C13">
+          <End Role="T_TRIB_PROGRAM" Type="GridModel.T_TRIB_PROGRAM" Multiplicity="1" />
+          <End Role="T_TRIB_AIRING" Type="GridModel.T_TRIB_AIRING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_PROGRAM">
+              <PropertyRef Name="PROGRAM_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_AIRING">
+              <PropertyRef Name="PROGRAM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C1">
+          <End Role="T_TRIB_GENRE" Type="GridModel.T_TRIB_GENRE" Multiplicity="0..1" />
+          <End Role="T_TRIB_PROGRAM" Type="GridModel.T_TRIB_PROGRAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_GENRE">
+              <PropertyRef Name="GENRE_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM">
+              <PropertyRef Name="GENRE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C12">
+          <End Role="T_TRIB_PART" Type="GridModel.T_TRIB_PART" Multiplicity="1" />
+          <End Role="T_TRIB_PROGRAM_PART_ROLE" Type="GridModel.T_TRIB_PROGRAM_PART_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_PART">
+              <PropertyRef Name="PART_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM_PART_ROLE">
+              <PropertyRef Name="PART_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C14">
+          <End Role="T_TRIB_PROGRAM" Type="GridModel.T_TRIB_PROGRAM" Multiplicity="1" />
+          <End Role="T_TRIB_PROGRAM_PART_ROLE" Type="GridModel.T_TRIB_PROGRAM_PART_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_PROGRAM">
+              <PropertyRef Name="PROGRAM_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM_PART_ROLE">
+              <PropertyRef Name="PROGRAM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C15">
+          <End Role="T_TRIB_PROGRAM_TYPE" Type="GridModel.T_TRIB_PROGRAM_TYPE" Multiplicity="1" />
+          <End Role="T_TRIB_PROGRAM" Type="GridModel.T_TRIB_PROGRAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_PROGRAM_TYPE">
+              <PropertyRef Name="TYPE_CD" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM">
+              <PropertyRef Name="TYPE_CD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="C16">
+          <End Role="T_TRIB_ROLE" Type="GridModel.T_TRIB_ROLE" Multiplicity="1" />
+          <End Role="T_TRIB_PROGRAM_PART_ROLE" Type="GridModel.T_TRIB_PROGRAM_PART_ROLE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_TRIB_ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Principal>
+            <Dependent Role="T_TRIB_PROGRAM_PART_ROLE">
+              <PropertyRef Name="ROLE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GridModelStoreContainer" CdmEntityContainer="CompGridEntities">
+          <EntitySetMapping Name="T_NETWRK_COMP_GRID_COMMENTS"><EntityTypeMapping TypeName="GridModel.T_NETWRK_COMP_GRID_COMMENTS"><MappingFragment StoreEntitySet="T_NETWRK_COMP_GRID_COMMENTS">
+            <ScalarProperty Name="NETWORK_CD" ColumnName="NETWORK_CD" />
+            <ScalarProperty Name="COMMENT_DATE" ColumnName="COMMENT_DATE" />
+            <ScalarProperty Name="SYNOPSIS_TYPE_CD" ColumnName="SYNOPSIS_TYPE_CD" />
+            <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+            <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+            <ScalarProperty Name="CREATE_USER_ID" ColumnName="CREATE_USER_ID" />
+            <ScalarProperty Name="LAST_UPDATE_DATE" ColumnName="LAST_UPDATE_DATE" />
+            <ScalarProperty Name="LAST_UPDATE_USER_ID" ColumnName="LAST_UPDATE_USER_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIBUNE_PROGRAM"><EntityTypeMapping TypeName="GridModel.T_TRIBUNE_PROGRAM"><MappingFragment StoreEntitySet="T_TRIBUNE_PROGRAM">
+            <ScalarProperty Name="PROGRAM_ID" ColumnName="PROGRAM_ID" />
+            <ScalarProperty Name="SCARLETT_TITLE_ID" ColumnName="SCARLETT_TITLE_ID" />
+            <ScalarProperty Name="TITLE_NAME" ColumnName="TITLE_NAME" />
+            <ScalarProperty Name="ALTERNATE_TITLE_NAME" ColumnName="ALTERNATE_TITLE_NAME" />
+            <ScalarProperty Name="STORYLINE1" ColumnName="STORYLINE1" />
+            <ScalarProperty Name="STORYLINE2" ColumnName="STORYLINE2" />
+            <ScalarProperty Name="RELEASE_YEAR" ColumnName="RELEASE_YEAR" />
+            <ScalarProperty Name="MPAA_RATING" ColumnName="MPAA_RATING" />
+            <ScalarProperty Name="STAR_RATING" ColumnName="STAR_RATING" />
+            <ScalarProperty Name="RUN_TIME" ColumnName="RUN_TIME" />
+            <ScalarProperty Name="COLOR_CODE" ColumnName="COLOR_CODE" />
+            <ScalarProperty Name="PROGRAM_LANGUAGE" ColumnName="PROGRAM_LANGUAGE" />
+            <ScalarProperty Name="PROGRAM_ORIGIN" ColumnName="PROGRAM_ORIGIN" />
+            <ScalarProperty Name="MADE_FOR_TV_IND" ColumnName="MADE_FOR_TV_IND" />
+            <ScalarProperty Name="SOURCE_TYPE" ColumnName="SOURCE_TYPE" />
+            <ScalarProperty Name="SHOW_TYPE" ColumnName="SHOW_TYPE" />
+            <ScalarProperty Name="HOLIDAY" ColumnName="HOLIDAY" />
+            <ScalarProperty Name="SYN_EPISODE_NUMBER" ColumnName="SYN_EPISODE_NUMBER" />
+            <ScalarProperty Name="ALT_SYN_EPISODE_NUMBER" ColumnName="ALT_SYN_EPISODE_NUMBER" />
+            <ScalarProperty Name="SUBTITLE_NAME" ColumnName="SUBTITLE_NAME" />
+            <ScalarProperty Name="ORIGINATING_NETWORK" ColumnName="ORIGINATING_NETWORK" />
+            <ScalarProperty Name="NETWORK_SYNDICATE_TYPE" ColumnName="NETWORK_SYNDICATE_TYPE" />
+            <ScalarProperty Name="STORYLINE3" ColumnName="STORYLINE3" />
+            <ScalarProperty Name="ORIGINATING_STUDIO" ColumnName="ORIGINATING_STUDIO" />
+            <ScalarProperty Name="GAME_DATE" ColumnName="GAME_DATE" />
+            <ScalarProperty Name="GAME_TIME" ColumnName="GAME_TIME" />
+            <ScalarProperty Name="GAME_TIME_ZONE" ColumnName="GAME_TIME_ZONE" />
+            <ScalarProperty Name="ORIGINAL_AIR_DATE" ColumnName="ORIGINAL_AIR_DATE" />
+            <ScalarProperty Name="UNIQUE_PROGRAM_ID" ColumnName="UNIQUE_PROGRAM_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIBUNE_SCHEDULE"><EntityTypeMapping TypeName="GridModel.T_TRIBUNE_SCHEDULE"><MappingFragment StoreEntitySet="T_TRIBUNE_SCHEDULE">
+            <ScalarProperty Name="STATION_NUMBER" ColumnName="STATION_NUMBER" />
+            <ScalarProperty Name="PROGRAM_ID" ColumnName="PROGRAM_ID" />
+            <ScalarProperty Name="SCHEDULE_AIR_DATE" ColumnName="SCHEDULE_AIR_DATE" />
+            <ScalarProperty Name="SCHEDULE_START_TIME" ColumnName="SCHEDULE_START_TIME" />
+            <ScalarProperty Name="LENGTH" ColumnName="LENGTH" />
+            <ScalarProperty Name="PART_NUMBER" ColumnName="PART_NUMBER" />
+            <ScalarProperty Name="NUMBER_OF_PARTS" ColumnName="NUMBER_OF_PARTS" />
+            <ScalarProperty Name="CLOSED_CAPTION_IND" ColumnName="CLOSED_CAPTION_IND" />
+            <ScalarProperty Name="STEREO_IND" ColumnName="STEREO_IND" />
+            <ScalarProperty Name="REPEAT_IND" ColumnName="REPEAT_IND" />
+            <ScalarProperty Name="LIVE_TAPE_DELAY" ColumnName="LIVE_TAPE_DELAY" />
+            <ScalarProperty Name="SUBTITLED_IND" ColumnName="SUBTITLED_IND" />
+            <ScalarProperty Name="PREMIERE_FINALE" ColumnName="PREMIERE_FINALE" />
+            <ScalarProperty Name="JOINED_IN_PROCESS_IND" ColumnName="JOINED_IN_PROCESS_IND" />
+            <ScalarProperty Name="CABLE_IN_THE_CLASSROOM_IND" ColumnName="CABLE_IN_THE_CLASSROOM_IND" />
+            <ScalarProperty Name="TV_RATING" ColumnName="TV_RATING" />
+            <ScalarProperty Name="SAP_IND" ColumnName="SAP_IND" />
+            <ScalarProperty Name="BLACK_OUT_IND" ColumnName="BLACK_OUT_IND" />
+            <ScalarProperty Name="SEX_RATING_IND" ColumnName="SEX_RATING_IND" />
+            <ScalarProperty Name="VIOLENCE_RATING_IND" ColumnName="VIOLENCE_RATING_IND" />
+            <ScalarProperty Name="STRONG_LANGUAGE_RATING_IND" ColumnName="STRONG_LANGUAGE_RATING_IND" />
+            <ScalarProperty Name="DIALOGUE_RATING_IND" ColumnName="DIALOGUE_RATING_IND" />
+            <ScalarProperty Name="FV_RATING_IND" ColumnName="FV_RATING_IND" />
+            <ScalarProperty Name="ENHANCED_PROGRAM_IND" ColumnName="ENHANCED_PROGRAM_IND" />
+            <ScalarProperty Name="THREE_D_IND" ColumnName="THREE_D_IND" />
+            <ScalarProperty Name="LETTER_BOX_IND" ColumnName="LETTER_BOX_IND" />
+            <ScalarProperty Name="HDTV_IND" ColumnName="HDTV_IND" />
+            <ScalarProperty Name="DOLBY" ColumnName="DOLBY" />
+            <ScalarProperty Name="DVS_IND" ColumnName="DVS_IND" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIBUNE_STATION"><EntityTypeMapping TypeName="GridModel.T_TRIBUNE_STATION"><MappingFragment StoreEntitySet="T_TRIBUNE_STATION">
+            <ScalarProperty Name="STATION_NUMBER" ColumnName="STATION_NUMBER" />
+            <ScalarProperty Name="STATION_TIME_ZONE" ColumnName="STATION_TIME_ZONE" />
+            <ScalarProperty Name="STATION_NAME" ColumnName="STATION_NAME" />
+            <ScalarProperty Name="STATION_CALL_SIGN" ColumnName="STATION_CALL_SIGN" />
+            <ScalarProperty Name="STATION_AFFILIATE" ColumnName="STATION_AFFILIATE" />
+            <ScalarProperty Name="STATION_CITY" ColumnName="STATION_CITY" />
+            <ScalarProperty Name="STATION_STATE" ColumnName="STATION_STATE" />
+            <ScalarProperty Name="STATION_ZIP_CODE" ColumnName="STATION_ZIP_CODE" />
+            <ScalarProperty Name="STATION_COUNTRY" ColumnName="STATION_COUNTRY" />
+            <ScalarProperty Name="DESIGNATED_MARKET_AREA_NAME" ColumnName="DESIGNATED_MARKET_AREA_NAME" />
+            <ScalarProperty Name="DESIGNATED_MARKET_AREA_NUMBER" ColumnName="DESIGNATED_MARKET_AREA_NUMBER" />
+            <ScalarProperty Name="FCC_CHANNEL_NUMBER" ColumnName="FCC_CHANNEL_NUMBER" />
+            <ScalarProperty Name="STATION_LOGO" ColumnName="STATION_LOGO" />
+            <ScalarProperty Name="STATION_TYPE" ColumnName="STATION_TYPE" />
+            <ScalarProperty Name="NIELSEN_ID" ColumnName="NIELSEN_ID" />
+            <ScalarProperty Name="NIELSEN_CD" ColumnName="NIELSEN_CD" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_AIRING"><EntityTypeMapping TypeName="GridModel.T_TRIB_AIRING"><MappingFragment StoreEntitySet="T_TRIB_AIRING">
+            <ScalarProperty Name="NETWORK_ID" ColumnName="NETWORK_ID" />
+            <ScalarProperty Name="PROGRAM_ID" ColumnName="PROGRAM_ID" />
+            <ScalarProperty Name="AIR_DATE" ColumnName="AIR_DATE" />
+            <ScalarProperty Name="AIR_TIME" ColumnName="AIR_TIME" />
+            <ScalarProperty Name="DURATION_SEC" ColumnName="DURATION_SEC" />
+            <ScalarProperty Name="PREMIERE_TYPE" ColumnName="PREMIERE_TYPE" />
+            <ScalarProperty Name="FEATURES" ColumnName="FEATURES" />
+            <ScalarProperty Name="PART_NUMBER" ColumnName="PART_NUMBER" />
+            <ScalarProperty Name="NR_OF_PARTS" ColumnName="NR_OF_PARTS" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_GENRE"><EntityTypeMapping TypeName="GridModel.T_TRIB_GENRE"><MappingFragment StoreEntitySet="T_TRIB_GENRE">
+            <ScalarProperty Name="GENRE_ID" ColumnName="GENRE_ID" />
+            <ScalarProperty Name="GENRE_NAME" ColumnName="GENRE_NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_LOAD_HISTORY"><EntityTypeMapping TypeName="GridModel.T_TRIB_LOAD_HISTORY"><MappingFragment StoreEntitySet="T_TRIB_LOAD_HISTORY">
+            <ScalarProperty Name="LOAD_ID" ColumnName="LOAD_ID" />
+            <ScalarProperty Name="FILE_NAME" ColumnName="FILE_NAME" />
+            <ScalarProperty Name="FILE_TYPE" ColumnName="FILE_TYPE" />
+            <ScalarProperty Name="LOAD_TIME" ColumnName="LOAD_TIME" />
+            <ScalarProperty Name="NETS_DELTA" ColumnName="NETS_DELTA" />
+            <ScalarProperty Name="PROG_DELTA" ColumnName="PROG_DELTA" />
+            <ScalarProperty Name="AIRING_DELTA" ColumnName="AIRING_DELTA" />
+            <ScalarProperty Name="RESULT" ColumnName="RESULT" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_NETWORK"><EntityTypeMapping TypeName="GridModel.T_TRIB_NETWORK"><MappingFragment StoreEntitySet="T_TRIB_NETWORK">
+            <ScalarProperty Name="NETWORK_ID" ColumnName="NETWORK_ID" />
+            <ScalarProperty Name="NIELSEN_ID" ColumnName="NIELSEN_ID" />
+            <ScalarProperty Name="NIELSEN_CD" ColumnName="NIELSEN_CD" />
+            <ScalarProperty Name="CALL_SIGN" ColumnName="CALL_SIGN" />
+            <ScalarProperty Name="AFFILIATE" ColumnName="AFFILIATE" />
+            <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+            <ScalarProperty Name="BROADCAST_CHANNEL" ColumnName="BROADCAST_CHANNEL" />
+            <ScalarProperty Name="TIME_ZONE" ColumnName="TIME_ZONE" />
+            <ScalarProperty Name="DST_IND" ColumnName="DST_IND" />
+            <ScalarProperty Name="CITY" ColumnName="CITY" />
+            <ScalarProperty Name="STATE" ColumnName="STATE" />
+            <ScalarProperty Name="DMA_MARKET_NAME" ColumnName="DMA_MARKET_NAME" />
+            <ScalarProperty Name="DMA_MARKET_RANK" ColumnName="DMA_MARKET_RANK" />
+            <ScalarProperty Name="LOGO_IMAGE" ColumnName="LOGO_IMAGE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_PART"><EntityTypeMapping TypeName="GridModel.T_TRIB_PART"><MappingFragment StoreEntitySet="T_TRIB_PART">
+            <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+            <ScalarProperty Name="PART_NAME" ColumnName="PART_NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_PROGRAM"><EntityTypeMapping TypeName="GridModel.T_TRIB_PROGRAM"><MappingFragment StoreEntitySet="T_TRIB_PROGRAM">
+            <ScalarProperty Name="PROGRAM_ID" ColumnName="PROGRAM_ID" />
+            <ScalarProperty Name="DURATION_SEC" ColumnName="DURATION_SEC" />
+            <ScalarProperty Name="FEATURES" ColumnName="FEATURES" />
+            <ScalarProperty Name="TYPE_CD" ColumnName="TYPE_CD" />
+            <ScalarProperty Name="GENRE_ID" ColumnName="GENRE_ID" />
+            <ScalarProperty Name="SUBGENRE" ColumnName="SUBGENRE" />
+            <ScalarProperty Name="MPAA_RATING" ColumnName="MPAA_RATING" />
+            <ScalarProperty Name="VCHIP_RATING" ColumnName="VCHIP_RATING" />
+            <ScalarProperty Name="RATING_FLAGS" ColumnName="RATING_FLAGS" />
+            <ScalarProperty Name="RELEASE_YEAR" ColumnName="RELEASE_YEAR" />
+            <ScalarProperty Name="STAR_RATING" ColumnName="STAR_RATING" />
+            <ScalarProperty Name="TITLE_NAME" ColumnName="TITLE_NAME" />
+            <ScalarProperty Name="SUBTITLE_NAME" ColumnName="SUBTITLE_NAME" />
+            <ScalarProperty Name="EPISODE_NAME" ColumnName="EPISODE_NAME" />
+            <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_PROGRAM_PART_ROLE"><EntityTypeMapping TypeName="GridModel.T_TRIB_PROGRAM_PART_ROLE"><MappingFragment StoreEntitySet="T_TRIB_PROGRAM_PART_ROLE">
+            <ScalarProperty Name="PROGRAM_ID" ColumnName="PROGRAM_ID" />
+            <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+            <ScalarProperty Name="PART_ID" ColumnName="PART_ID" />
+            <ScalarProperty Name="ORDER_NUM" ColumnName="ORDER_NUM" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_PROGRAM_TYPE"><EntityTypeMapping TypeName="GridModel.T_TRIB_PROGRAM_TYPE"><MappingFragment StoreEntitySet="T_TRIB_PROGRAM_TYPE">
+            <ScalarProperty Name="TYPE_CD" ColumnName="TYPE_CD" />
+            <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="T_TRIB_ROLE"><EntityTypeMapping TypeName="GridModel.T_TRIB_ROLE"><MappingFragment StoreEntitySet="T_TRIB_ROLE">
+            <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
+            <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="CompGrid">
+        <EntityTypeShape EntityType="GridModel.T_NETWRK_COMP_GRID_COMMENTS" Width="1.5" PointX="8.75" PointY="7.25" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIBUNE_PROGRAM" Width="1.75" PointX="5.75" PointY="10.25" Height="6.5955208333333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIBUNE_SCHEDULE" Width="1.5" PointX="10.75" PointY="1.25" Height="6.5955208333333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIBUNE_STATION" Width="1.5" PointX="7.75" PointY="11.25" Height="4.0956022135416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_AIRING" Width="1.5" PointX="5.25" PointY="3.125" Height="3.1340950520833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_GENRE" Width="1.5" PointX="0.75" PointY="3.875" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_LOAD_HISTORY" Width="1.5" PointX="10.75" PointY="9.25" Height="2.5571907552083317" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_NETWORK" Width="2.25" PointX="3" PointY="8.75" Height="3.9033007812499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_PART" Width="1.5" PointX="6" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_PROGRAM" Width="1.5" PointX="3" PointY="2.375" Height="4.6725065104166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_PROGRAM_PART_ROLE" Width="1.5" PointX="8.25" PointY="3.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_PROGRAM_TYPE" Width="1.875" PointX="0.5" PointY="0.875" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="GridModel.T_TRIB_ROLE" Width="1.5" PointX="6" PointY="7.125" Height="1.5956835937500031" IsExpanded="true" />
+        <AssociationConnector Association="GridModel.C11" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="9.46875" />
+          <ConnectorPoint PointX="5.5" PointY="9.46875" />
+          <ConnectorPoint PointX="5.5" PointY="6.2590950520833326" />
+        </AssociationConnector>
+        <AssociationConnector Association="GridModel.C13" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="4.6920475260416659" />
+          <ConnectorPoint PointX="5.25" PointY="4.6920475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="GridModel.C1" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.672841796875" />
+          <ConnectorPoint PointX="3" PointY="4.672841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="GridModel.C12" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="1.5478417968749998" />
+          <ConnectorPoint PointX="9" PointY="1.5478417968749998" />
+          <ConnectorPoint PointX="9" PointY="3.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="GridModel.C14" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.6845507812499987" />
+          <ConnectorPoint PointX="5.416666666666667" PointY="6.6845507812499978" />
+          <ConnectorPoint PointX="5.583333333333333" PointY="6.6845507812499987" />
+          <ConnectorPoint PointX="8.3854166666666661" PointY="6.6845507812499978" />
+          <ConnectorPoint PointX="8.5520833333333339" PointY="6.6845507812499987" />
+          <ConnectorPoint PointX="9.1406275" PointY="6.6845507812499987" />
+          <ConnectorPoint PointX="9.1406275" PointY="5.8648893229166674" />
+        </AssociationConnector>
+        <AssociationConnector Association="GridModel.C15" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.375" PointY="1.6249994999999995" />
+          <ConnectorPoint PointX="3.75" PointY="1.6249994999999995" />
+          <ConnectorPoint PointX="3.75" PointY="2.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="GridModel.C16" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.5" PointY="7.15625" />
+          <ConnectorPoint PointX="8.46875" PointY="7.15625" />
+          <ConnectorPoint PointX="8.46875" PointY="5.8648893229166674" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

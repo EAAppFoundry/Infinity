@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/core/programservices/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd9" namespace="http://schemas.turner.com/ea/augusta/base/2007/01" />
+  <xs:complexType name="ProgramService">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.turner.com/ea/augusta/base/2007/01" base="q1:ReferenceBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AreRightsRequired" type="xs:boolean" />
+          <xs:element minOccurs="0" name="BusinessGroup" type="tns:BusinessGroup" />
+          <xs:element minOccurs="0" name="IsInternational" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsTurnerNetwork" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LogoHigh" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="LogoLow" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="ScarlettNetworkCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ShortName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProgramService" nillable="true" type="tns:ProgramService" />
+  <xs:simpleType name="BusinessGroup">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Entertainment" />
+      <xs:enumeration value="News" />
+      <xs:enumeration value="Competitive" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BusinessGroup" nillable="true" type="tns:BusinessGroup" />
+</xs:schema>

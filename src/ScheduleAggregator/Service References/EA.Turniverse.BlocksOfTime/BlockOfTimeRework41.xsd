@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/scheduleitems/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/scheduleitems/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd7" namespace="http://schemas.turner.com/ea/augusta/schedules/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd8" namespace="http://schemas.turner.com/ea/augusta/schedules/promos/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd11" namespace="http://schemas.turner.com/ea/augusta/core/titles/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd13" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd31" namespace="http://schemas.turner.com/ea/augusta/schedules/versions/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd32" namespace="http://schemas.datacontract.org/2004/07/Dfc.Core" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd33" namespace="http://schemas.turner.com/ea/augusta/schedules/commercials/2007/01" />
+  <xs:complexType name="ArrayOfShortFormScheduleItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ShortFormScheduleItem" nillable="true" type="tns:ShortFormScheduleItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfShortFormScheduleItem" nillable="true" type="tns:ArrayOfShortFormScheduleItem" />
+  <xs:complexType name="ShortFormScheduleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScheduleItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HouseNumber" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ShortFormScheduleItem" nillable="true" type="tns:ShortFormScheduleItem" />
+  <xs:complexType name="ScheduleItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockOfTimeID" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemType" type="tns:ItemType" />
+      <xs:element minOccurs="0" name="MediaLength" type="xs:int" />
+      <xs:element minOccurs="0" name="MediaName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="ScheduleItemMasterID" type="xs:int" />
+      <xs:element minOccurs="0" name="ScheduleItemMedias" nillable="true" type="tns:ArrayOfScheduleItemMedia" />
+      <xs:element xmlns:q1="http://schemas.turner.com/ea/augusta/schedules/2007/01" minOccurs="0" name="SectionIndicator" type="q1:SectionIndicatorEnum" />
+      <xs:element minOccurs="0" name="UniqueID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduleItem" nillable="true" type="tns:ScheduleItem" />
+  <xs:simpleType name="ItemType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Commercial" />
+      <xs:enumeration value="Promo" />
+      <xs:enumeration value="Title" />
+      <xs:enumeration value="Series">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Placeholder">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ItemType" nillable="true" type="tns:ItemType" />
+  <xs:complexType name="ArrayOfScheduleItemMedia">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScheduleItemMedia" nillable="true" type="tns:ScheduleItemMedia" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScheduleItemMedia" nillable="true" type="tns:ArrayOfScheduleItemMedia" />
+  <xs:complexType name="ScheduleItemMedia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="JobProfileType" type="xs:int" />
+      <xs:element minOccurs="0" name="MediaOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="MediaPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ScheduleItemID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduleItemMedia" nillable="true" type="tns:ScheduleItemMedia" />
+  <xs:complexType name="PromoScheduleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ShortFormScheduleItem">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.turner.com/ea/augusta/schedules/promos/2007/01" minOccurs="0" name="Promo" nillable="true" type="q2:Promo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PromoScheduleItem" nillable="true" type="tns:PromoScheduleItem" />
+  <xs:complexType name="SeriesScheduleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LongFormScheduleItem">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SeriesScheduleItem" nillable="true" type="tns:SeriesScheduleItem" />
+  <xs:complexType name="LongFormScheduleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScheduleItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContextID" nillable="true" type="ser:guid" />
+          <xs:element xmlns:q3="http://schemas.turner.com/ea/augusta/core/titles/2007/01" minOccurs="0" name="Title" nillable="true" type="q3:Title" />
+          <xs:element xmlns:q4="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" minOccurs="0" name="TitleMetaData" nillable="true" type="q4:TitleMetaData" />
+          <xs:element minOccurs="0" name="TitleMetaDataID" type="xs:int" />
+          <xs:element xmlns:q5="http://schemas.turner.com/ea/augusta/schedules/versions/2007/01" minOccurs="0" name="Version" nillable="true" type="q5:Version" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="LongFormScheduleItem" nillable="true" type="tns:LongFormScheduleItem" />
+  <xs:complexType name="TitleScheduleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:LongFormScheduleItem">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Dfc.Core" minOccurs="0" name="DfcMediaStatus" nillable="true" type="q6:MediaStatus" />
+          <xs:element minOccurs="0" name="RightsValidationResults" nillable="true" type="tns:ArrayOfScheduleItemValidationResult" />
+          <xs:element xmlns:q7="http://schemas.turner.com/ea/augusta/core/titles/2007/01" minOccurs="0" name="TitleAirings" nillable="true" type="q7:ArrayOfTitleAiring" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TitleScheduleItem" nillable="true" type="tns:TitleScheduleItem" />
+  <xs:complexType name="ArrayOfScheduleItemValidationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScheduleItemValidationResult" nillable="true" type="tns:ScheduleItemValidationResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScheduleItemValidationResult" nillable="true" type="tns:ArrayOfScheduleItemValidationResult" />
+  <xs:complexType name="ScheduleItemValidationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsValid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ScheduleItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="TitleRightID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ScheduleItemValidationResult" nillable="true" type="tns:ScheduleItemValidationResult" />
+  <xs:complexType name="CommercialScheduleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ShortFormScheduleItem">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.turner.com/ea/augusta/schedules/commercials/2007/01" minOccurs="0" name="Commercial" nillable="true" type="q8:Commercial" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CommercialScheduleItem" nillable="true" type="tns:CommercialScheduleItem" />
+  <xs:complexType name="PlaceholderScheduleItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ScheduleItem">
+        <xs:sequence>
+          <xs:element xmlns:q9="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" minOccurs="0" name="TitleMetaData" nillable="true" type="q9:TitleMetaData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PlaceholderScheduleItem" nillable="true" type="tns:PlaceholderScheduleItem" />
+  <xs:complexType name="ArrayOfScheduleItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ScheduleItem" nillable="true" type="tns:ScheduleItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScheduleItem" nillable="true" type="tns:ArrayOfScheduleItem" />
+  <xs:complexType name="ArrayOfReleasableScheduleItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReleasableScheduleItem" nillable="true" type="tns:ReleasableScheduleItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReleasableScheduleItem" nillable="true" type="tns:ArrayOfReleasableScheduleItem" />
+  <xs:complexType name="ReleasableScheduleItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="ItemType" type="tns:ItemType" />
+      <xs:element minOccurs="0" name="MediaName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderNumber" type="xs:int" />
+      <xs:element xmlns:q10="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" minOccurs="0" name="TitleMetaData" nillable="true" type="q10:ReleasableTitleMetaData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReleasableScheduleItem" nillable="true" type="tns:ReleasableScheduleItem" />
+  <xs:complexType name="ArrayOfItemType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ItemType" type="tns:ItemType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfItemType" nillable="true" type="tns:ArrayOfItemType" />
+</xs:schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/packages/packagesubgenre/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/packages/packagesubgenre/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd20" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedgenres/feedsubgenres/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd36" namespace="http://schemas.turner.com/ea/augusta/schedules/packages/2007/01" />
+  <xs:complexType name="ArrayOfPackageSubGenre">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PackageSubGenre" nillable="true" type="tns:PackageSubGenre" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPackageSubGenre" nillable="true" type="tns:ArrayOfPackageSubGenre" />
+  <xs:complexType name="PackageSubGenre">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.turner.com/ea/augusta/schedules/packages/2007/01" base="q1:BasePackageAggregator">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.turner.com/ea/augusta/schedules/feeds/feedgenres/feedsubgenres/2007/01" minOccurs="0" name="FeedSubGenre" nillable="true" type="q2:FeedSubGenre" />
+          <xs:element minOccurs="0" name="PackageGenreID" type="xs:int" />
+          <xs:element minOccurs="0" name="PackageSubGenreID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PackageSubGenre" nillable="true" type="tns:PackageSubGenre" />
+</xs:schema>

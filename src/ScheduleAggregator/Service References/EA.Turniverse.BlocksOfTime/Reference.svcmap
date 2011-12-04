@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1d821beb-8897-42d9-91d4-6aaf79c77ffd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://turniverse/core/BlockOfTimeRework.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BlockOfTimeRework.xsd" MetadataType="Schema" ID="9b30478f-e3a7-4b2f-9ca6-eba02e8cf736" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd1" />
+    <MetadataFile FileName="BlockOfTimeRework1.xsd" MetadataType="Schema" ID="993a0ada-2c0f-49d3-b1c1-06380e580c3c" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd4" />
+    <MetadataFile FileName="BlockOfTimeRework2.xsd" MetadataType="Schema" ID="862c24fa-33a2-49ab-b8ea-cea2054e76b3" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd25" />
+    <MetadataFile FileName="BlockOfTimeRework3.xsd" MetadataType="Schema" ID="0dfe36e7-fd6e-4cba-a6b5-f7af767831ca" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd35" />
+    <MetadataFile FileName="BlockOfTimeRework4.xsd" MetadataType="Schema" ID="4c0bbb8d-b4d7-4ac0-9e3b-2c47fd0ab2bd" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd41" />
+    <MetadataFile FileName="BlockOfTimeRework5.xsd" MetadataType="Schema" ID="e98ad2b7-1898-45c8-80ae-b81dbf4dd544" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd15" />
+    <MetadataFile FileName="BlockOfTimeRework6.xsd" MetadataType="Schema" ID="227fa021-27ff-4040-98da-4120217d7b3d" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd28" />
+    <MetadataFile FileName="BlockOfTimeRework7.xsd" MetadataType="Schema" ID="3ae53a26-bcce-4a63-bdef-b11fef7b772a" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd38" />
+    <MetadataFile FileName="BlockOfTimeRework8.xsd" MetadataType="Schema" ID="e7881eff-9027-4a5a-b427-b8dbaca31b08" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd18" />
+    <MetadataFile FileName="BlockOfTimeRework9.xsd" MetadataType="Schema" ID="f14bd440-cdd7-4a28-9bce-4877ae701ef5" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd40" />
+    <MetadataFile FileName="BlockOfTimeRework10.xsd" MetadataType="Schema" ID="00a2378c-834c-4770-87b5-e353f9745857" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd20" />
+    <MetadataFile FileName="BlockOfTimeRework11.xsd" MetadataType="Schema" ID="4d53b1c1-7359-46bc-b160-ef745089c452" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd30" />
+    <MetadataFile FileName="BlockOfTimeRework12.xsd" MetadataType="Schema" ID="18ed18fa-bf87-4eed-a7a7-5f42530819da" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd10" />
+    <MetadataFile FileName="BlockOfTimeRework13.xsd" MetadataType="Schema" ID="c19cb732-e58a-4863-92c8-542533342257" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd43" />
+    <MetadataFile FileName="BlockOfTimeRework14.xsd" MetadataType="Schema" ID="82abee62-a695-4f6e-ba8b-7d802902171c" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd23" />
+    <MetadataFile FileName="BlockOfTimeRework15.xsd" MetadataType="Schema" ID="e0567416-a631-4fc1-9e1f-c9b16ea0bc73" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd33" />
+    <MetadataFile FileName="BlockOfTimeRework16.xsd" MetadataType="Schema" ID="a554e2a0-461a-4940-a4b6-bf2bc99ea9cc" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd13" />
+    <MetadataFile FileName="BlockOfTimeRework17.xsd" MetadataType="Schema" ID="6b7d419e-6ade-46cc-97ae-6028030bbb0c" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd46" />
+    <MetadataFile FileName="BlockOfTimeRework18.xsd" MetadataType="Schema" ID="5169a1e7-2701-4fc7-a370-37b28c9f36ad" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd26" />
+    <MetadataFile FileName="BlockOfTimeRework19.xsd" MetadataType="Schema" ID="660fbc33-4069-4934-a1ff-7a6b4fab71d4" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd36" />
+    <MetadataFile FileName="BlockOfTimeRework20.xsd" MetadataType="Schema" ID="74b180b9-4173-449c-aa4c-fd79ed42f8f2" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd16" />
+    <MetadataFile FileName="BlockOfTimeService.wsdl" MetadataType="Wsdl" ID="c48e955d-511a-4996-ac3c-d189482e6dc8" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?wsdl" />
+    <MetadataFile FileName="BlockOfTimeRework21.xsd" MetadataType="Schema" ID="7123fb77-95f9-431b-a9d0-ef5ce655a45c" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd39" />
+    <MetadataFile FileName="BlockOfTimeRework22.xsd" MetadataType="Schema" ID="f1f79458-5cf5-4950-8980-6f7c283afcf1" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd19" />
+    <MetadataFile FileName="BlockOfTimeRework23.xsd" MetadataType="Schema" ID="9c21094c-3368-4724-8ca0-0b624a03e8c6" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd32" />
+    <MetadataFile FileName="BlockOfTimeRework24.xsd" MetadataType="Schema" ID="3da27e91-9c3a-4cf1-ac7b-c693d77656ce" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd12" />
+    <MetadataFile FileName="BlockOfTimeRework25.xsd" MetadataType="Schema" ID="c80567e3-33b7-4855-9da0-c8285cc4a69f" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd29" />
+    <MetadataFile FileName="BlockOfTimeRework26.xsd" MetadataType="Schema" ID="4c6ee0ce-339f-478b-a29e-47a661329b0c" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd21" />
+    <MetadataFile FileName="BlockOfTimeRework27.xsd" MetadataType="Schema" ID="55702524-aeee-430b-8954-0cc91aed5074" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd31" />
+    <MetadataFile FileName="BlockOfTimeRework28.xsd" MetadataType="Schema" ID="321aa4a7-a36f-4903-822d-9e62b28bc207" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd11" />
+    <MetadataFile FileName="BlockOfTimeRework29.xsd" MetadataType="Schema" ID="feed1da6-3582-4b96-a654-2506d77bcf54" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd44" />
+    <MetadataFile FileName="BlockOfTimeRework30.xsd" MetadataType="Schema" ID="d89e6bd3-71f3-4035-8c0d-bc99837c3950" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd24" />
+    <MetadataFile FileName="BlockOfTimeRework.disco" MetadataType="Disco" ID="99e242ed-c7b8-4ab2-b873-a46c8176646c" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?disco" />
+    <MetadataFile FileName="BlockOfTimeRework31.xsd" MetadataType="Schema" ID="3a897552-c7e4-4dbb-8b24-0ff5842213ed" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd14" />
+    <MetadataFile FileName="BlockOfTimeRework32.xsd" MetadataType="Schema" ID="f5a29d96-8da7-4518-8753-a73102a00122" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd47" />
+    <MetadataFile FileName="BlockOfTimeRework33.xsd" MetadataType="Schema" ID="e31746a6-3488-4aa6-94bc-4228e2f528ed" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd27" />
+    <MetadataFile FileName="BlockOfTimeRework34.xsd" MetadataType="Schema" ID="36dfa1b8-3a64-4792-9084-82fd35759f1d" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd37" />
+    <MetadataFile FileName="BlockOfTimeRework35.xsd" MetadataType="Schema" ID="83532fb3-e305-48b5-952d-09ed9a133144" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd45" />
+    <MetadataFile FileName="BlockOfTimeRework36.xsd" MetadataType="Schema" ID="a377e5ac-ea0e-4846-bb16-0fde0aa9dc9a" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd17" />
+    <MetadataFile FileName="BlockOfTimeRework37.xsd" MetadataType="Schema" ID="191321c0-5692-4a3d-9af4-e81f9ff42ab1" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd42" />
+    <MetadataFile FileName="BlockOfTimeRework38.xsd" MetadataType="Schema" ID="24c0e3a6-1033-444b-8378-4fae434ce2c2" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd34" />
+    <MetadataFile FileName="BlockOfTimeRework.wsdl" MetadataType="Wsdl" ID="2dd6aee1-274e-4730-86c0-4228003c9b66" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="BlockOfTimeRework39.xsd" MetadataType="Schema" ID="17478d05-9553-49c4-94a3-1d2cd0f5035d" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd8" />
+    <MetadataFile FileName="BlockOfTimeRework40.xsd" MetadataType="Schema" ID="cf9b5e3e-1c3e-48c4-8051-d9edae87397d" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd9" />
+    <MetadataFile FileName="BlockOfTimeRework41.xsd" MetadataType="Schema" ID="9e376c65-8e03-4e22-a5c9-5d6e58a6743b" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd6" />
+    <MetadataFile FileName="BlockOfTimeRework42.xsd" MetadataType="Schema" ID="615908f4-7f7c-410a-8d21-7fca2fecfb12" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd7" />
+    <MetadataFile FileName="BlockOfTimeRework43.xsd" MetadataType="Schema" ID="10044c29-c265-41c3-a3f2-056644e30810" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd22" />
+    <MetadataFile FileName="BlockOfTimeRework44.xsd" MetadataType="Schema" ID="e7087215-b8b8-4754-956f-806c856bb454" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd5" />
+    <MetadataFile FileName="BlockOfTimeRework45.xsd" MetadataType="Schema" ID="14db2b82-69b4-40cd-82f5-18eda5b2a878" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd2" />
+    <MetadataFile FileName="BlockOfTimeRework46.xsd" MetadataType="Schema" ID="b5760518-ce4b-4492-b96c-b5353ffe9cf5" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd3" />
+    <MetadataFile FileName="BlockOfTimeRework47.xsd" MetadataType="Schema" ID="382f2e82-565b-40e5-84fa-d851c201e647" SourceId="1" SourceUrl="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

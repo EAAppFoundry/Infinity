@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataguidecategories/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadataguidecategories/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd21" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedguidecategories/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd13" namespace="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" />
+  <xs:complexType name="ArrayOfTitleMetaDataGuideCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TitleMetaDataGuideCategory" nillable="true" type="tns:TitleMetaDataGuideCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTitleMetaDataGuideCategory" nillable="true" type="tns:ArrayOfTitleMetaDataGuideCategory" />
+  <xs:complexType name="TitleMetaDataGuideCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element xmlns:q1="http://schemas.turner.com/ea/augusta/schedules/feeds/feedguidecategories/2007/01" minOccurs="0" name="FeedGuideCategory" nillable="true" type="q1:FeedGuideCategory" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderNumber" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.turner.com/ea/augusta/schedules/titlemetadata/titlemetadata/2007/01" minOccurs="0" name="TitleMetaData" nillable="true" type="q2:TitleMetaData" />
+      <xs:element minOccurs="0" name="TitleMetaDataGuideCategoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="TitleMetaDataID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TitleMetaDataGuideCategory" nillable="true" type="tns:TitleMetaDataGuideCategory" />
+</xs:schema>

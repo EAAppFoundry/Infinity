@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/promos/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/promos/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd9" namespace="http://schemas.turner.com/ea/augusta/base/2007/01" />
+  <xs:complexType name="Promo">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.turner.com/ea/augusta/base/2007/01" base="q1:BaseEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CampaignId" type="xs:int" />
+          <xs:element minOccurs="0" name="ContentID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ElementTypeCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FlightEndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FlightStartDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="FlightStartSpecified" type="xs:boolean" />
+          <xs:element minOccurs="0" name="HouseNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Isci" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LengthSec" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SequenceNumber" type="xs:int" />
+          <xs:element minOccurs="0" name="VersionNotes" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Promo" nillable="true" type="tns:Promo" />
+</xs:schema>

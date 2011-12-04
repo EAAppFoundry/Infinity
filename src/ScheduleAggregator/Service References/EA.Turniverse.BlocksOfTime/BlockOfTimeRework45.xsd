@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ForwardCompatibleDataContractBase">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ForwardCompatibleDataContractBase" nillable="true" type="tns:ForwardCompatibleDataContractBase" />
+  <xs:complexType name="MetaRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CorrelationContext" nillable="true" type="tns:CorrelationContextContract" />
+          <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LocaleID" type="xs:int" />
+          <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UILocale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UILocaleID" type="xs:int" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MetaRequest" nillable="true" type="tns:MetaRequest" />
+  <xs:complexType name="CorrelationContextContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CorrelationID" type="ser:guid" />
+      <xs:element minOccurs="0" name="User" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CorrelationContextContract" nillable="true" type="tns:CorrelationContextContract" />
+  <xs:complexType name="MetaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CompositeResult" nillable="true" type="tns:CompositeResultContract" />
+          <xs:element minOccurs="0" name="CorrelationContext" nillable="true" type="tns:CorrelationContextContract" />
+          <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LocaleID" type="xs:int" />
+          <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UILocale" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UILocaleID" type="xs:int" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MetaResponse" nillable="true" type="tns:MetaResponse" />
+  <xs:complexType name="CompositeResultContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Errors" nillable="true" type="tns:ArrayOfResultContract" />
+      <xs:element minOccurs="0" name="Infos" nillable="true" type="tns:ArrayOfResultContract" />
+      <xs:element minOccurs="0" name="ResultType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Successes" nillable="true" type="tns:ArrayOfResultContract" />
+      <xs:element minOccurs="0" name="Warnings" nillable="true" type="tns:ArrayOfResultContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeResultContract" nillable="true" type="tns:CompositeResultContract" />
+  <xs:complexType name="ArrayOfResultContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResultContract" nillable="true" type="tns:ResultContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResultContract" nillable="true" type="tns:ArrayOfResultContract" />
+  <xs:complexType name="ResultContract">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ExtraInfo" nillable="true" type="q1:ArrayOfKeyValueOfstringstring" />
+      <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfResultMessageContract" />
+      <xs:element minOccurs="0" name="ResultType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultContract" nillable="true" type="tns:ResultContract" />
+  <xs:complexType name="ArrayOfResultMessageContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResultMessageContract" nillable="true" type="tns:ResultMessageContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResultMessageContract" nillable="true" type="tns:ArrayOfResultMessageContract" />
+  <xs:complexType name="ResultMessageContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResultCode" type="tns:ResultCodeContract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultMessageContract" nillable="true" type="tns:ResultMessageContract" />
+  <xs:simpleType name="ResultCodeContract">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="short" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Info" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Failure" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResultCodeContract" nillable="true" type="tns:ResultCodeContract" />
+  <xs:complexType name="RuleResultContract">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultContract">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RuleType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RuleResultContract" nillable="true" type="tns:RuleResultContract" />
+  <xs:complexType name="MetaExceptionResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MetaResponse" nillable="true" type="tns:MetaResponse" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MetaExceptionResponse" nillable="true" type="tns:MetaExceptionResponse" />
+</xs:schema>

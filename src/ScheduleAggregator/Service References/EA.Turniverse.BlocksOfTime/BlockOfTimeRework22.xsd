@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/schedules/feeds/feedgenres/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedgenres/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd20" namespace="http://schemas.turner.com/ea/augusta/schedules/feeds/feedgenres/feedsubgenres/2007/01" />
+  <xs:complexType name="ArrayOfFeedGenre">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FeedGenre" nillable="true" type="tns:FeedGenre" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFeedGenre" nillable="true" type="tns:ArrayOfFeedGenre" />
+  <xs:complexType name="FeedGenre">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FeedGenreID" type="xs:int" />
+      <xs:element minOccurs="0" name="FeedId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.turner.com/ea/augusta/schedules/feeds/feedgenres/feedsubgenres/2007/01" minOccurs="0" name="FeedSubGenres" nillable="true" type="q1:ArrayOfFeedSubGenre" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDefault" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ModifiedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifiedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FeedGenre" nillable="true" type="tns:FeedGenre" />
+</xs:schema>

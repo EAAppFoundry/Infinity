@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/base/blockoftimelocks/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/base/blockoftimelocks/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd2" namespace="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd4" namespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimelocks/2007/01" />
+  <xs:complexType name="GetBlockOfTimeLockDetailByFeedRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q1:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FeedId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBlockOfTimeLockDetailByFeedRequest" nillable="true" type="tns:GetBlockOfTimeLockDetailByFeedRequest" />
+  <xs:complexType name="GetBlockOfTimeLockDetailByFeedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q2:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.turner.com/ea/augusta/schedules/blockoftimelocks/2007/01" minOccurs="0" name="BlockOfTimeLockDetailItems" nillable="true" type="q3:ArrayOfBlockOfTimeLockDetail" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBlockOfTimeLockDetailByFeedResponse" nillable="true" type="tns:GetBlockOfTimeLockDetailByFeedResponse" />
+</xs:schema>

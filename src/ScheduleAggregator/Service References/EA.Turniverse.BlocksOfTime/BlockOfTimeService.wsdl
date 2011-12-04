@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BlockOfTimeService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CustomBinding_IBlockOfTimeService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" location="http://turniverse/CORE/BlockOfTimeRework.svc?wsdl=wsdl0" />
+  <wsdl:types />
+  <wsdl:binding name="CustomBinding_IBlockOfTimeService" type="i0:IBlockOfTimeService">
+    <wsp:PolicyReference URI="#CustomBinding_IBlockOfTimeService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLinkedBlocksOfTimeByAssetIds">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetLinkedBlocksOfTimeByAssetIds" style="document" />
+      <wsdl:input name="GetLinkedBlocksOfTimeByAssetIdsRequestMessage">
+        <soap12:header message="i0:GetLinkedBlocksOfTimeByAssetIdsRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLinkedBlocksOfTimeByAssetIdsResponseMessage">
+        <soap12:header message="i0:GetLinkedBlocksOfTimeByAssetIdsResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedBlocksOfTimeByDate">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetLinkedBlocksOfTimeByDate" style="document" />
+      <wsdl:input name="GetLinkedBlocksOfTimeByDateRequestMessage">
+        <soap12:header message="i0:GetLinkedBlocksOfTimeByDateRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLinkedBlocksOfTimeByDateResponseMessage">
+        <soap12:header message="i0:GetLinkedBlocksOfTimeByDateResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlocksOfTimeByLinkId">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlocksOfTimeByLinkId" style="document" />
+      <wsdl:input name="GetBlocksOfTimeByLinkIdRequestMessage">
+        <soap12:header message="i0:GetBlocksOfTimeByLinkIdRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBlocksOfTimeByLinkIdResponseMessage">
+        <soap12:header message="i0:GetBlocksOfTimeByLinkIdResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateBlockOfTimeExternalAiringId">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ValidateBlockOfTimeExternalAiringId" style="document" />
+      <wsdl:input name="ValidateBlockofTimeExternalAiringIdRequestMessage">
+        <soap12:header message="i0:ValidateBlockofTimeExternalAiringIdRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ValidateBlockofTimeExternalAiringIdResponseMessage">
+        <soap12:header message="i0:ValidateBlockofTimeExternalAiringIdResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupBlockOfTimes">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GroupBlockOfTimes" style="document" />
+      <wsdl:input name="GroupBlockOfTimesRequestMessage">
+        <soap12:header message="i0:GroupBlockOfTimesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GroupBlockOfTimesResponseMessage">
+        <soap12:header message="i0:GroupBlockOfTimesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnGroupBlockOfTimes">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnGroupBlockOfTimes" style="document" />
+      <wsdl:input name="UnGroupBlockOfTimesRequestMessage">
+        <soap12:header message="i0:UnGroupBlockOfTimesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnGroupBlockOfTimesResponseMessage">
+        <soap12:header message="i0:UnGroupBlockOfTimesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkToExternalAiring">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkToExternalAiring" style="document" />
+      <wsdl:input name="LinkToExternalAiringRequestMessage">
+        <soap12:header message="i0:LinkToExternalAiringRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LinkToExternalAiringResponseMessage">
+        <soap12:header message="i0:LinkToExternalAiringResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidAiringFaultDetailFault">
+        <soap12:fault use="literal" name="InvalidAiringFaultDetailFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="InvalidBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LinkBlocksOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkBlocksOfTime" style="document" />
+      <wsdl:input name="LinkBlockofTimeRequestMessage">
+        <soap12:header message="i0:LinkBlockofTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LinkBlockOfTimeResponseMessage">
+        <soap12:header message="i0:LinkBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTveBlockOfTimeSummary">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadTveBlockOfTimeSummary" style="document" />
+      <wsdl:input name="ReadTveBlockOfTimeSummaryRequestMessage">
+        <soap12:header message="i0:ReadTveBlockOfTimeSummaryRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadTveBlockOfTimeSummaryResponseMessage">
+        <soap12:header message="i0:ReadTveBlockOfTimeSummaryResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByLinearAiredDate">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByLinearAiredDate" style="document" />
+      <wsdl:input name="ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage">
+        <soap12:header message="i0:ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage">
+        <soap12:header message="i0:ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByC3Indicator">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByC3Indicator" style="document" />
+      <wsdl:input name="ReadReleasedBlockOfTimeByC3IndicatorRequestMessage">
+        <soap12:header message="i0:ReadReleasedBlockOfTimeByC3IndicatorRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasedBlockOfTimeByC3IndicatorResponseMessage">
+        <soap12:header message="i0:ReadReleasedBlockOfTimeByC3IndicatorResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDmiIndicator">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateDmiIndicator" style="document" />
+      <wsdl:input name="UpdateDMIIndicatorRequestMessage">
+        <soap12:header message="i0:UpdateDMIIndicatorRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateDMIIndicatorResponseMessage">
+        <soap12:header message="i0:UpdateDMIIndicatorResponseMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByWorkingUniqueID">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByWorkingUniqueID" style="document" />
+      <wsdl:input name="ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage">
+        <soap12:header message="i0:ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage">
+        <soap12:header message="i0:ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFirstNonC3BlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/IsFirstNonC3BlockOfTime" style="document" />
+      <wsdl:input name="FirstNonC3BlockOfTimeRequestMessage">
+        <soap12:header message="i0:FirstNonC3BlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="FirstNonC3BlockOfTimeResponseMessage">
+        <soap12:header message="i0:FirstNonC3BlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMissingMetaData">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SetMissingMetaData" style="document" />
+      <wsdl:input name="SetMissingMetaDataRequestMessage">
+        <soap12:header message="i0:SetMissingMetaDataRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SetMissingMetaDataResponseMessage">
+        <soap12:header message="i0:SetMissingMetaDataResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeByID">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByID" style="document" />
+      <wsdl:input name="ReadBlockOfTimeByIDRequestMessage">
+        <soap12:header message="i0:ReadBlockOfTimeByIDRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeByIDResponseMessage">
+        <soap12:header message="i0:ReadBlockOfTimeByIDResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeByIDFaultContractFault">
+        <soap12:fault use="literal" name="ReadBlockOfTimeByIDFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTime" style="document" />
+      <wsdl:input name="ReadBlockOfTimeRequestMessage">
+        <soap12:header message="i0:ReadBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeResponseMessage">
+        <soap12:header message="i0:ReadBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeWithoutOverlap">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeWithoutOverlap" style="document" />
+      <wsdl:input name="ReadBlockOfTimeWithoutOverlapRequestMessage">
+        <soap12:header message="i0:ReadBlockOfTimeWithoutOverlapRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeWithoutOverlapResponseMessage">
+        <soap12:header message="i0:ReadBlockOfTimeWithoutOverlapResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SaveBlockOfTime" style="document" />
+      <wsdl:input name="SaveBlockOfTimeRequestMessage">
+        <soap12:header message="i0:SaveBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SaveBlockOfTimeResponseMessage">
+        <soap12:header message="i0:SaveBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SaveBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="SaveBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/RemoveBlockOfTime" style="document" />
+      <wsdl:input name="RemoveBlockOfTimeRequestMessage">
+        <soap12:header message="i0:RemoveBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RemoveBlockOfTimeResponseMessage">
+        <soap12:header message="i0:RemoveBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RemoveBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="RemoveBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTime" style="document" />
+      <wsdl:input name="CreateBlockOfTimeRequestMessage">
+        <soap12:header message="i0:CreateBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateBlockOfTimeResponseMessage">
+        <soap12:header message="i0:CreateBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CreateBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="CreateBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBlockOfTimeWithOnDemandPattern">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTimeWithOnDemandPattern" style="document" />
+      <wsdl:input name="CreateBlockOfTimeWithOnDemandPatternRequestMessage">
+        <soap12:header message="i0:CreateBlockOfTimeWithOnDemandPatternRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateBlockOfTimeWithOnDemandPatternResponseMessage">
+        <soap12:header message="i0:CreateBlockOfTimeWithOnDemandPatternResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PatternExecutionFaultContractFault">
+        <soap12:fault use="literal" name="PatternExecutionFaultContractFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFaultContractFault">
+        <soap12:fault use="literal" name="UnexpectedErrorFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlaceholderBlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreatePlaceholderBlockOfTime" style="document" />
+      <wsdl:input name="CreatePlaceholderBlockOfTimeRequestMessage">
+        <soap12:header message="i0:CreatePlaceholderBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreatePlaceholderBlockOfTimeResponseMessage">
+        <soap12:header message="i0:CreatePlaceholderBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CreatePlaceholderBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="CreatePlaceholderBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyAndPasteBlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CopyAndPasteBlockOfTime" style="document" />
+      <wsdl:input name="CopyAndPasteBlockOfTimeRequestMessage">
+        <soap12:header message="i0:CopyAndPasteBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CopyAndPasteBlockOfTimeResponseMessage">
+        <soap12:header message="i0:CopyAndPasteBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CopyAndPasteBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="CopyAndPasteBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasableBlocksOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasableBlocksOfTime" style="document" />
+      <wsdl:input name="ReadReleasableBlocksOfTimeRequestMessage">
+        <soap12:header message="i0:ReadReleasableBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasableBlocksOfTimeResponseMessage">
+        <soap12:header message="i0:ReadReleasableBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadReleasableBlocksOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="ReadReleasableBlocksOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPublishableBlocksOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadPublishableBlocksOfTime" style="document" />
+      <wsdl:input name="ReadReleasableBlocksOfTimeRequestMessage">
+        <soap12:header message="i0:ReadReleasableBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasableBlocksOfTimeResponseMessage">
+        <soap12:header message="i0:ReadReleasableBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadReleasableBlocksOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="ReadReleasableBlocksOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LockBlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LockBlockOfTime" style="document" />
+      <wsdl:input name="LockBlockOfTimeItemRequestMessage">
+        <soap12:header message="i0:LockBlockOfTimeItemRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LockBlockOfTimeItemResponseMessage">
+        <soap12:header message="i0:LockBlockOfTimeItemResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BlockOfTimeLockFaultDetailFault">
+        <soap12:fault use="literal" name="BlockOfTimeLockFaultDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UnLockBlockOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnLockBlockOfTime" style="document" />
+      <wsdl:input name="UnLockBlockOfTimeItemRequestMessage">
+        <soap12:header message="i0:UnLockBlockOfTimeItemRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnLockBlockOfTimeItemResponseMessage">
+        <soap12:header message="i0:UnLockBlockOfTimeItemResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlockOfTimeByUser">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlockOfTimeByUser" style="document" />
+      <wsdl:input name="UnlockBlockOfTimeByUserRequestMessage">
+        <soap12:header message="i0:UnlockBlockOfTimeByUserRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnlockBlockOfTimeByUserResponseMessage">
+        <soap12:header message="i0:UnlockBlockOfTimeByUserResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlockOfTimeByUsernameAndItemType">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlockOfTimeByUsernameAndItemType" style="document" />
+      <wsdl:input name="UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage">
+        <soap12:header message="i0:UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage">
+        <soap12:header message="i0:UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlocksOfTimeByUserFeed">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlocksOfTimeByUserFeed" style="document" />
+      <wsdl:input name="UnlockBlocksOfTimeByUserFeedRequestMessage">
+        <soap12:header message="i0:UnlockBlocksOfTimeByUserFeedRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnlockBlocksOfTimeByUserFeedResponseMessage">
+        <soap12:header message="i0:UnlockBlocksOfTimeByUserFeedResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlocksOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlocksOfTime" style="document" />
+      <wsdl:input name="UnlockBlocksOfTimeRequestMessage">
+        <soap12:header message="i0:UnlockBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnlockBlocksOfTimeResponseMessage">
+        <soap12:header message="i0:UnlockBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PushSecondary">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/PushSecondary" style="document" />
+      <wsdl:input name="PushToSecondaryBlockofTimeRequestMessage">
+        <soap12:header message="i0:PushToSecondaryBlockofTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PushToSecondaryBlockofTimeResponseMessage">
+        <soap12:header message="i0:PushToSecondaryBlockofTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadFullSchedules">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LoadFullSchedules" style="document" />
+      <wsdl:input name="LoadFullSchedulesRequestMessage">
+        <soap12:header message="i0:LoadFullSchedulesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LoadFullSchedulesResponseMessage">
+        <soap12:header message="i0:LoadFullSchedulesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeSummary">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeSummary" style="document" />
+      <wsdl:input name="ReadBlockOfTimeSummaryRequestMessage">
+        <soap12:header message="i0:ReadBlockOfTimeSummaryRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeSummaryResponseMessage">
+        <soap12:header message="i0:ReadBlockOfTimeSummaryResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockOfTimeSummaries">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeSummaries" style="document" />
+      <wsdl:input name="GetBlockOfTimeSummariesRequestMessage">
+        <soap12:header message="i0:GetBlockOfTimeSummariesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBlockOfTimeSummariesResponseMessage">
+        <soap12:header message="i0:GetBlockOfTimeSummariesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBlockOfTimeSummary">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SearchBlockOfTimeSummary" style="document" />
+      <wsdl:input name="SearchBlockOfTimeSummaryRequestMessage">
+        <soap12:header message="i0:SearchBlockOfTimeSummaryRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SearchBlockOfTimeSummaryResponseMessage">
+        <soap12:header message="i0:SearchBlockOfTimeSummaryResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap12:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBlockOfTimeAiringInfo">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateBlockOfTimeAiringInfo" style="document" />
+      <wsdl:input name="UpdateBlockofTimeAiringInfoRequestMessage">
+        <soap12:header message="i0:UpdateBlockofTimeAiringInfoRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateBlockofTimeAiringInfoResponseMessage">
+        <soap12:header message="i0:UpdateBlockofTimeAiringInfoResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBlockOfTimeLanesInfo">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateBlockOfTimeLanesInfo" style="document" />
+      <wsdl:input name="UpdateBlockOfTimeLanesRequestMessage">
+        <soap12:header message="i0:UpdateBlockOfTimeLanesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateBlockOfTimeLanesResponseMessage">
+        <soap12:header message="i0:UpdateBlockOfTimeLanesResponseMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseBlocksOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReleaseBlocksOfTime" style="document" />
+      <wsdl:input name="ReleaseBlocksOfTimeRequestMessage">
+        <soap12:header message="i0:ReleaseBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReleaseBlocksOfTimeResponseMessage">
+        <soap12:header message="i0:ReleaseBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PublishBlocksOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/PublishBlocksOfTime" style="document" />
+      <wsdl:input name="PublishBlocksOfTimeRequestMessage">
+        <soap12:header message="i0:PublishBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PublishBlocksOfTimeResponseMessage">
+        <soap12:header message="i0:PublishBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeletedReleasedBlocksOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetDeletedReleasedBlocksOfTime" style="document" />
+      <wsdl:input name="GetDeletedReleasedBlocksOfTimeRequestMessage">
+        <soap12:header message="i0:GetDeletedReleasedBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDeletedReleasedBlocksOfTimeResponseMessage">
+        <soap12:header message="i0:GetDeletedReleasedBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeletedReleasedBlocksOfTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetAllDeletedReleasedBlocksOfTime" style="document" />
+      <wsdl:input name="GetAllDeletedReleasedBlocksOfTimeRequestMessage">
+        <soap12:header message="i0:GetAllDeletedReleasedBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllDeletedReleasedBlocksOfTimeResponseMessage">
+        <soap12:header message="i0:GetAllDeletedReleasedBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlocksOfTimeByActualDate">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlocksOfTimeByActualDate" style="document" />
+      <wsdl:input name="GetBlocksOfTimeByActualDatesRequestMessage">
+        <soap12:header message="i0:GetBlocksOfTimeByActualDatesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBlocksOfTimeByActualDatesResponseMessage">
+        <soap12:header message="i0:GetBlocksOfTimeByActualDatesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockOfTimeLockDetailByFeed">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeLockDetailByFeed" style="document" />
+      <wsdl:input name="GetBlockOfTimeLockDetailByFeedRequestMessage">
+        <soap12:header message="i0:GetBlockOfTimeLockDetailByFeedRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBlockOfTimeLockDetailByFeedResponseMessage">
+        <soap12:header message="i0:GetBlockOfTimeLockDetailByFeedResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProgrammingTime">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetProgrammingTime" style="document" />
+      <wsdl:input name="GetProgrammingTimeRequestMessage">
+        <soap12:header message="i0:GetProgrammingTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProgrammingTimeResponseMessage">
+        <soap12:header message="i0:GetProgrammingTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeByAssetID">
+      <soap12:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByAssetID" style="document" />
+      <wsdl:input name="ReadBlockOfTimeByAssetIdRequestMessage">
+        <soap12:header message="i0:ReadBlockOfTimeByAssetIdRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeByAssetIdResponseMessage">
+        <soap12:header message="i0:ReadBlockOfTimeByAssetIdResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IBlockOfTimeService" type="i0:IBlockOfTimeService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLinkedBlocksOfTimeByAssetIds">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetLinkedBlocksOfTimeByAssetIds" style="document" />
+      <wsdl:input name="GetLinkedBlocksOfTimeByAssetIdsRequestMessage">
+        <soap:header message="i0:GetLinkedBlocksOfTimeByAssetIdsRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLinkedBlocksOfTimeByAssetIdsResponseMessage">
+        <soap:header message="i0:GetLinkedBlocksOfTimeByAssetIdsResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLinkedBlocksOfTimeByDate">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetLinkedBlocksOfTimeByDate" style="document" />
+      <wsdl:input name="GetLinkedBlocksOfTimeByDateRequestMessage">
+        <soap:header message="i0:GetLinkedBlocksOfTimeByDateRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLinkedBlocksOfTimeByDateResponseMessage">
+        <soap:header message="i0:GetLinkedBlocksOfTimeByDateResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlocksOfTimeByLinkId">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlocksOfTimeByLinkId" style="document" />
+      <wsdl:input name="GetBlocksOfTimeByLinkIdRequestMessage">
+        <soap:header message="i0:GetBlocksOfTimeByLinkIdRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBlocksOfTimeByLinkIdResponseMessage">
+        <soap:header message="i0:GetBlocksOfTimeByLinkIdResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateBlockOfTimeExternalAiringId">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ValidateBlockOfTimeExternalAiringId" style="document" />
+      <wsdl:input name="ValidateBlockofTimeExternalAiringIdRequestMessage">
+        <soap:header message="i0:ValidateBlockofTimeExternalAiringIdRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ValidateBlockofTimeExternalAiringIdResponseMessage">
+        <soap:header message="i0:ValidateBlockofTimeExternalAiringIdResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GroupBlockOfTimes">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GroupBlockOfTimes" style="document" />
+      <wsdl:input name="GroupBlockOfTimesRequestMessage">
+        <soap:header message="i0:GroupBlockOfTimesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GroupBlockOfTimesResponseMessage">
+        <soap:header message="i0:GroupBlockOfTimesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnGroupBlockOfTimes">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnGroupBlockOfTimes" style="document" />
+      <wsdl:input name="UnGroupBlockOfTimesRequestMessage">
+        <soap:header message="i0:UnGroupBlockOfTimesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnGroupBlockOfTimesResponseMessage">
+        <soap:header message="i0:UnGroupBlockOfTimesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkToExternalAiring">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkToExternalAiring" style="document" />
+      <wsdl:input name="LinkToExternalAiringRequestMessage">
+        <soap:header message="i0:LinkToExternalAiringRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LinkToExternalAiringResponseMessage">
+        <soap:header message="i0:LinkToExternalAiringResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidAiringFaultDetailFault">
+        <soap:fault use="literal" name="InvalidAiringFaultDetailFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="InvalidBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LinkBlocksOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LinkBlocksOfTime" style="document" />
+      <wsdl:input name="LinkBlockofTimeRequestMessage">
+        <soap:header message="i0:LinkBlockofTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LinkBlockOfTimeResponseMessage">
+        <soap:header message="i0:LinkBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTveBlockOfTimeSummary">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadTveBlockOfTimeSummary" style="document" />
+      <wsdl:input name="ReadTveBlockOfTimeSummaryRequestMessage">
+        <soap:header message="i0:ReadTveBlockOfTimeSummaryRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadTveBlockOfTimeSummaryResponseMessage">
+        <soap:header message="i0:ReadTveBlockOfTimeSummaryResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByLinearAiredDate">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByLinearAiredDate" style="document" />
+      <wsdl:input name="ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage">
+        <soap:header message="i0:ReadReleasedBlockOfTimeByLinearAiredDateRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage">
+        <soap:header message="i0:ReadReleasedBlockOfTimeByLinearAiredDateResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByC3Indicator">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByC3Indicator" style="document" />
+      <wsdl:input name="ReadReleasedBlockOfTimeByC3IndicatorRequestMessage">
+        <soap:header message="i0:ReadReleasedBlockOfTimeByC3IndicatorRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasedBlockOfTimeByC3IndicatorResponseMessage">
+        <soap:header message="i0:ReadReleasedBlockOfTimeByC3IndicatorResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDmiIndicator">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateDmiIndicator" style="document" />
+      <wsdl:input name="UpdateDMIIndicatorRequestMessage">
+        <soap:header message="i0:UpdateDMIIndicatorRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateDMIIndicatorResponseMessage">
+        <soap:header message="i0:UpdateDMIIndicatorResponseMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasedBlockOfTimeByWorkingUniqueID">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasedBlockOfTimeByWorkingUniqueID" style="document" />
+      <wsdl:input name="ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage">
+        <soap:header message="i0:ReadReleasedBlockOfTimeByWorkingUniqueIdRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage">
+        <soap:header message="i0:ReadReleasedBlockOfTimeByWorkingUniqueIdResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFirstNonC3BlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/IsFirstNonC3BlockOfTime" style="document" />
+      <wsdl:input name="FirstNonC3BlockOfTimeRequestMessage">
+        <soap:header message="i0:FirstNonC3BlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="FirstNonC3BlockOfTimeResponseMessage">
+        <soap:header message="i0:FirstNonC3BlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetMissingMetaData">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SetMissingMetaData" style="document" />
+      <wsdl:input name="SetMissingMetaDataRequestMessage">
+        <soap:header message="i0:SetMissingMetaDataRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SetMissingMetaDataResponseMessage">
+        <soap:header message="i0:SetMissingMetaDataResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeByID">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByID" style="document" />
+      <wsdl:input name="ReadBlockOfTimeByIDRequestMessage">
+        <soap:header message="i0:ReadBlockOfTimeByIDRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeByIDResponseMessage">
+        <soap:header message="i0:ReadBlockOfTimeByIDResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeByIDFaultContractFault">
+        <soap:fault use="literal" name="ReadBlockOfTimeByIDFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTime" style="document" />
+      <wsdl:input name="ReadBlockOfTimeRequestMessage">
+        <soap:header message="i0:ReadBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeResponseMessage">
+        <soap:header message="i0:ReadBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeWithoutOverlap">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeWithoutOverlap" style="document" />
+      <wsdl:input name="ReadBlockOfTimeWithoutOverlapRequestMessage">
+        <soap:header message="i0:ReadBlockOfTimeWithoutOverlapRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeWithoutOverlapResponseMessage">
+        <soap:header message="i0:ReadBlockOfTimeWithoutOverlapResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SaveBlockOfTime" style="document" />
+      <wsdl:input name="SaveBlockOfTimeRequestMessage">
+        <soap:header message="i0:SaveBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SaveBlockOfTimeResponseMessage">
+        <soap:header message="i0:SaveBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SaveBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="SaveBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/RemoveBlockOfTime" style="document" />
+      <wsdl:input name="RemoveBlockOfTimeRequestMessage">
+        <soap:header message="i0:RemoveBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RemoveBlockOfTimeResponseMessage">
+        <soap:header message="i0:RemoveBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="RemoveBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="RemoveBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTime" style="document" />
+      <wsdl:input name="CreateBlockOfTimeRequestMessage">
+        <soap:header message="i0:CreateBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateBlockOfTimeResponseMessage">
+        <soap:header message="i0:CreateBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CreateBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="CreateBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateBlockOfTimeWithOnDemandPattern">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreateBlockOfTimeWithOnDemandPattern" style="document" />
+      <wsdl:input name="CreateBlockOfTimeWithOnDemandPatternRequestMessage">
+        <soap:header message="i0:CreateBlockOfTimeWithOnDemandPatternRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateBlockOfTimeWithOnDemandPatternResponseMessage">
+        <soap:header message="i0:CreateBlockOfTimeWithOnDemandPatternResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="PatternExecutionFaultContractFault">
+        <soap:fault use="literal" name="PatternExecutionFaultContractFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnexpectedErrorFaultContractFault">
+        <soap:fault use="literal" name="UnexpectedErrorFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlaceholderBlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CreatePlaceholderBlockOfTime" style="document" />
+      <wsdl:input name="CreatePlaceholderBlockOfTimeRequestMessage">
+        <soap:header message="i0:CreatePlaceholderBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreatePlaceholderBlockOfTimeResponseMessage">
+        <soap:header message="i0:CreatePlaceholderBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CreatePlaceholderBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="CreatePlaceholderBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CopyAndPasteBlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/CopyAndPasteBlockOfTime" style="document" />
+      <wsdl:input name="CopyAndPasteBlockOfTimeRequestMessage">
+        <soap:header message="i0:CopyAndPasteBlockOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CopyAndPasteBlockOfTimeResponseMessage">
+        <soap:header message="i0:CopyAndPasteBlockOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="CopyAndPasteBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="CopyAndPasteBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadReleasableBlocksOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadReleasableBlocksOfTime" style="document" />
+      <wsdl:input name="ReadReleasableBlocksOfTimeRequestMessage">
+        <soap:header message="i0:ReadReleasableBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasableBlocksOfTimeResponseMessage">
+        <soap:header message="i0:ReadReleasableBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadReleasableBlocksOfTimeFaultContractFault">
+        <soap:fault use="literal" name="ReadReleasableBlocksOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPublishableBlocksOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadPublishableBlocksOfTime" style="document" />
+      <wsdl:input name="ReadReleasableBlocksOfTimeRequestMessage">
+        <soap:header message="i0:ReadReleasableBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadReleasableBlocksOfTimeResponseMessage">
+        <soap:header message="i0:ReadReleasableBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadReleasableBlocksOfTimeFaultContractFault">
+        <soap:fault use="literal" name="ReadReleasableBlocksOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LockBlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LockBlockOfTime" style="document" />
+      <wsdl:input name="LockBlockOfTimeItemRequestMessage">
+        <soap:header message="i0:LockBlockOfTimeItemRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LockBlockOfTimeItemResponseMessage">
+        <soap:header message="i0:LockBlockOfTimeItemResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BlockOfTimeLockFaultDetailFault">
+        <soap:fault use="literal" name="BlockOfTimeLockFaultDetailFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UnLockBlockOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnLockBlockOfTime" style="document" />
+      <wsdl:input name="UnLockBlockOfTimeItemRequestMessage">
+        <soap:header message="i0:UnLockBlockOfTimeItemRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnLockBlockOfTimeItemResponseMessage">
+        <soap:header message="i0:UnLockBlockOfTimeItemResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlockOfTimeByUser">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlockOfTimeByUser" style="document" />
+      <wsdl:input name="UnlockBlockOfTimeByUserRequestMessage">
+        <soap:header message="i0:UnlockBlockOfTimeByUserRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnlockBlockOfTimeByUserResponseMessage">
+        <soap:header message="i0:UnlockBlockOfTimeByUserResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlockOfTimeByUsernameAndItemType">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlockOfTimeByUsernameAndItemType" style="document" />
+      <wsdl:input name="UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage">
+        <soap:header message="i0:UnlockBlockOfTimeByUsernameAndItemTypeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage">
+        <soap:header message="i0:UnlockBlockOfTimeByUsernameAndItemTypeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlocksOfTimeByUserFeed">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlocksOfTimeByUserFeed" style="document" />
+      <wsdl:input name="UnlockBlocksOfTimeByUserFeedRequestMessage">
+        <soap:header message="i0:UnlockBlocksOfTimeByUserFeedRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnlockBlocksOfTimeByUserFeedResponseMessage">
+        <soap:header message="i0:UnlockBlocksOfTimeByUserFeedResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockBlocksOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UnlockBlocksOfTime" style="document" />
+      <wsdl:input name="UnlockBlocksOfTimeRequestMessage">
+        <soap:header message="i0:UnlockBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UnlockBlocksOfTimeResponseMessage">
+        <soap:header message="i0:UnlockBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PushSecondary">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/PushSecondary" style="document" />
+      <wsdl:input name="PushToSecondaryBlockofTimeRequestMessage">
+        <soap:header message="i0:PushToSecondaryBlockofTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PushToSecondaryBlockofTimeResponseMessage">
+        <soap:header message="i0:PushToSecondaryBlockofTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadFullSchedules">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/LoadFullSchedules" style="document" />
+      <wsdl:input name="LoadFullSchedulesRequestMessage">
+        <soap:header message="i0:LoadFullSchedulesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LoadFullSchedulesResponseMessage">
+        <soap:header message="i0:LoadFullSchedulesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeSummary">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeSummary" style="document" />
+      <wsdl:input name="ReadBlockOfTimeSummaryRequestMessage">
+        <soap:header message="i0:ReadBlockOfTimeSummaryRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeSummaryResponseMessage">
+        <soap:header message="i0:ReadBlockOfTimeSummaryResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockOfTimeSummaries">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeSummaries" style="document" />
+      <wsdl:input name="GetBlockOfTimeSummariesRequestMessage">
+        <soap:header message="i0:GetBlockOfTimeSummariesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBlockOfTimeSummariesResponseMessage">
+        <soap:header message="i0:GetBlockOfTimeSummariesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchBlockOfTimeSummary">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/SearchBlockOfTimeSummary" style="document" />
+      <wsdl:input name="SearchBlockOfTimeSummaryRequestMessage">
+        <soap:header message="i0:SearchBlockOfTimeSummaryRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SearchBlockOfTimeSummaryResponseMessage">
+        <soap:header message="i0:SearchBlockOfTimeSummaryResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ReadBlockOfTimeFaultContractFault">
+        <soap:fault use="literal" name="ReadBlockOfTimeFaultContractFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBlockOfTimeAiringInfo">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateBlockOfTimeAiringInfo" style="document" />
+      <wsdl:input name="UpdateBlockofTimeAiringInfoRequestMessage">
+        <soap:header message="i0:UpdateBlockofTimeAiringInfoRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateBlockofTimeAiringInfoResponseMessage">
+        <soap:header message="i0:UpdateBlockofTimeAiringInfoResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBlockOfTimeLanesInfo">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/UpdateBlockOfTimeLanesInfo" style="document" />
+      <wsdl:input name="UpdateBlockOfTimeLanesRequestMessage">
+        <soap:header message="i0:UpdateBlockOfTimeLanesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateBlockOfTimeLanesResponseMessage">
+        <soap:header message="i0:UpdateBlockOfTimeLanesResponseMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReleaseBlocksOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReleaseBlocksOfTime" style="document" />
+      <wsdl:input name="ReleaseBlocksOfTimeRequestMessage">
+        <soap:header message="i0:ReleaseBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReleaseBlocksOfTimeResponseMessage">
+        <soap:header message="i0:ReleaseBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PublishBlocksOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/PublishBlocksOfTime" style="document" />
+      <wsdl:input name="PublishBlocksOfTimeRequestMessage">
+        <soap:header message="i0:PublishBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PublishBlocksOfTimeResponseMessage">
+        <soap:header message="i0:PublishBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeletedReleasedBlocksOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetDeletedReleasedBlocksOfTime" style="document" />
+      <wsdl:input name="GetDeletedReleasedBlocksOfTimeRequestMessage">
+        <soap:header message="i0:GetDeletedReleasedBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetDeletedReleasedBlocksOfTimeResponseMessage">
+        <soap:header message="i0:GetDeletedReleasedBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllDeletedReleasedBlocksOfTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetAllDeletedReleasedBlocksOfTime" style="document" />
+      <wsdl:input name="GetAllDeletedReleasedBlocksOfTimeRequestMessage">
+        <soap:header message="i0:GetAllDeletedReleasedBlocksOfTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllDeletedReleasedBlocksOfTimeResponseMessage">
+        <soap:header message="i0:GetAllDeletedReleasedBlocksOfTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlocksOfTimeByActualDate">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlocksOfTimeByActualDate" style="document" />
+      <wsdl:input name="GetBlocksOfTimeByActualDatesRequestMessage">
+        <soap:header message="i0:GetBlocksOfTimeByActualDatesRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBlocksOfTimeByActualDatesResponseMessage">
+        <soap:header message="i0:GetBlocksOfTimeByActualDatesResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBlockOfTimeLockDetailByFeed">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetBlockOfTimeLockDetailByFeed" style="document" />
+      <wsdl:input name="GetBlockOfTimeLockDetailByFeedRequestMessage">
+        <soap:header message="i0:GetBlockOfTimeLockDetailByFeedRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBlockOfTimeLockDetailByFeedResponseMessage">
+        <soap:header message="i0:GetBlockOfTimeLockDetailByFeedResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProgrammingTime">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/GetProgrammingTime" style="document" />
+      <wsdl:input name="GetProgrammingTimeRequestMessage">
+        <soap:header message="i0:GetProgrammingTimeRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProgrammingTimeResponseMessage">
+        <soap:header message="i0:GetProgrammingTimeResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadBlockOfTimeByAssetID">
+      <soap:operation soapAction="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01/IBlockOfTimeService/ReadBlockOfTimeByAssetID" style="document" />
+      <wsdl:input name="ReadBlockOfTimeByAssetIdRequestMessage">
+        <soap:header message="i0:ReadBlockOfTimeByAssetIdRequestMessage_Headers" part="MetaRequest" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ReadBlockOfTimeByAssetIdResponseMessage">
+        <soap:header message="i0:ReadBlockOfTimeByAssetIdResponseMessage_Headers" part="MetaResponse" use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BlockOfTimeService">
+    <wsdl:port name="CustomBinding_IBlockOfTimeService" binding="tns:CustomBinding_IBlockOfTimeService">
+      <soap12:address location="http://turniverse/CORE/BlockOfTimeRework.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://turniverse/CORE/BlockOfTimeRework.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IBlockOfTimeService" binding="tns:BasicHttpBinding_IBlockOfTimeService">
+      <soap:address location="http://turniverse/CORE/BlockOfTimeRework.svc/basic" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

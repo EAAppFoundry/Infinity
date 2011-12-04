@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.turner.com/ea/augusta/base/blockoftimes/2007/01" elementFormDefault="qualified" targetNamespace="http://schemas.turner.com/ea/augusta/base/blockoftimes/2007/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd0" namespace="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd2" namespace="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://turniverse/CORE/BlockOfTimeRework.svc?xsd=xsd6" namespace="http://schemas.turner.com/ea/augusta/schedules/scheduleitems/2007/01" />
+  <xs:complexType name="SaveBlockOfTimeRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q1:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" minOccurs="0" name="BlockOfTime" nillable="true" type="q2:BlockOfTime" />
+          <xs:element minOccurs="0" name="ResetActionIndicator" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SaveBlockOfTimeRequest" nillable="true" type="tns:SaveBlockOfTimeRequest" />
+  <xs:complexType name="CreateBlockOfTimeRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q3:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AssociatedFeeds" nillable="true" type="q4:ArrayOfint" />
+          <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DefaultViewRowID" type="xs:int" />
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExternalAiringId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="FeedID" type="xs:int" />
+          <xs:element minOccurs="0" name="FlightViewRowID" type="xs:int" />
+          <xs:element minOccurs="0" name="IsAutoVersionSelected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsNonExpiring" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ItemID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q5="http://schemas.turner.com/ea/augusta/schedules/scheduleitems/2007/01" minOccurs="0" name="ItemType" type="q5:ItemType" />
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+          <xs:element xmlns:q6="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" minOccurs="0" name="State" type="q6:BlockOfTimeState" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateBlockOfTimeRequest" nillable="true" type="tns:CreateBlockOfTimeRequest" />
+  <xs:complexType name="CreateBlockOfTimeWithOnDemandPatternRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q7:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AssociatedFeeds" nillable="true" type="q8:ArrayOfint" />
+          <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DefaultViewRowID" type="xs:int" />
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExternalAiringId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="FeedID" type="xs:int" />
+          <xs:element minOccurs="0" name="FlightViewRowID" type="xs:int" />
+          <xs:element minOccurs="0" name="IsAutoVersionSelected" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsNonExpiring" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ItemID" nillable="true" type="xs:string" />
+          <xs:element xmlns:q9="http://schemas.turner.com/ea/augusta/schedules/scheduleitems/2007/01" minOccurs="0" name="ItemType" type="q9:ItemType" />
+          <xs:element minOccurs="0" name="PatternId" type="xs:int" />
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+          <xs:element xmlns:q10="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" minOccurs="0" name="State" type="q10:BlockOfTimeState" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateBlockOfTimeWithOnDemandPatternRequest" nillable="true" type="tns:CreateBlockOfTimeWithOnDemandPatternRequest" />
+  <xs:complexType name="GetBlocksOfTimeByActualDatesRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q11="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q11:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+          <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FeedIdList" nillable="true" type="q12:ArrayOfint" />
+          <xs:element minOccurs="0" name="StartDate" type="xs:dateTime" />
+          <xs:element xmlns:q13="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" minOccurs="0" name="TimeState" type="q13:BlockOfTimeState" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBlocksOfTimeByActualDatesRequest" nillable="true" type="tns:GetBlocksOfTimeByActualDatesRequest" />
+  <xs:complexType name="GetBlocksOfTimeByActualDatesResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q14="http://schemas.turner.com/architecture/frameworks/tephra/2006/01/" base="q14:ForwardCompatibleDataContractBase">
+        <xs:sequence>
+          <xs:element xmlns:q15="http://schemas.turner.com/ea/augusta/schedules/blockoftimes/2007/01" minOccurs="0" name="BlockOfTimes" nillable="true" type="q15:ArrayOfBlockOfTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetBlocksOfTimeByActualDatesResponse" nillable="true" type="tns:GetBlocksOfTimeByActualDatesResponse" />
+</xs:schema>
