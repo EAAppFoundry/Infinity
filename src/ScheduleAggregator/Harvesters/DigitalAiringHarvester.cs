@@ -64,6 +64,8 @@ namespace ScheduleAggregator.Harvesters
                                                 Name = summary.Name,
                                                 SeriesName = summary.SeriesName,
                                                 ReleaseYear = summary.ReleaseYear,
+                                                Storyline = summary.StoryLine,
+                                                Rating = summary.TVRatingCode,
                                             }
                                         };
 
