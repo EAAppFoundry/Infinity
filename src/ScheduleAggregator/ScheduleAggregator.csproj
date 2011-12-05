@@ -83,6 +83,10 @@
     </Compile>
     <Compile Include="Harvesters\DigitalAiringHarvester.cs" />
     <Compile Include="Harvesters\LinearAiringHarvester.cs" />
+    <Compile Include="Harvesters\NetworkHarvester.cs" />
+    <Compile Include="Importers\AiringsImporter.cs" />
+    <Compile Include="Importers\NetworkImporter.cs" />
+    <Compile Include="Network.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\ScarlettModel.Designer.cs">
