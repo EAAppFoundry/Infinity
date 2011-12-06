@@ -32,21 +32,21 @@ var db = mongoose.connect('mongodb://scheduling:scheduling@ds029117.mongolab.com
 //var db = mongoose.connect('mongodb://scheduling:scheduling@localhost:27017/scheduling',
 function(err) {
     if (err) {
-        console.log('err');
+//        console.log('err');
         throw err;
     }
-    console.log("success");
+//    console.log("success");
 
 });
 
 mongoose.connection.on("open",
 function() {
-    console.log("mongodb is connected!!");
+//    console.log("mongodb is connected!!");
 });
 
 mongoose.connection.on("close",
 function() {
-    console.log("mongodb is closed!!");
+//    console.log("mongodb is closed!!");
 });
 
 require('./schema');
@@ -59,8 +59,7 @@ app.get('/networks',function(req, res) {
         if (err) {
             throw err;
         }
-		console.log(networks);
- 	res.contentType('application/json');
+ 		res.contentType('application/json');
         res.json(networks);
     });
 });
@@ -84,10 +83,8 @@ app.get('/networks/:id',function(req, res) {
         if (err) {
             throw err;
         }
-		console.log(networks);
-		res.writeHead(200, {'Content-Type': 'text/plain'});
+ 		res.contentType('application/json');
         res.json(networks);
-        res.end();
     });
 });
 
@@ -97,10 +94,8 @@ app.get('/schedules',function(req, res) {
         if (err) {
             throw err;
         }
-		console.log(schedules);
-		res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.write(schedules.toString());
-        res.end();
+ 		res.contentType('application/json');
+        res.json(schedules);
     });
 });
 
@@ -110,10 +105,8 @@ app.get('/schedules/:id',function(req, res) {
         if (err) {
             throw err;
         }
-		console.log(schedules);
-		res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.write(schedules.toString());
-        res.end();
+ 		res.contentType('application/json');
+        res.json(schedules);
     });
 });
 
