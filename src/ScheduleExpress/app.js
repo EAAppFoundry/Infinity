@@ -32,8 +32,8 @@ app.configure('production', function(){
 // Routes
 var mongoose = require("mongoose");
 
-//var db = mongoose.connect('mongodb://scheduling:scheduling@ds029117.mongolab.com:29117/scheduling',
-var db = mongoose.connect('mongodb://scheduling:scheduling@localhost:27017/scheduling',
+var db = mongoose.connect('mongodb://scheduling:scheduling@ds029117.mongolab.com:29117/scheduling',
+//var db = mongoose.connect('mongodb://scheduling:scheduling@localhost:27017/scheduling',
 function(err) {
     if (err) {
         console.log('err');
