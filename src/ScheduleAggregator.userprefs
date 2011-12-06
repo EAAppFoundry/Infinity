@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ScheduleAggregator/Program.cs">
+    <Files>
+      <File FileName="ScheduleAggregator/Airing.cs" Line="1" Column="1" />
+      <File FileName="ScheduleAggregator/Data/ScarlettModel.edmx" Line="1" Column="1" />
+      <File FileName="ScheduleAggregator/Harvesters/LinearAiringHarvester.cs" Line="39" Column="24" />
+      <File FileName="ScheduleAggregator/App.config" Line="1" Column="1" />
+      <File FileName="ScheduleAggregator/packages.config" Line="1" Column="1" />
+      <File FileName="ScheduleAggregator/Program.cs" Line="15" Column="99" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
