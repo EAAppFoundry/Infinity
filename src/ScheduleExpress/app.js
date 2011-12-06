@@ -60,11 +60,23 @@ app.get('/networks',function(req, res) {
             throw err;
         }
 		console.log(networks);
-		res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.write(networks.toString());
-        res.end();
+ 	res.contentType('application/json');
+        res.json(networks);
     });
 });
+
+var fs = require( 'fs' ), index;
+
+fs.readFile('./index.html', function (err, data) {
+    if (err) {
+        throw err; 
+    }
+    index = data;
+});
+
+app.get('/index.html', function( req, response ) {     response.writeHeader(200, {"Content-Type": "text/html"});  
+    response.write(index);  
+    response.end();  });
 
 app.get('/networks/:id',function(req, res) {
     Network.findById(req.params.id,
@@ -74,7 +86,7 @@ app.get('/networks/:id',function(req, res) {
         }
 		console.log(networks);
 		res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.write(networks.toString());
+        res.json(networks);
         res.end();
     });
 });
