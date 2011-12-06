@@ -20,3 +20,5 @@ Bin/*
 httpd.parse.errors
 obj
 Thumbs.db
+node_modules
+*.DS_Store
