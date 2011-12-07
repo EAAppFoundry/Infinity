@@ -12,6 +12,9 @@ namespace ScheduleAggregator.Harvesters
 
         public IEnumerable<Airing> Harvest(DateTime startDate, DateTime endDate)
         {
+            var networkHarvester = new NetworkHarvester();
+            var networks = networkHarvester.Harvest();
+
             List<Airing> airings = null;
 
             using (var compGridEntities = new CompGridEntities())
@@ -50,6 +53,13 @@ namespace ScheduleAggregator.Harvesters
                                Platform = "Linear",
                                Title = d.Title
                            }).ToList();
+
+                var turnerAirings = from airing in airings
+                                    join network in networks on airing.Network equals network.Code
+                                    where network.IsTurnerNetwork
+                                    select airing;
+
+                airings = airings.Except(turnerAirings).ToList();
             }
 
             logger.InfoFormat("Retrieved {0} competitive airings for all networks between '{1}' and '{2}'",
