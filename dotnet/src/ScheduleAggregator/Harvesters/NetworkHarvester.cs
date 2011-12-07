@@ -33,7 +33,7 @@ namespace ScheduleAggregator.Harvesters
             foreach (var tribNetwork in compGridEntities.T_TRIB_NETWORK)
             {
                 var network =
-                    networks.FirstOrDefault(n => (n.IsTurnerNetwork ? n.ScarlettCode : n.Name) == tribNetwork.NIELSEN_CD);
+                    networks.FirstOrDefault(n => (n.IsTurnerNetwork ? n.ScarlettCode : n.Code) == tribNetwork.NIELSEN_CD);
 
                 if (network != null)
                 {
