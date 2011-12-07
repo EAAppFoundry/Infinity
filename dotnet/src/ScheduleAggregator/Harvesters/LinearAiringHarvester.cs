@@ -27,8 +27,8 @@ namespace ScheduleAggregator.Harvesters
                             join titleSchedule in entities.LinearSchedules on titleAiring.SCHEDULE_ID equals titleSchedule.SCHEDULE_ID
                             join networkTitle in entities.NetworkTitles on titleAiring.TITLE_ID equals networkTitle.TITLE_ID
                             from st in seriesTitles.DefaultIfEmpty()
-                            where schedule.SCHED_TYPE_CD == "R" &&
-                                  titleSchedule.SCHED_TYPE_CD == "R" &&
+                            where ( schedule.SCHED_TYPE_CD == "R" && titleSchedule.SCHED_TYPE_CD == "R" ) &&
+                                  ( schedule.NETWORK_FEED_CD == "E" && titleSchedule.NETWORK_FEED_CD == "E" ) &&
                                   (titleAiring.ACTION_IND != "X" && titleAiring.ACTION_IND != "D") &&
                                   franchiseAiring.SCHEDULE_AIR_DATE >= startDate &&
                                   franchiseAiring.SCHEDULE_AIR_DATE <= endDate
@@ -37,7 +37,7 @@ namespace ScheduleAggregator.Harvesters
                                            ExternalId = franchiseAiring.FRANCHISE_AIRING_ID,
                                            StartDate = franchiseAiring.SCHEDULE_AIR_DATE,
                                            Duration = franchiseAiring.LENGTH,
-                                           StarTime = franchiseAiring.FRANCHISE_AIRING_START_TIME,
+                                           StartTime = franchiseAiring.FRANCHISE_AIRING_START_TIME,
                                            Network = schedule.NETWORK_CD,
                                            TitleId = (int)title.TITLE_ID,
                                            TitleName = title.TITLE_NAME,
@@ -46,22 +46,23 @@ namespace ScheduleAggregator.Harvesters
                                            TitleType = title.TITLE_TYPE_CD,
                                        };
 
-            var executedResults = queryable.ToList();
+            // Get only distinct airings
+            var executedResults = queryable.ToList().GroupBy(a => a.ExternalId).Select(g => g.First());
 
             logger.InfoFormat("Retrieved {0} linear airings for all networks between '{1}' and '{2}'",
-                              executedResults.Count, startDate.ToShortDateString(), endDate.ToShortDateString());
+                              executedResults.Count(), startDate.ToShortDateString(), endDate.ToShortDateString());
 
             return from result in executedResults
                    select new Airing
                               {
                                   EndDate =
-                                      result.StartDate.Value.AddSeconds(result.StarTime).AddSeconds(
+                                      result.StartDate.Value.AddSeconds(result.StartTime).AddSeconds(
                                           result.Duration.Value),
                                   ExternalId = result.ExternalId.ToString(),
                                   Network = result.Network,
                                   Platform = "Linear",
                                   Source = "Linear",
-                                  StartDate = result.StartDate.Value.AddSeconds(result.StarTime),
+                                  StartDate = result.StartDate.Value.AddSeconds(result.StartTime),
                                   Title = new Title
                                               {
                                                   Id = result.TitleId,
