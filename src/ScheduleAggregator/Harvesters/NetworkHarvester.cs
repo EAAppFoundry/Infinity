@@ -24,7 +24,8 @@ namespace ScheduleAggregator.Harvesters
             var networks = turniverseEntities.ProgramServices.Select(ps =>
                                                                      new Network
                                                                          {
-                                                                             Name = ps.ShortName,
+                                                                             Name = ps.Name,
+                                                                             Code = ps.ShortName,
                                                                              IsTurnerNetwork = ps.IsTurnerNetwork.Value,
                                                                              ScarlettCode = ps.ScarlettNetworkCode
                                                                          }).ToList();
