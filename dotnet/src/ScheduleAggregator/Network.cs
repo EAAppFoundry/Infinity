@@ -16,5 +16,6 @@ namespace ScheduleAggregator
         public string NielsenCode { get; set; }
         public bool IsTurnerNetwork { get; set; }
         public string ScarlettCode { get; set; }
+        public string Code { get; set; }
     }
 }
