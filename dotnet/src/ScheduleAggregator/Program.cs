@@ -23,8 +23,8 @@ namespace ScheduleAggregator
             if (!database.CollectionExists("schedule"))
                 database.CreateCollection("schedule");
 
-            var startDate = new DateTime(2011, 12, 1);
-            var endDate = startDate.AddDays(1);
+            var startDate = DateTime.Now.Date.AddDays( -45 );
+            var endDate = startDate.AddDays(14);
 
             var networkImporter = new NetworkImporter(database);
             networkImporter.Import();
