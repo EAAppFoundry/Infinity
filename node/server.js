@@ -103,24 +103,24 @@ app.get('/schedules/schedule?',
 function(req, res) {
 	
     var stDate = require('url').parse(req.url, true).query.startdate;
+	var endDate = require('url').parse(req.url, true).query.enddate;
     if (stDate != undefined)
     {
-		var startDate = new Date(stDate);
-		startDate.setUTCHours(0);
-		startDate.setUTCMinutes(0);
-		startDate.setUTCSeconds(1);
+	
+		var startDate = new Date(unescape(stDate.toString()).replace(/'/gi,""));
 		
-        var endDate = new Date(startDate);
-        endDate.setDate(endDate.getDate());
-		endDate.setUTCHours(23);
-		endDate.setUTCMinutes(59);
-		endDate.setUTCSeconds(59);		
-
+        var endDate = new Date(endDate == undefined ? startDate : unescape(endDate.toString()).replace(/'/gi,""));
+        
         console.log(startDate.toLocaleString());
         console.log(endDate.toLocaleString());
 
-	    Schedule.find({'StartDate' : {$gte : startDate, $lte : endDate} },
-	    function(err, schedules) {
+	    Schedule.find( {$nor: [
+							{'StartDate': {$gt : endDate}},
+							{'EndDate': {$lt : startDate}}
+						]},
+		
+			//{$and: [ $not:{'StartDate' : {$gt : endDate}}, $not:{'EndDate' : {$lt : startDate}}] },
+		function(err, schedules) {
 	        if (err) {
 	            throw err;
 	        }
