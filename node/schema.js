@@ -3,16 +3,11 @@ Schema = mongoose.Schema;
 
 
 var Network = new Schema({
-    Name: {
-        type: String
-    },
-    NielsenCode: {
-        type: String
-    },
-    IsTurnerNetwork: {
-        type: Boolean
-    },
+    Name : String,
+    NielsenCode : String,
+    IsTurnerNetwork : Boolean,
     ScarlettCode: String,
+    Code : String
 })
 
 var Schedule = new Schema({
