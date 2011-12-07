@@ -3,25 +3,39 @@ Schema = mongoose.Schema;
 
 
 var Network = new Schema({
-    Name : String,
-    NielsenCode : String,
-    IsTurnerNetwork : Boolean,
-    ScarlettCode: String,
-    Code : String
+    Name: {
+        type: String,
+		index: true
+    },
+    NielsenCode: {
+        type: String
+    },
+    IsTurnerNetwork: {
+        type: Boolean
+    },
+    ScarlettCode: {
+        type: String
+    },
+    Code: {
+        type: String
+    }
 })
 
-var Schedule = new Schema({
+ var Schedule = new Schema({
     ExternalId: {
         type: Number
     },
     StartDate: {
-        type: Date
+        type: Date,
+		index: true
     },
     EndDate: {
-        type: Date
+        type: Date,
+		index: true
     },
     Network: {
-        type: String
+        type: String,
+		index: true
     },
     Title: {
         Name: {
@@ -47,10 +61,12 @@ var Schedule = new Schema({
         }
     },
     Platform: {
-        type: String
+        type: String,
+		index: true
     },
     Source: {
-        type: String
+        type: String,
+		index: true
     }
 });
 

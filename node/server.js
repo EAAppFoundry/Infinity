@@ -32,7 +32,6 @@ function() {
 var mongoose = require("mongoose");
 
 var db = mongoose.connect('mongodb://scheduling:scheduling@ds029117.mongolab.com:29117/scheduling',
-//var db = mongoose.connect('mongodb://scheduling:scheduling@localhost:27017/scheduling',
 function(err) {
     if (err) {
         //        console.log('err');
@@ -78,7 +77,7 @@ var Network = db.model('Network', Network, 'network');
 
 app.get('/networks',
 function(req, res) {
-    Network.find({},
+    Network.find({}).sort('Code','ascending').execFind(
     function(err, networks) {
         if (err) {
             throw err;
@@ -112,21 +111,21 @@ function(req, res) {
 		
         var endDate = new Date(endDate == undefined ? startDate : unescape(endDate.toString()).replace(/'/gi,"")).toISO();
         
-        console.log(startDate);
-        console.log(endDate);
+//        console.log(startDate);
+//        console.log(endDate);
 
 	    Schedule.find(  {$or:[
 								{'StartDate': {$gte : startDate, $lte : endDate}},
 								{'EndDate': {$gte : startDate, $lte : endDate}}
 							]
-						},
+						}).sort('StartDate','ascending').execFind(
 		function(err, schedules) {
 	        if (err) {
 	            throw err;
 	        }
-			console.log(schedules.length);
+//			console.log(schedules.length);
 	        res.contentType('application/json');
-			console.log(schedules);
+//			console.log(schedules);
 	        res.json(schedules);
 	    });
     }
@@ -174,7 +173,7 @@ function(req, res) {
 
 app.get('/schedules',
 function(req, res) {
-    Schedule.find({},
+    Schedule.find({}).sort('StartDate','ascending').execFind(
     function(err, schedules) {
         if (err) {
             throw err;
