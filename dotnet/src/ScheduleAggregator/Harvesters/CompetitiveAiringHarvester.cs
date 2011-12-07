@@ -20,28 +20,31 @@ namespace ScheduleAggregator.Harvesters
             using (var compGridEntities = new CompGridEntities())
             {
                 var data = from airing in compGridEntities.T_TRIB_AIRING
-                           join program in compGridEntities.T_TRIB_PROGRAM on airing.PROGRAM_ID equals program.PROGRAM_ID
-                           join network in compGridEntities.T_TRIB_NETWORK on airing.NETWORK_ID equals network.NETWORK_ID
+                           join program in compGridEntities.T_TRIB_PROGRAM on airing.PROGRAM_ID equals
+                               program.PROGRAM_ID
+                           join network in compGridEntities.T_TRIB_NETWORK on airing.NETWORK_ID equals
+                               network.NETWORK_ID
                            join genre in compGridEntities.T_TRIB_GENRE on program.GENRE_ID equals genre.GENRE_ID
-                           where airing.AIR_DATE >= startDate && airing.AIR_DATE <= endDate
+                           where airing.AIR_DATE >= startDate && airing.AIR_DATE <= endDate &&
+                                 network.NIELSEN_CD != null
                            select new
-                           {
-                               StartDate = airing.AIR_DATE,
-                               SecondsSinceMidnight = airing.AIR_TIME,
-                               Duration = airing.DURATION_SEC,
-                               Network = network.CALL_SIGN,
-                               Title = new Title
-                               {
-                                   Id = (int)program.PROGRAM_ID,
-                                   Name = program.EPISODE_NAME,
-                                   SeriesName = program.TITLE_NAME,
-                                   ReleaseYear = program.RELEASE_YEAR.Value,
-                                   Rating = program.MPAA_RATING,
-                                   Genre = genre.GENRE_NAME,
-                                   Type = program.TYPE_CD,
-                                   Storyline = program.DESCRIPTION
-                               }
-                           };
+                                      {
+                                          StartDate = airing.AIR_DATE,
+                                          SecondsSinceMidnight = airing.AIR_TIME,
+                                          Duration = airing.DURATION_SEC,
+                                          Network = network.NIELSEN_CD,
+                                          Title = new Title
+                                                      {
+                                                          Id = (int) program.PROGRAM_ID,
+                                                          Name = program.EPISODE_NAME,
+                                                          SeriesName = program.TITLE_NAME,
+                                                          ReleaseYear = program.RELEASE_YEAR.Value,
+                                                          Rating = program.MPAA_RATING,
+                                                          Genre = genre.GENRE_NAME,
+                                                          Type = program.TYPE_CD,
+                                                          Storyline = program.DESCRIPTION
+                                                      }
+                                      };
 
                 airings = (from d in data.ToList()
                            select new Airing

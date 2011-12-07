@@ -21,33 +21,16 @@ namespace ScheduleAggregator.Harvesters
 
         public List<Network> Harvest()
         {
-            var networks = turniverseEntities.ProgramServices.Select(ps =>
-                                                                     new Network
-                                                                         {
-                                                                             Name = ps.Name,
-                                                                             Code = ps.ShortName,
-                                                                             IsTurnerNetwork = ps.IsTurnerNetwork.Value,
-                                                                             ScarlettCode = ps.ScarlettNetworkCode
-                                                                         }).ToList();
+            var turnerNetworks = from ps in turniverseEntities.ProgramServices
+                                 select new Network
+                                            {
+                                                Code = ( ps.IsTurnerNetwork.Value ? ps.ScarlettNetworkCode : ps.ShortName.ToUpper() ),
+                                                Name = ps.Name,
+                                                ScarlettCode = ps.ScarlettNetworkCode,
+                                                IsTurnerNetwork = ps.IsTurnerNetwork.Value
+                                            };
 
-            foreach (var tribNetwork in compGridEntities.T_TRIB_NETWORK)
-            {
-                var network =
-                    networks.FirstOrDefault(n => (n.IsTurnerNetwork ? n.ScarlettCode : n.Code) == tribNetwork.NIELSEN_CD);
-
-                if (network != null)
-                {
-                    logger.DebugFormat("Matched Neilsen code of '{0}' to the network code '{1}'", tribNetwork.NIELSEN_CD, tribNetwork.CALL_SIGN);
-
-                    network.NielsenCode = tribNetwork.NIELSEN_CD;
-                }
-                else
-                {
-                    logger.InfoFormat("No Neilsen code was located for the network '{0}'", tribNetwork.CALL_SIGN);
-                }
-            }
-
-            return networks.ToList();
+            return turnerNetworks.ToList();
         }
 
         public void Dispose()
