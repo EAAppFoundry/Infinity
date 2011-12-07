@@ -36,7 +36,7 @@ namespace ScheduleAggregator.Harvesters
                                           Title = new Title
                                                       {
                                                           Id = (int) program.PROGRAM_ID,
-                                                          Name = program.EPISODE_NAME,
+                                                          Name = program.EPISODE_NAME ?? program.TITLE_NAME,
                                                           SeriesName = program.TITLE_NAME,
                                                           ReleaseYear = program.RELEASE_YEAR.Value,
                                                           Rating = program.MPAA_RATING,

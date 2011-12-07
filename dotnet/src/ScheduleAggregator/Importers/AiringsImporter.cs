@@ -20,9 +20,7 @@ namespace ScheduleAggregator.Importers
 
         public List<Airing> Import( DateTime startDate, DateTime endDate )
         {
-            var scheduleCollection = database.GetCollection<Airing>("schedule");
-
-            scheduleCollection.RemoveAll();
+            var scheduleCollection = database.GetCollection<Airing>("schedule");            
 
             var timespan = new TimeSpan(endDate.Ticks - startDate.Ticks);
 
@@ -44,6 +42,8 @@ namespace ScheduleAggregator.Importers
             var linearAirings = linearHarvester.Harvest(startDate, endDate);
             airings.AddRange(linearAirings);
 
+            // Drop all airings and the insert the new items
+            scheduleCollection.RemoveAll();
             scheduleCollection.InsertBatch(airings);
 
             logger.InfoFormat("Import complete.  {0} records written to mongolab.", airings.Count);

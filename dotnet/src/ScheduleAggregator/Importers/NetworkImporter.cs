@@ -21,9 +21,7 @@ namespace ScheduleAggregator.Importers
 
         public List<Network> Import()
         {
-            var networkCollection = database.GetCollection<Network>("network");
-
-            networkCollection.RemoveAll();
+            var networkCollection = database.GetCollection<Network>("network");            
 
             using( var harvester = new NetworkHarvester())
             {
@@ -31,6 +29,7 @@ namespace ScheduleAggregator.Importers
 
                 var networks = harvester.Harvest();
 
+                networkCollection.RemoveAll();
                 networkCollection.InsertBatch(networks);
 
                 logger.InfoFormat("Loaded '{0}' networks", networks.Count);
