@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Infinity Schedule Browser</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen"
+          href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/vader/jquery-ui.css" type="text/css"/>
+</head>
+<body>
+<script>
+    $(document).ready(function() {
+        $("#datePicker").datepicker({ showOtherMonths: true, selectOtherMonths: true, showButtonPanel: true , changeYear: true, changeMonth: true });
+        $("#tabs").tabs();
+    });
+</script>
+<div>
+    Date <input id="datePicker"/>
+</div>
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Program Guide</a></li>
+        <li><a href="#tabs-2">Grid View</a></li>
+    </ul>
+    <div id="tabs-1"><img src="http://lorempixel.com/g/640/480/city" alt="city" /></div>
+    <div id="tabs-2"><img src="http://lorempixel.com/g/640/480/transport" alt="transport" /></div>
+</div>
+</body>
+</html>
