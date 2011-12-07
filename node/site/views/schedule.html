@@ -10,6 +10,7 @@
 	<script src='../codebase/knockout-1.2.1.js' type='text/javascript' ></script>
 	<script src='../codebase/kobindinghandlers.js' type='text/javascript' ></script>
 	<script src='../codebase/date.format.js' type='text/javascript' ></script>
+	<script src='../codebase/stringextension.js' type='text/javascript' ></script>
 	<!--
 	
 	<script src='../../codebase/jquery.tmpl.min.js' type='text/javascript' ></script>
@@ -84,7 +85,26 @@
 		},
 		
         getSectionsURL: '../../networks',
-		searchURL: '../../schedules',
+		
+		getSearchURL: function(){
+			var schedulerState = scheduler.getState();
+			/*  TW 12/6/2011 - added from doc 
+				mode — current scheduler's mode, e.g. “week”, “month”
+				date — current date which is shown in scheduler
+				min_date — events are rendered from this date on the current view
+				max_date — events are rendered till this date on the current view
+				editor_id — editor id if it is present
+				lightbox_id — lightbox id if it is present
+			*/
+			
+			var startDate =  schedulerState.min_date.toISO();
+			var endDate = schedulerState.max_date.toISO();
+			var path = "../../schedules/schedule?startdate='{0}'&enddate='{1}'"
+				.format(startDate, endDate);
+				
+			return path;
+		},
+		
 
 		sections: ko.observableArray([]),
 
@@ -194,7 +214,7 @@
         loadAirings: function () {
 			viewModel.busyMessage("Fetching airings");
             $.ajax({
-                url: this.searchURL,
+                url: this.getSearchURL(),
                 contentType: 'application/json',
                 dataType: 'json',
                 cache: false,
@@ -251,7 +271,6 @@
 		
 		formatDate: function(dateValue){
 			var dt = new Date(dateValue);
-			dt.setHours(dt.getHours() + 5);
 			return dt;
 		},
 	};

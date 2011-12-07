@@ -72,6 +72,7 @@ function(req, response) {
 });
 
 require('./schema');
+require('./site/codebase/date.format.js');
 var Schedule = db.model('Schedule', Schedule, 'schedule');
 var Network = db.model('Network', Network, 'network');
 
@@ -107,25 +108,25 @@ function(req, res) {
     if (stDate != undefined)
     {
 	
-		var startDate = new Date(unescape(stDate.toString()).replace(/'/gi,""));
+		var startDate = new Date(unescape(stDate.toString()).replace(/'/gi,"")).toISO();
 		
-        var endDate = new Date(endDate == undefined ? startDate : unescape(endDate.toString()).replace(/'/gi,""));
+        var endDate = new Date(endDate == undefined ? startDate : unescape(endDate.toString()).replace(/'/gi,"")).toISO();
         
-        console.log(startDate.toLocaleString());
-        console.log(endDate.toLocaleString());
+        console.log(startDate);
+        console.log(endDate);
 
-	    Schedule.find( {$nor: [
-							{'StartDate': {$gt : endDate}},
-							{'EndDate': {$lt : startDate}}
-						]},
-		
-			//{$and: [ $not:{'StartDate' : {$gt : endDate}}, $not:{'EndDate' : {$lt : startDate}}] },
+	    Schedule.find(  {$or:[
+								{'StartDate': {$gte : startDate, $lte : endDate}},
+								{'EndDate': {$gte : startDate, $lte : endDate}}
+							]
+						},
 		function(err, schedules) {
 	        if (err) {
 	            throw err;
 	        }
 			console.log(schedules.length);
 	        res.contentType('application/json');
+			console.log(schedules);
 	        res.json(schedules);
 	    });
     }
