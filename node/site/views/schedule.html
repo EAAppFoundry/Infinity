@@ -2,7 +2,7 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<title>For demo purpose only :: &1</title>
+	<title>Brill's Schedule</title>
 </head>
 	<script src='../codebase/dhtmlxscheduler.js' type="text/javascript" charset="utf-8"></script>
 	<script src='../codebase/ext/dhtmlxscheduler_timeline.js' type="text/javascript" charset="utf-8"></script>
@@ -73,6 +73,16 @@
         busyMessage: ko.observable(''),
         isBusy: ko.observable(false),
 
+		interval: 30, // minutes per column
+		start: function(firstHourOfSchedule){ //start:  first time to show
+			
+			var firstHour = firstHourOfSchedule == undefined
+				? new Date().getHours() 
+				: firstHourOfSchedule;
+				
+			return firstHour * (60 / viewModel.interval);
+		},
+		
         getSectionsURL: 'http://localhost:3000/networks',
 		searchURL: 'http://localhost:3000/schedules',
 
@@ -100,10 +110,10 @@
 				name:	"timeline",
 				x_unit:	"minute",
 				x_date:	"%H:%i",
-				x_step:	30,
-				x_size: 24,
-				x_start: 16,
-				x_length:	48,
+				x_step:	viewModel.interval,
+				x_size: 4,
+				x_start: viewModel.start(),
+				x_length:	4,
 				y_unit:	sections,
 				y_property:	"section_id",
 				render:"bar"
@@ -134,18 +144,20 @@
                 success: function (data) {
 					viewModel.busyMessage("Initializing sections");
 					
+					/*
 					data = viewModel.filterArrayForTnt(data, function(element){
 						return element.Name;
 					});
+					*/
 					
 					var mapped = $.isArray( data ) 
 					? $.map( data, function( data, i ){
 							return { 
-								key: data.Name, label: data.Name, nielsenCode: data.NielsenCode, 
+								key: data.Code, label: data.Name, nielsenCode: data.NielsenCode, 
 								isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode
 							};
 						}) 
-					: { key: data.Name, label: data.Name, nielsenCode: data.NielsenCode, 
+					: { key: data.Code, label: data.Name, nielsenCode: data.NielsenCode, 
 						isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode};			
 							
 							/* ****** sample commented by tw 12/5/2011 ******
@@ -189,9 +201,11 @@
                 success: function (data) {
 					viewModel.busyMessage("Initializing airings");
 					
+					/*
 					data = viewModel.filterArrayForTnt(data, function(element){
 						return element.Network;
 					});
+					*/
 					
 					var mapped = jQuery.isArray( data ) 
 						?	$.map( data, function( data, i ){
@@ -218,7 +232,6 @@
 					
 					viewModel.airings(mapped);
 					viewModel.isBusy(false);
-					viewModel.searchCompleted();
 				},
                 error: function (xhr, status, error) {
                     alert(error.toString());
