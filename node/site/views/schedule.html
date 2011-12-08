@@ -195,7 +195,7 @@
 			});
 
 			scheduler.templates.timeline_scale_label = function(section_id, section_label, section_options){
-				return "<img src='" + section_options.Url + "' height='20px' width='30px'/>" + section_label; 
+				return /*"<img src='" + section_options.Url + "' height='20px' width='30px'/>" + */section_label; 
 			};
 			
 			scheduler.templates.event_class = function(){
@@ -237,20 +237,10 @@
 		},
 
 		shiftTimeRight: function(){
-			//var scheduleStart = viewModel.scheduleStartHour();
-			//scheduler.setCurrentView( "bar"); += 2;
-			//var increment = (viewModel.interval * (viewModel.intervals / 2)) / 60;
-			
-			//viewModel.startDate().add(increment).hours();
-			//alert (scheduleStart + ' - ' + increment + ' - ' + viewModel.startDate());
-			//scheduler.date.add(1, 'hour');
-			//alert(scheduler.config.x_start );
 			var schedulerState = scheduler.getState();
-			var startDate =  schedulerState.min_date.add(1).hours();
-			alert(startDate);
-			scheduler.setCurrentView(startDate, scheduler._mode);
-			scheduler.dhx_changeDate(0, -1);
-	
+			viewModel.startDate(schedulerState.min_date.add(1).hours());
+			viewModel.start(viewModel.start() + 2);
+			viewModel.createTimeLine(viewModel.sections);
 		},
 		
 		loadSections: function () {
