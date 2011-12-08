@@ -1942,14 +1942,6 @@ scheduler._click={
 		} else
 			scheduler._close_not_saved();
 	},
-	dhx_cal_prev_button:function(){
-		scheduler._click.dhx_changeDate(0,-1);
-	},
-	
-	dhx_cal_next_button:function(){
-	alert('here');
-		scheduler._click.dhx_changeDate(0,-1);
-	},
 	
 	dhx_changeDate:function(dummy,step){
 		scheduler.setCurrentView(scheduler.date.add( //next line changes scheduler._date , but seems it has not side-effects

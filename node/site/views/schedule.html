@@ -69,6 +69,11 @@
 		background-color: gray;
 		border-color: black;
 	}
+	
+	.sectionStyle{
+		text-align:left;
+		vertical-align:middle;
+	}
 </style>
 
 
@@ -79,22 +84,23 @@
 		<li><a href="#tabs-2">Listing</a></li>
 	</ul>
 	<div id="tabs-1">
-	<button data-bind="click: search">Load Airings</button>
 		<div class="flashMessage hidden" data-bind="fadeVisible:{condition: viewModel.isBusy, speed:250}, text: viewModel.busyMessage"></div>
-		<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:550px;'>
+		<div id="scheduler_here" class="dhx_cal_container" style='width:100%; min-height:550px;'>
 			<div class="dhx_cal_navline" >
-				<div class="dhx_cal_prev_button">&nbsp;</div>
-				<div class="dhx_cal_next_button">&nbsp;</div>
-				<div class="dhx_cal_today_button"></div>
+				<div class="dhx_cal_prev_button"
+					data-bind="click:shiftDayLeft">&nbsp;</div>
+				<div class="dhx_cal_next_button"
+					data-bind="click:shiftDayLeft">&nbsp;</div>
+				<div class="dhx_cal_today_button"
+					data-bind="click:shiftToday"></div>
 				<div class="dhx_cal_date"></div>
 				<div class="dhx_cal_tab" name="day_tab" style="right:204px;display:none"></div>
 				<div class="dhx_cal_tab" name="week_tab" style="right:140px;display:none"></div>
-				<div class="dhx_cal_prev_time_button" 
-					data-bind="click: shiftTimeRight" 
-					name="prev_time_tab" 
-					style="float:left;right:360px">&nbsp;</div>
+				<div class="dhx_cal_prev_time_button"  data-bind="click: shiftTimeLeft" 
+					name="prev_time_tab"  style="float:left;right:360px">&nbsp;</div>
 				<div class="dhx_cal_tab" name="timeline_tab" style="right:280px;"></div>
-				<div class="dhx_cal_next_time_button" name="next_time_tab" style="float:left;right:235px">&nbsp;</div>
+				<div class="dhx_cal_next_time_button" name="next_time_tab" 
+					data-bind="click: shiftTimeRight" style="float:left;right:235px">&nbsp;</div>
 				<div class="dhx_cal_tab" name="month_tab" style="right:76px;display:none"></div>
 				
 			</div>
@@ -122,20 +128,12 @@
 
 		interval: 30, // minutes per column
 		intervals: 4, // number of columns
-		scheduleStartHour: ko.observable(),
+		scheduleStartHour: new Date().getHours(),
+		shiftTimeInterval: 2,
 		
-		start: function(firstHourOfSchedule){ //start:  first time to show
-			
-			var firstHour = firstHourOfSchedule == undefined
-				? new Date().getHours() 
-				: firstHourOfSchedule;
-				
-			viewModel.scheduleStartHour(firstHour * (60 / viewModel.interval));
-			
-			return viewModel.scheduleStartHour();
+		start: function(){ //start:  first time to show
+			return viewModel.scheduleStartHour * (60 / viewModel.interval);
 		},
-		
-		
 		
         getSectionsURL: '../../networks',
 		
@@ -167,6 +165,7 @@
 
         initialize: function(){
 			this.loadSections();
+			this.search();
 		},
 		
 		createTimeLine: function(sections) {
@@ -195,7 +194,11 @@
 			});
 
 			scheduler.templates.timeline_scale_label = function(section_id, section_label, section_options){
-				return /*"<img src='" + section_options.Url + "' height='20px' width='30px'/>" + */section_label; 
+				return "<img src='" + section_options.Url + "' height='20px' width='30px'/>&nbsp;&nbsp;<label style='position:relative;bottom:5px'>" + section_label+"</label>";
+			};
+			
+			scheduler.templates.timeline_scaley_class = function(){
+				return "sectionStyle";
 			};
 			
 			scheduler.templates.event_class = function(){
@@ -234,13 +237,57 @@
 			]
 			
 			scheduler.init('scheduler_here',viewModel.startDate(),"timeline");
+			console.log('create time line');
 		},
-
+		
+		shiftDayLeft: function(){
+			this.shiftDay(-1);
+		},
+		
+		shiftDayRight: function(){
+			this.shiftDay(1);
+		},
+		
+		shiftDay: function(shift){
+			this.busyMessage("Fetching airings");
+			this.isBusy(true);
+			
+			var workingDate = viewModel.startDate();
+			workingDate.add(shift).days();
+			viewModel.startDate(workingDate);
+			viewModel.createTimeLine(viewModel.sections());
+			
+			viewModel.search();
+		},
+		
+		shiftTimeLeft: function(){
+			this.shiftTime(-this.shiftTimeInterval);
+		},
+		
 		shiftTimeRight: function(){
+			this.shiftTime(this.shiftTimeInterval);
+		},
+		
+		shiftTime: function(shift){
+			this.busyMessage("Fetching airings");
+			this.isBusy(true);
+			
 			var schedulerState = scheduler.getState();
-			viewModel.startDate(schedulerState.min_date.add(1).hours());
-			viewModel.start(viewModel.start() + 2);
-			viewModel.createTimeLine(viewModel.sections);
+			var dt = schedulerState.min_date.add(shift).hours();
+			viewModel.scheduleStartHour = dt.getHours();
+			viewModel.createTimeLine(viewModel.sections());
+			
+			viewModel.search();
+		},
+		
+		shiftToday: function(){
+			this.busyMessage("Fetching airings");
+			this.isBusy(true);
+			
+			viewModel.startDate(new Date());
+			viewModel.createTimeLine(viewModel.sections());
+			
+			viewModel.search();
 		},
 		
 		loadSections: function () {
@@ -256,12 +303,6 @@
                 success: function (data) {
 					viewModel.busyMessage("Initializing sections");
 					
-					/*
-					data = viewModel.filterArrayForTnt(data, function(element){
-						return element.Name;
-					});
-					*/
-					
 					var mapped = $.isArray( data ) 
 					? $.map( data, function( data, i ){
 							return { 
@@ -272,16 +313,7 @@
 					: { key: data.Code, label: data.Name, nielsenCode: data.NielsenCode, 
 						isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode, Url: data.LogoUrl};			
 							
-							/* ****** sample commented by tw 12/5/2011 ******
-								[
-									{key:1, label:"James Smith"},
-								];
-								
-								_id":"4edd2604385eb61f8060ae3f","Name":"ANIML","NielsenCode":null,"IsTurnerNetwork":false,"ScarlettCode":null}
-							
-							****** /sample commented by tw 12/5/2011 *******/
 					viewModel.sections(mapped);
-					viewModel.isBusy(false);
                 },
                 error: function (xhr, status, error) {
 					alert(xhr.toString());
@@ -294,7 +326,7 @@
 	
 		search: function () {
             //loading drop down values.
-            this.busyMessage('Loading airings . . .');
+            viewModel.busyMessage("Fetching airings");
             this.isBusy(true);
             try {
                 this.loadAirings();
@@ -305,6 +337,7 @@
 
         loadAirings: function () {
 			viewModel.busyMessage("Fetching airings");
+			console.log("calling service" + new Date().toLocaleString());
             $.ajax({
                 url: this.getSearchURL(),
                 contentType: 'application/json',
@@ -312,13 +345,7 @@
                 cache: false,
                 success: function (data) {
 					viewModel.busyMessage("Initializing airings");
-					
-					/*
-					data = viewModel.filterArrayForTnt(data, function(element){
-						return element.Network;
-					});
-					*/
-					
+					console.log("received response" + new Date().toLocaleString());
 					var mapped = jQuery.isArray( data ) 
 						?	$.map( data, function( data, i ){
 								return { 
@@ -342,8 +369,10 @@
 									type: data.Title.Type,
 									storyLine: data.Title.Storyline}};			
 					
-					viewModel.airings(mapped);
 					viewModel.isBusy(false);
+					console.log("adding airings to control" + new Date().toLocaleString());
+					viewModel.airings(mapped);
+					console.log("mapped airings to control" + new Date().toLocaleString());
 				},
                 error: function (xhr, status, error) {
                     alert(error.toString());
@@ -368,25 +397,21 @@
 	};
 	
 	viewModel.searchCompleted = ko.dependentObservable(function() {
+		viewModel.isBusy(false);
 		
 		scheduler.clearAll();
+		//TODO:  needs performance boost
 		$.each(viewModel.airings(), function(i, val){
 			scheduler.addEvent(val);
 		}); 
+		//scheduler.parse(viewModel.airings(), "json");
 				
 	}, viewModel);
 	
 	viewModel.sectionsLoaded = ko.dependentObservable(function() {
-		//if (viewModel.sections() != undefined && viewModel.sections().length > 0)
-			//alert ('loaded' + viewModel.sections().length + '  Id: ' + viewModel.sections()[0].section_id);
-		viewModel.createTimeLine(viewModel.sections());
+		this.createTimeLine(viewModel.sections());
 	}, viewModel);
 	
-	/* sample commented by tw 12/5/2011		
-		scheduler.parse([
-				{ start_date: "2009-06-30 09:00", end_date: "2009-06-30 12:00", text:"Task A-12458", section_id:1},
-			],"json");
-	*/
 	ko.applyBindings(viewModel);	
 	
 	$(document).ready(function() {
