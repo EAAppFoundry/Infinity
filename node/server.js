@@ -106,6 +106,32 @@ function(req, res) {
     });
 });
 
+app.get('/networks/turneronly',
+function(req, res) {
+    console.log('/networks/turneronly');
+    Network.find({'IsTurnerNetwork' : true}).sort('Code', 'ascending').execFind(
+    function(err, networks) {
+        if (err) {
+            throw err;
+        }
+        res.contentType('application/json');
+        res.json(networks);
+    });
+});
+
+app.get('/networks/notturner',
+function(req, res) {
+    console.log('/networks/notturner');
+    Network.find({'IsTurnerNetwork' : false}).sort('Code', 'ascending').execFind(
+    function(err, networks) {
+        if (err) {
+            throw err;
+        }
+        res.contentType('application/json');
+        res.json(networks);
+    });
+});
+
 app.get('/networks/:id',
 function(req, res) {
     console.log('/networks/:id');
