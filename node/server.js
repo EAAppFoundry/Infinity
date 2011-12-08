@@ -75,30 +75,6 @@ require('./site/codebase/date.format.js');
 var Schedule = db.model('Schedule', Schedule, 'schedule');
 var Network = db.model('Network', Network, 'network');
 
-app.get('/networks',
-function(req, res) {
-    Network.find({}).sort('Code', 'ascending').execFind(
-    function(err, networks) {
-        if (err) {
-            throw err;
-        }
-        res.contentType('application/json');
-        res.json(networks);
-    });
-});
-
-app.get('/networks/:id',
-function(req, res) {
-    Network.findById(req.params.id,
-    function(err, networks) {
-        if (err) {
-            throw err;
-        }
-        res.contentType('application/json');
-        res.json(networks);
-    });
-});
-
 app.param('network',
 function(req, res, next, network) {
     req.network = network;
@@ -121,6 +97,40 @@ app.param('startdate',
 function(req, res, next, startdate) {
     req.startdate = startdate;
     next();
+});
+
+app.get('/rest',
+function(req, res) {
+    console.log('/rest');
+    res.statusCode = 302;
+    res.setHeader("Location", "/rest.html");
+    res.end();
+});
+
+app.get('/networks',
+function(req, res) {
+    console.log('/networks');
+    Network.find({}).sort('Code', 'ascending').execFind(
+    function(err, networks) {
+        if (err) {
+            throw err;
+        }
+        res.contentType('application/json');
+        res.json(networks);
+    });
+});
+
+app.get('/networks/:id',
+function(req, res) {
+    console.log('/networks/:id');
+    Network.findById(req.params.id,
+    function(err, networks) {
+        if (err) {
+            throw err;
+        }
+        res.contentType('application/json');
+        res.json(networks);
+    });
 });
 
 app.get('/schedules/platform/:platform',
