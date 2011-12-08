@@ -69,6 +69,12 @@ function(req, res, next, startdate) {
     next();
 });
 
+app.param('enddate',
+function(req, res, next, enddate) {
+    req.enddate = enddate;
+    next();
+});
+
 // Routes
 
 app.get('/',
@@ -233,6 +239,42 @@ function(req, res) {
         res.contentType('application/json');
         res.json(schedules);
     });
+});
+
+app.get('/schedules/startdate/:startdate/enddate/:enddate',
+function(req, res) {
+    console.log('/schedules/startdate/:startdate/enddate/:enddate');
+    var stDate = req.startdate;
+    var endDate = req.enddate;
+    if (stDate != undefined)
+    {
+        var startDate = new Date(unescape(stDate.toString()).replace(/'/gi, "")).toISO();
+        var endDate = new Date(endDate == undefined ? startDate: unescape(endDate.toString()).replace(/'/gi, "")).toISO();
+
+        Schedule.find({
+            $or: [
+            {
+                'StartDate': {
+                    $gte: startDate,
+                    $lte: endDate
+                }
+            },
+            {
+                'EndDate': {
+                    $gte: startDate,
+                    $lte: endDate
+                }
+            }
+            ]
+        }).sort('StartDate', 'ascending').execFind(
+        function(err, schedules) {
+            if (err) {
+                throw err;
+            }
+            res.contentType('application/json');
+            res.json(schedules);
+        });
+    }
 });
 
 app.get('/schedules/schedule?',
