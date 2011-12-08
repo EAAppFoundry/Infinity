@@ -4,14 +4,20 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>Brill's Schedule</title>
 </head>
-	<script src='../codebase/dhtmlxscheduler.js' type="text/javascript" charset="utf-8"></script>
+	<script src='../codebase/dhtmlxscheduler_debug.js' type="text/javascript" charset="utf-8"></script>
 	<script src='../codebase/ext/dhtmlxscheduler_timeline.js' type="text/javascript" charset="utf-8"></script>
 	<script src='../codebase/jquery-1.6.2.min.js' type='text/javascript' ></script>
 	<script src='../codebase/knockout-1.2.1.js' type='text/javascript' ></script>
 	<script src='../codebase/kobindinghandlers.js' type='text/javascript' ></script>
 	<script src='../codebase/date.format.js' type='text/javascript' ></script>
+	<script src='../codebase/date.js' type='text/javascript' ></script>
 	<script src='../codebase/stringextension.js' type='text/javascript' ></script>
+
 	<script src="../codebase/ext/dhtmlxscheduler_tooltip.js"></script>	
+	<script src="../codebase/ext/dhtmlxscheduler_key_nav.js"></script>	
+	<script src="../codebase/ext/dhtmlxscheduler_expand.js"></script>	
+	<script src="../codebase/ext/dhtmlxscheduler_readonly.js"></script>	
+ 
 	
 	<script src='../codebase/jquery.ui.core.js' type='text/javascript' ></script>
 	<script src='../codebase/jquery.ui.widget.js' type='text/javascript' ></script>
@@ -20,20 +26,23 @@
 	<script src='../codebase/jquery.ui.datepicker.js' type='text/javascript' ></script>
 	<script src='../codebase/jquery.ui.tabs.js' type='text/javascript' ></script>
 	<script src='../codebase/jquery.ui.button.js' type='text/javascript' ></script>
+	<script src='../codebase/jquery-ui-1.8.16.custom.min.js' type='text/javascript' ></script>
 	
 	<link rel='stylesheet' type='text/css' href='../codebase/dhtmlxscheduler.css'>
 	
 	
-	<link rel='stylesheet' type='text/css' href='../codebase/themes/base/jquery.ui.core.css'>
-	<link rel='stylesheet' type='text/css' href='../codebase/themes/base/jquery.ui.base.css'>
-	<link rel='stylesheet' type='text/css' href='../codebase/themes/base/jquery.ui.all.css'>
-	<link rel='stylesheet' type='text/css' href='../codebase/themes/base/jquery.ui.tabs.css'>
+	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery.ui.core.css'>
+	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery-ui-1.8.16.custom.css'>
+	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery.ui.all.css'>
+	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery.ui.tabs.css'>
+	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery.ui.theme.css'>
 	
 <style type="text/css" media="screen">
 	html, body{
 		margin:0px;
 		padding:0px;
 		height:100%;
+		min-height:100%;
 		overflow:hidden;
 	}	
 	.one_line{
@@ -53,6 +62,13 @@
 	.hidden {
 		display: none;
 	}
+	
+	.eventStyle{
+		background-color:gray;
+		color: white;
+		background-color: gray;
+		border-color: black;
+	}
 </style>
 
 
@@ -66,15 +82,21 @@
 	<button data-bind="click: search">Load Airings</button>
 		<div class="flashMessage hidden" data-bind="fadeVisible:{condition: viewModel.isBusy, speed:250}, text: viewModel.busyMessage"></div>
 		<div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:550px;'>
-			<div class="dhx_cal_navline">
+			<div class="dhx_cal_navline" >
 				<div class="dhx_cal_prev_button">&nbsp;</div>
 				<div class="dhx_cal_next_button">&nbsp;</div>
 				<div class="dhx_cal_today_button"></div>
 				<div class="dhx_cal_date"></div>
-				<div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>
-				<div class="dhx_cal_tab" name="week_tab" style="right:140px;"></div>
+				<div class="dhx_cal_tab" name="day_tab" style="right:204px;display:none"></div>
+				<div class="dhx_cal_tab" name="week_tab" style="right:140px;display:none"></div>
+				<div class="dhx_cal_prev_time_button" 
+					data-bind="click: shiftTimeRight" 
+					name="prev_time_tab" 
+					style="float:left;right:360px">&nbsp;</div>
 				<div class="dhx_cal_tab" name="timeline_tab" style="right:280px;"></div>
-				<div class="dhx_cal_tab" name="month_tab" style="right:76px;"></div>
+				<div class="dhx_cal_next_time_button" name="next_time_tab" style="float:left;right:235px">&nbsp;</div>
+				<div class="dhx_cal_tab" name="month_tab" style="right:76px;display:none"></div>
+				
 			</div>
 			<div class="dhx_cal_header">
 			</div>
@@ -99,14 +121,21 @@
         isBusy: ko.observable(false),
 
 		interval: 30, // minutes per column
+		intervals: 4, // number of columns
+		scheduleStartHour: ko.observable(),
+		
 		start: function(firstHourOfSchedule){ //start:  first time to show
 			
 			var firstHour = firstHourOfSchedule == undefined
 				? new Date().getHours() 
 				: firstHourOfSchedule;
 				
-			return firstHour * (60 / viewModel.interval);
+			viewModel.scheduleStartHour(firstHour * (60 / viewModel.interval));
+			
+			return viewModel.scheduleStartHour();
 		},
+		
+		
 		
         getSectionsURL: '../../networks',
 		
@@ -146,6 +175,7 @@
 			scheduler.config.details_on_create=true;
 			scheduler.config.details_on_dblclick=true;
 			scheduler.config.xml_date="%Y-%m-%d %H:%i";
+			scheduler.config.readonly_form = true;
 			
 			//===============
 			//Configuration
@@ -155,7 +185,7 @@
 				x_unit:	"minute",
 				x_date:	"%H:%i",
 				x_step:	viewModel.interval,
-				x_size: 4,
+				x_size: viewModel.intervals,
 				x_start: viewModel.start(),
 				y_unit:	sections,
 				y_property:	"section_id",
@@ -165,7 +195,11 @@
 			});
 
 			scheduler.templates.timeline_scale_label = function(section_id, section_label, section_options){
-				return section_label +" (id: "+section_id+")"; 
+				return "<img src='" + section_options.Url + "' height='20px' width='30px'/>" + section_label; 
+			};
+			
+			scheduler.templates.event_class = function(){
+				return 'eventStyle';
 			};
 			
 			scheduler.templates.tooltip_text = function(start,end,event) {
@@ -195,12 +229,30 @@
 			scheduler.config.lightbox.sections=[	
 				{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
 				{name:"custom", height:23, type:"select", options:sections, map_to:"section_id" },
-				{name:"time", height:72, type:"time", map_to:"auto"}
+				{name:"time", height:72, type:"time", map_to:"auto"},
+				{name:"platform", height:72, type:"textarea", map_to:"platform"}
 			]
 			
 			scheduler.init('scheduler_here',viewModel.startDate(),"timeline");
 		},
 
+		shiftTimeRight: function(){
+			//var scheduleStart = viewModel.scheduleStartHour();
+			//scheduler.setCurrentView( "bar"); += 2;
+			//var increment = (viewModel.interval * (viewModel.intervals / 2)) / 60;
+			
+			//viewModel.startDate().add(increment).hours();
+			//alert (scheduleStart + ' - ' + increment + ' - ' + viewModel.startDate());
+			//scheduler.date.add(1, 'hour');
+			//alert(scheduler.config.x_start );
+			var schedulerState = scheduler.getState();
+			var startDate =  schedulerState.min_date.add(1).hours();
+			alert(startDate);
+			scheduler.setCurrentView(startDate, scheduler._mode);
+			scheduler.dhx_changeDate(0, -1);
+	
+		},
+		
 		loadSections: function () {
 			
 			viewModel.isBusy(true);
@@ -224,11 +276,11 @@
 					? $.map( data, function( data, i ){
 							return { 
 								key: data.Code, label: data.Name, nielsenCode: data.NielsenCode, 
-								isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode
+								isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode, Url: data.LogoUrl
 							};
 						}) 
 					: { key: data.Code, label: data.Name, nielsenCode: data.NielsenCode, 
-						isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode};			
+						isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode, Url: data.LogoUrl};			
 							
 							/* ****** sample commented by tw 12/5/2011 ******
 								[

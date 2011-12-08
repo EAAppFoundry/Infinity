@@ -1943,11 +1943,17 @@ scheduler._click={
 			scheduler._close_not_saved();
 	},
 	dhx_cal_prev_button:function(){
-		scheduler._click.dhx_cal_next_button(0,-1);
+		scheduler._click.dhx_changeDate(0,-1);
 	},
-	dhx_cal_next_button:function(dummy,step){
+	
+	dhx_cal_next_button:function(){
+	alert('here');
+		scheduler._click.dhx_changeDate(0,-1);
+	},
+	
+	dhx_changeDate:function(dummy,step){
 		scheduler.setCurrentView(scheduler.date.add( //next line changes scheduler._date , but seems it has not side-effects
-			scheduler.date[scheduler._mode+"_start"](scheduler._date),(step||1),scheduler._mode));
+			scheduler.date[scheduler._mode+"_start"](scheduler._date),(step),scheduler._mode));
 	},
 	dhx_cal_today_button:function(){
 		scheduler.setCurrentView(new Date());
