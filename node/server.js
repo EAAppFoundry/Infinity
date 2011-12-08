@@ -77,7 +77,7 @@ var Network = db.model('Network', Network, 'network');
 
 app.get('/networks',
 function(req, res) {
-    Network.find({}).sort('Code','ascending').execFind(
+    Network.find({}).sort('Code', 'ascending').execFind(
     function(err, networks) {
         if (err) {
             throw err;
@@ -99,81 +99,192 @@ function(req, res) {
     });
 });
 
+app.param('network',
+function(req, res, next, network) {
+    req.network = network;
+    next();
+});
+
+app.param('platform',
+function(req, res, next, platform) {
+    req.platform = platform;
+    next();
+});
+
+app.param('source',
+function(req, res, next, source) {
+    req.source = source;
+    next();
+});
+
+app.param('startdate',
+function(req, res, next, startdate) {
+    req.startdate = startdate;
+    next();
+});
+
+app.get('/schedules/platform/:platform',
+function(req, res) {
+    console.log('/schedules/platform/:platform');
+    Schedule.find({
+        'Platform': req.platform
+    },
+    function(err, schedules) {
+        if (err) {
+            throw err;
+        }
+        res.contentType('application/json');
+        res.json(schedules);
+    });
+});
+
+app.get('/schedules/source/:source',
+function(req, res) {
+    console.log('/schedules/source/:source');
+    Schedule.find({
+        'Source': req.source
+    },
+    function(err, schedules) {
+        if (err) {
+            throw err;
+        }
+        res.contentType('application/json');
+        res.json(schedules);
+    });
+});
+
+app.get('/schedules/network/:network',
+function(req, res) {
+    console.log('/schedules/network/:network');
+    Schedule.find({
+        'Network': req.network
+    }).sort('StartDate', 'ascending').execFind(
+    function(err, schedules) {
+        if (err) {
+            throw err;
+        }
+
+        res.contentType('application/json');
+        res.json(schedules);
+    });
+});
+
+app.get('/schedules/network/:network/today',
+function(req, res) {
+    console.log('/schedules/network/:network/today');
+    var today = new Date();
+
+    var startDate = new Date();
+    startDate.setUTCDate(today.getDate());
+    startDate.setUTCHours(0);
+    startDate.setUTCMinutes(0);
+    startDate.setUTCSeconds(0);
+
+    var endDate = new Date();
+    endDate.setUTCDate(today.getDate());
+    endDate.setUTCHours(23);
+    endDate.setUTCMinutes(59);
+    endDate.setUTCSeconds(29);
+
+    Schedule.find({
+        $or: [
+        {
+            'StartDate': {
+                $gte: startDate.toISO(),
+                $lte: endDate.toISO()
+            }
+        },
+        {
+            'EndDate': {
+                $gte: startDate.toISO(),
+                $lte: endDate.toISO()
+            }
+        }
+        ],
+        'Network': req.network
+    }).sort('StartDate', 'ascending').execFind(
+    function(err, schedules) {
+        if (err) {
+            throw err;
+        }
+
+        res.contentType('application/json');
+        res.json(schedules);
+    });
+});
+
+app.get('/schedules/network/:network/startdate/:startdate',
+function(req, res) {
+    console.log('/schedules/network/:network/startdate/:startdate');
+
+    var startDate = new Date(req.startdate);
+    startDate.setUTCHours(0);
+    startDate.setUTCMinutes(0);
+    startDate.setUTCSeconds(0);
+
+    var endDate = new Date(startDate);
+    endDate.setUTCHours(23);
+    endDate.setUTCMinutes(59);
+    endDate.setUTCSeconds(29);
+
+    Schedule.find(
+    {
+        'StartDate': {
+            $gte: startDate.toISO(),
+            $lte: endDate.toISO()
+        },
+        'Network': req.network
+    }).sort('StartDate', 'ascending').execFind(
+    function(err, schedules) {
+        if (err) {
+            throw err;
+        }
+
+        res.contentType('application/json');
+        res.json(schedules);
+    });
+});
+
 app.get('/schedules/schedule?',
 function(req, res) {
-	
+    console.log('/schedules/schedule?');
     var stDate = require('url').parse(req.url, true).query.startdate;
-	var endDate = require('url').parse(req.url, true).query.enddate;
+    var endDate = require('url').parse(req.url, true).query.enddate;
     if (stDate != undefined)
     {
-	
-		var startDate = new Date(unescape(stDate.toString()).replace(/'/gi,"")).toISO();
-		
-        var endDate = new Date(endDate == undefined ? startDate : unescape(endDate.toString()).replace(/'/gi,"")).toISO();
-        
-//        console.log(startDate);
-//        console.log(endDate);
+        var startDate = new Date(unescape(stDate.toString()).replace(/'/gi, "")).toISO();
+        var endDate = new Date(endDate == undefined ? startDate: unescape(endDate.toString()).replace(/'/gi, "")).toISO();
 
-	    Schedule.find(  {$or:[
-								{'StartDate': {$gte : startDate, $lte : endDate}},
-								{'EndDate': {$gte : startDate, $lte : endDate}}
-							]
-						}).sort('StartDate','ascending').execFind(
-		function(err, schedules) {
-	        if (err) {
-	            throw err;
-	        }
-//			console.log(schedules.length);
-	        res.contentType('application/json');
-//			console.log(schedules);
-	        res.json(schedules);
-	    });
+        Schedule.find({
+            $or: [
+            {
+                'StartDate': {
+                    $gte: startDate,
+                    $lte: endDate
+                }
+            },
+            {
+                'EndDate': {
+                    $gte: startDate,
+                    $lte: endDate
+                }
+            }
+            ]
+        }).sort('StartDate', 'ascending').execFind(
+        function(err, schedules) {
+            if (err) {
+                throw err;
+            }
+            res.contentType('application/json');
+            res.json(schedules);
+        });
     }
-
-    var network = require('url').parse(req.url, true).query.network;
-    if (network != undefined)
-    {
-	    Schedule.find({'Network' : network },
-	    function(err, schedules) {
-	        if (err) {
-	            throw err;
-	        }
-	        res.contentType('application/json');
-	        res.json(schedules);
-	    });
-    }
-
-    var platform = require('url').parse(req.url, true).query.platform;
-    if (platform != undefined)
-    {
-	    Schedule.find({'Platform' : platform },
-	    function(err, schedules) {
-	        if (err) {
-	            throw err;
-	        }
-	        res.contentType('application/json');
-	        res.json(schedules);
-	    });
-    }
-
-    var source = require('url').parse(req.url, true).query.source;
-    if (source != undefined)
-    {
-	    Schedule.find({'Source' : source },
-	    function(err, schedules) {
-	        if (err) {
-	            throw err;
-	        }
-	        res.contentType('application/json');
-	        res.json(schedules);
-	    });
-    }
-	
 });
 
 app.get('/schedules',
 function(req, res) {
-    Schedule.find({}).sort('StartDate','ascending').execFind(
+    console.log('/schedules');
+    Schedule.find({}).sort('StartDate', 'ascending').execFind(
     function(err, schedules) {
         if (err) {
             throw err;
@@ -185,6 +296,7 @@ function(req, res) {
 
 app.get('/schedules/:id',
 function(req, res) {
+    console.log('/schedules/:id');
     Schedule.findById(req.params.id,
     function(err, schedules) {
         if (err) {
