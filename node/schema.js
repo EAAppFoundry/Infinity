@@ -18,7 +18,10 @@ var Network = new Schema({
     },
     Code: {
         type: String
-    }
+    },
+    LogoUrl: {
+	type: String
+    },
 })
 
  var Schedule = new Schema({

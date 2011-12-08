@@ -165,7 +165,7 @@
 			});
 
 			scheduler.templates.timeline_scale_label = function(section_id, section_label, section_options){
-				return section_label +" (id: "+section_id+")"; 
+				return "<img src='" + section_options.Url + "' height='20px' width='30px'/>" + section_label; 
 			};
 			
 			scheduler.templates.tooltip_text = function(start,end,event) {
@@ -224,11 +224,11 @@
 					? $.map( data, function( data, i ){
 							return { 
 								key: data.Code, label: data.Name, nielsenCode: data.NielsenCode, 
-								isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode
+								isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode, Url: data.LogoUrl
 							};
 						}) 
 					: { key: data.Code, label: data.Name, nielsenCode: data.NielsenCode, 
-						isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode};			
+						isTurnerIndicator: data.IsTurnerNetwork, remoteIdentifier: data.ScarlettCode, Url: data.LogoUrl};			
 							
 							/* ****** sample commented by tw 12/5/2011 ******
 								[
