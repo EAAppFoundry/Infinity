@@ -28,52 +28,22 @@ function() {
     app.use(express.errorHandler());
 });
 
-// Routes
 var mongoose = require("mongoose");
 
 var db = mongoose.connect('mongodb://scheduling:scheduling@ds029117.mongolab.com:29117/scheduling',
 function(err) {
     if (err) {
-        //        console.log('err');
+		console.log('err');
         throw err;
     }
-    //    console.log("success");
-});
-
-mongoose.connection.on("open",
-function() {
-    //    console.log("mongodb is connected!!");
-    });
-
-mongoose.connection.on("close",
-function() {
-    //    console.log("mongodb is closed!!");
-    });
-
-var fs = require('fs'),
-index;
-
-fs.readFile('./index.html',
-function(err, data) {
-    if (err) {
-        throw err;
-    }
-    index = data;
-});
-
-app.get('/index.html',
-function(req, response) {
-    response.writeHeader(200, {
-        "Content-Type": "text/html"
-    });
-    response.write(index);
-    response.end();
 });
 
 require('./schema');
 require('./site/codebase/date.format.js');
 var Schedule = db.model('Schedule', Schedule, 'schedule');
 var Network = db.model('Network', Network, 'network');
+
+// Params
 
 app.param('network',
 function(req, res, next, network) {
@@ -97,6 +67,16 @@ app.param('startdate',
 function(req, res, next, startdate) {
     req.startdate = startdate;
     next();
+});
+
+// Routes
+
+app.get('/',
+function(req, res) {
+    console.log('/rest');
+    res.statusCode = 302;
+    res.setHeader("Location", "/site/views/schedule.html");
+    res.end();
 });
 
 app.get('/rest',
