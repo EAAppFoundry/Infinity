@@ -52,6 +52,25 @@ to use it in not GPL project. Please contact sales@dhtmlx.com for details
     left: 80px;
     cursor: pointer;
 }
+
+.dhx_cal_next_time_button {
+    background-image: url(imgs/buttons.png);
+    background-position: -30px 0;
+    width: 29px;
+    height: 17px;
+    cursor: pointer;
+	float:left;
+}
+
+.dhx_cal_prev_time_button {
+    background-image: url(imgs/buttons.png);
+    background-position: 0 0;
+    width: 29px;
+    height: 17px;
+    cursor: pointer;
+	float:left;
+}
+
 .dhx_cal_today_button {
     background-image: url(imgs/buttons.png);
     background-position: -60px 0;
