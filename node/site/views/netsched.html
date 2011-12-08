@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+    <title>Main app</title>
+	<script src='../codebase/jquery-1.6.2.min.js' type='text/javascript' ></script>
+	<script src='../codebase/knockout-1.2.1.js' type='text/javascript' ></script>
+    <script type="text/javascript">
+
+        var tasks = ko.observableArray();
+         
+        function init() {
+            ko.applyBindings(tasks);
+        }
+
+        function loadData() {
+            var client = new XMLHttpRequest();
+            client.onreadystatechange = handler;
+            client.open("GET", "/schedules/network/TNT");
+            client.send();
+        };
+
+        function handler() {
+            if(this.readyState === 4) {
+                if(this.status === 200) {
+                    if (this.getResponseHeader('Content-Type') === 'application/json; charset=utf-8') {
+                        tasks(JSON.parse(this.responseText));
+						debugger;
+                    }
+                }
+            }
+        };
+    </script>
+</head>
+<body onload="init()">
+    <button onclick="loadData()">Load tasks</button>
+    <ul data-bind="foreach: tasks">
+        <li>
+            <strong data-bind="text: Network"></strong>
+        </li>
+    </ul>
+</body>
+</html>
