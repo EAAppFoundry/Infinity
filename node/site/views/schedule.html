@@ -30,7 +30,7 @@
 	
 	<link rel='stylesheet' type='text/css' href='../codebase/dhtmlxscheduler.css'>
 	
-	
+	<link rel='stylesheet' type='text/css' href='stylesheets/logos.css' >	
 	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery.ui.core.css'>
 	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery-ui-1.8.16.custom.css'>
 	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery.ui.all.css'>
@@ -195,7 +195,7 @@
 			});
 
 			scheduler.templates.timeline_scale_label = function(section_id, section_label, section_options){
-				return /*"<img src='" + section_options.Url + "' height='20px' width='30px'/>" + */section_label; 
+				return "<img src='' class='ch_" + section_options.key + "' height='24px' width='32px'/>" + section_label; 
 			};
 			
 			scheduler.templates.event_class = function(){
