@@ -33,7 +33,7 @@ var mongoose = require("mongoose");
 var db = mongoose.connect('mongodb://scheduling:scheduling@ds029117.mongolab.com:29117/scheduling',
 function(err) {
     if (err) {
-		console.log('err');
+        console.log('err');
         throw err;
     }
 });
@@ -44,7 +44,6 @@ var Schedule = db.model('Schedule', Schedule, 'schedule');
 var Network = db.model('Network', Network, 'network');
 
 // Params
-
 app.param('network',
 function(req, res, next, network) {
     req.network = network;
@@ -76,7 +75,6 @@ function(req, res, next, enddate) {
 });
 
 // Routes
-
 app.get('/',
 function(req, res) {
     console.log('/rest');
@@ -109,7 +107,9 @@ function(req, res) {
 app.get('/networks/turneronly',
 function(req, res) {
     console.log('/networks/turneronly');
-    Network.find({'IsTurnerNetwork' : true}).sort('Code', 'ascending').execFind(
+    Network.find({
+        'IsTurnerNetwork': true
+    }).sort('Code', 'ascending').execFind(
     function(err, networks) {
         if (err) {
             throw err;
@@ -122,7 +122,9 @@ function(req, res) {
 app.get('/networks/notturner',
 function(req, res) {
     console.log('/networks/notturner');
-    Network.find({'IsTurnerNetwork' : false}).sort('Code', 'ascending').execFind(
+    Network.find({
+        'IsTurnerNetwork': false
+    }).sort('Code', 'ascending').execFind(
     function(err, networks) {
         if (err) {
             throw err;
@@ -172,6 +174,37 @@ function(req, res) {
         }
         res.contentType('application/json');
         res.json(schedules);
+    });
+});
+
+app.get('/schedules/network/turneronly/today',
+function(req, res) {
+    res.contentType('application/json');
+    res.json('{"State: "Not yet implemented""}');
+return;
+   
+    console.log('/schedules/network/turneronly/today');
+    //Get turner only networks
+    Network.find({
+        'IsTurnerNetwork': false
+    }).sort('Code', 'ascending').execFind(
+    function(err, networks) {
+        if (err) {
+            throw err;
+        }
+        // Get schedules for today based on 
+		Schedule.find({
+            'Network': req.network
+        }).sort('StartDate', 'ascending').execFind(
+        function(err, schedules) {
+            if (err) {
+                throw err;
+            }
+
+            res.contentType('application/json');
+            res.json(schedules);
+        });
+
     });
 });
 
