@@ -1,0 +1,11 @@
+﻿            .evenTableRow {
+                background-color:#eee;color:#000;
+            }
+            .oddTableRow  {
+                background-color:#fff;color:#000;
+            }   
+            thead
+            {
+            	background-color:#0A0A2A;
+                color: #D8D8D8;
+            }

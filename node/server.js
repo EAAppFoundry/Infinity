@@ -38,6 +38,15 @@ function(err) {
     }
 });
 
+app.get('/export', function (req, res) {
+    //console.log('export');
+
+    var filename = 'ScheduleExport.csv';
+    res.attachment(filename);
+    //console.log('res.end');
+    res.end(req.query["csv_text"]);
+});
+
 require('./schema');
 require('./site/codebase/date.format.js');
 var Schedule = db.model('Schedule', Schedule, 'schedule');
