@@ -1,0 +1,1 @@
+exports.mongoConfig = 'mongodb://scheduling:scheduling@ds029117.mongolab.com:29117/scheduling'
