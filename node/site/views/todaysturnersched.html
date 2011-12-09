@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+<title> Main app </title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function() {		
+        	$.ajax({
+            	url: "/schedules/network/turneronly/today",
+            	data: "format=json",
+            	json: "jsoncallback",
+            	dataType: "json",
+            	success: function(data)
+            	{									
+                	$("#dayTemplate").tmpl(data).appendTo("#ulSchedule");
+            	}
+        	});		
+	    });
+    </script>
+	<script id="dayTemplate" type="text/x-jquery-tmpl">
+	    <li>
+			<div>
+				<img src="/site/views/images/networks/${Network}.png"></img>
+				<span class="title">${Title.Name}</span>
+			</div>			
+	        <span class="date">${StartDate} to ${EndDate}</span>
+	    </li>
+	</br>
+	</script>
+	<script id="networkTemplate" type="text/x-jquery-tmpl">
+	    <option value=${Code}>${Name}</option>
+	</script>
+	<style type="text/css">
+		ul {
+			list-style-type:none;
+		}
+		.title {
+			font-size:16px;
+		}
+		.date {
+			font-size:12px;
+		}	
+		.story {
+			font-size:12px;
+		}
+		li {
+			padding-left:10px;
+			border-radius: 5px; 
+			-moz-border-radius: 5px; 
+			-webkit-border-radius: 5px; 
+			border: 1px solid grey;
+			background-color: grey;
+			width:500px;	
+		}
+	</style>
+</head>
+<body>
+	This is a Work In Progress
+<ul id="ulSchedule"></ul>
+</body>
+</html>
