@@ -202,8 +202,15 @@
         airings: ko.observableArray([]),
 
         initialize: function(){
+			viewModel.initializing = true;
+			
 			this.loadSections();
 			this.directTime(viewModel.scheduleStartHour + ":00");
+			viewModel.selectedTimeFrame(defaultTimeFrame);
+			
+			$( "#tabs" ).tabs();
+			$('#timestart').timepickr({convention:24, rangeMin:['00', '30'] });
+			viewModel.initializing = false;
 		},
 		
 		createTimeLine: function(sections) {
@@ -458,7 +465,11 @@
 	
 	viewModel.directTimeChange = ko.dependentObservable(function() {
 		if (viewModel.directTime() == undefined) return;
-		if (viewModel.initializing) return;
+		if (viewModel.initializing) {
+			console.log("ignoring refresh in direct time change");
+			return;
+		}
+		viewModel.initializing = true;
 		var schedulerState = scheduler.getState();
 		var dt =  dateFormat(schedulerState.min_date, 'shortDate') + ' ' + viewModel.directTime();
 		console.log('loading direct time');
@@ -467,14 +478,17 @@
 		viewModel.scheduleStartHour = viewModel.startDate.getHours();
 		viewModel.createTimeLine(viewModel.sections());
 		viewModel.search();
-		
+		viewModel.initializing = false;
 	}, viewModel);
 	
 	ko.bindingHandlers.bindTimeFrame = {
 		init: function (element, valueAccessor) {
 		},
 		update: function (element, valueAccessor) {
-			if (viewModel.initializing) return;
+			if (viewModel.initializing)  {
+				console.log("ignoring refresh in time frame");
+				return;
+			}
 			viewModel.initializing = true;
 			var value = ko.utils.unwrapObservable(valueAccessor());
 			console.log("bind time frame calling search");
@@ -488,12 +502,6 @@
 	ko.applyBindings(viewModel);	
 	
 	$(document).ready(function() {
-	  viewModel.initialize();
-	  if (viewModel.initializing) return;
-	  viewModel.initializing = true;
-	  $( "#tabs" ).tabs();
-	  $('#timestart').timepickr({convention:24, rangeMin:['00', '30'] }).focus();
-	  search();
-	  viewModel.initializing = false;
+		viewModel.initialize();
 	});
 </script>
