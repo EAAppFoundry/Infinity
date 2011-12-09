@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<title>Brill's Schedule</title>
 </head>
-	<link rel="Stylesheet" type='text/css' href="../codebase/reset.css" />
 	<script src='../codebase/dhtmlxscheduler_debug.js' type="text/javascript" charset="utf-8"></script>
 	<script src='../codebase/ext/dhtmlxscheduler_timeline.js' type="text/javascript" charset="utf-8"></script>
 	<script src='../codebase/jquery-1.6.2.min.js' type='text/javascript' ></script>
@@ -17,25 +16,32 @@
 	<script src="../codebase/ext/dhtmlxscheduler_tooltip.js"></script>	
 	<script src="../codebase/ext/dhtmlxscheduler_key_nav.js"></script>	
 	<script src="../codebase/ext/dhtmlxscheduler_expand.js"></script>	
-	<script src="../codebase/ext/dhtmlxscheduler_readonly.js"></script>	
- 
+	
 	<link rel='stylesheet' type='text/css' href='../codebase/dhtmlxscheduler.css'>
 	
 	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery.ui.base.css'>
 	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery.ui.core.css'>
 	<link rel='stylesheet' type='text/css' href='../codebase/themes/dark-hive/jquery-ui-1.8.16.custom.css'>
-	<link rel="Stylesheet" type='text/css' href="../codebase/jquery.timepickr.css" />
-	<link rel="Stylesheet" type='text/css' href="../codebase/styles.css" />
+	<link rel="Stylesheet" type='text/css' href="../codebase/themes/dark-hive/jquery.ui.datepicker.css" />
+	
 	<link rel="Stylesheet" type='text/css' href="../codebase/ui.core.css" />
 	<link rel="Stylesheet" type='text/css' href="../codebase/ui.timepickr.css" />
 	
+	<script src="../sources/grid.locale-en.js" type="text/javascript"></script>
+    <script src="../sources/jquery.jqGrid.min.js" type="text/javascript"></script>
+    <script src="../sources/table2csv.js" type="text/javascript"></script>
+    <link rel='stylesheet' type='text/css' href='../sources/ScheduleList.css'>
+    <link rel='stylesheet' type='text/css' href='../sources/ui.jqgrid.css' />		
+
 	<script type="text/javascript" src="../codebase/jquery.utils.js"></script>
 	<script type="text/javascript" src="../codebase/jquery.anchorHandler.js"></script>
 	<script type="text/javascript" src="../codebase/jquery.strings.js"></script>
+	<script type="text/javascript" src="../codebase/jquery.ui.core.js"></script>   
 	<script type="text/javascript" src="../codebase/jquery.ui.all.js"></script>   
 	<script type="text/javascript" src="../codebase/jquery.timepickr.js"></script> 
+	<script type="text/javascript" src="../codebase/jquery.ui.datepicker.js"></script>   
 	
-		
+	
 <style type="text/css" media="screen">
 	html, body{
 		margin:0px;
@@ -63,12 +69,64 @@
 	}
 	
 	.eventStyle{
-		background-color:gray;
+		background-color:purple;
 		color: white;
-		background-color: gray;
 		border-color: black;
 		height:16px;
 		padding-top:3px;
+	}
+	
+	.eventStyleComedy{
+		background-color:brown;
+	}
+	.eventStyleHealth{
+		background-color:pink;
+		color:black;
+	}
+	
+	.eventStyleSitcom{
+		background-color:red;
+	}
+	
+	.eventStyleReality{
+		background-color:blue;
+	}
+	
+	.eventStyleGameShow{
+		background-color:yellow;
+		color:black;
+	}
+	
+	.eventStyleAdventure{
+		background-color:orange;
+	}
+	
+	.eventStyleFoot{
+		background-color:green;
+	}
+	
+	.eventStyleSportsTalk{
+		background-color:green;
+	}
+	
+	.eventStyleDrama{
+		background-color:lightsteelblue;
+	}
+	
+	.eventStyleMystery{
+		background-color:lightsteelblue;
+	}
+	
+	.eventStyleHistory{
+		background-color:Auburn;
+	}
+	
+	.eventStyleComedy-Drama{
+		background-color:Aquamarine;
+	}
+	.eventStyleDocumentary{
+		background-color:black;
+		color:white;
 	}
 	
 	.sectionStyle{
@@ -86,14 +144,18 @@
 	</ul>
 	<div id="tabs-1">
 		<div class="flashMessage hidden" data-bind="fadeVisible:{condition: viewModel.isBusy, speed:250}, text: viewModel.busyMessage"></div>
-		<div id="scheduler_here" class="dhx_cal_container" style='width:100%; min-height:550px;'>
+		<div id="scheduler_here" class="dhx_cal_container" style='width:100%; min-height:300px;'>
 			<div class="dhx_cal_navline" >
 				<div class="dhx_cal_prev_button"
 					data-bind="click:shiftDayLeft">&nbsp;</div>
 				<div class="dhx_cal_next_button"
 					data-bind="click:shiftDayLeft">&nbsp;</div>
 				<div class="dhx_cal_today_button"
-					data-bind="click:shiftToday"></div>
+					data-bind="click:shiftToday" ></div>
+				
+				<div name="dateselection" style="float:right;left:190px;width:200px;z-index:9999">
+					<input type="text" id="datepicker" data-bind="value: directDate" style="height:90%;width:100px">
+				</div>
 				
 				<div style="float:left;right:600px">Display <select data-bind="options:availableTimeFrames, 
 					optionsText:'display', value:selectedTimeFrame, bindTimeFrame:selectedTimeFrame()"></select> hours</div>
@@ -123,8 +185,17 @@
 		</div>
 	</div>
 	<div id="tabs-2">
-	test2
-	</div>
+        <!--        <input type="button" value="Load Schedule" onclick="loadschedule('');"/>-->
+        <div  style='width:100%; height:550px;' style="overflow-y:scroll">
+         <table id="ScheduleList" class="scroll" cellpadding="0" cellspacing="0"></table>
+        <div style="float: right">
+            <form action="/export" method ="PUT"  target="_blank" > 
+                <input type="hidden" name="csv_text" id="csv_text">
+                <input type="submit" id="ScheduleListExport" value="Export Excel" onclick="exporttoexcel();"/>             
+            </form>
+        </div>
+        </div>	
+   </div>
 </div>
 		
 
@@ -157,7 +228,7 @@
 		},
 		
 		directTime: ko.observable(),
-		
+		directDate: ko.observable(''),
 		selectedTimeFrame: ko.observable(),
 		availableTimeFrames: ko.observableArray([
 			defaultTimeFrame,
@@ -205,11 +276,20 @@
 			viewModel.initializing = true;
 			
 			this.loadSections();
+			this.createTimeLine(viewModel.sections());
+			//viewModel.directDate(viewModel.startDate);
+			$( "#datepicker" ).datepicker();
+			$( "#datepicker" ).datepicker('setDate', viewModel.startDate);
+			$( "#ui-datepicker-div").hide();
 			this.directTime(viewModel.scheduleStartHour + ":00");
 			viewModel.selectedTimeFrame(defaultTimeFrame);
 			
+			
 			$( "#tabs" ).tabs();
 			$('#timestart').timepickr({convention:24, rangeMin:['00', '30'] });
+			
+			
+			
 			viewModel.initializing = false;
 		},
 		
@@ -250,8 +330,10 @@
 				return "sectionStyle";
 			};
 			
-			scheduler.templates.event_class = function(){
-				return 'eventStyle';
+			scheduler.templates.event_class = function(start, end, event){
+				//console.log(event.title.genre);
+				var genreStyleName = event.title.genre == null ? ''  : event.title.genre.replace(/(^\s*|\s*$)/, "");
+				return 'eventStyle eventStyle' + genreStyleName;
 			};
 			
 			scheduler.templates.tooltip_text = function(start,end,event) {
@@ -298,6 +380,11 @@
 		},
 		
 		shiftDay: function(shift){
+			if (viewModel.initializing){
+				console.log("ignoring refresh from shifting day");
+				return;
+			}
+			viewModel.initializing = true;
 			this.busyMessage("Fetching airings");
 			this.isBusy(true);
 			
@@ -305,8 +392,8 @@
 			workingDate.add(shift).days();
 			viewModel.startDate = workingDate;
 			viewModel.createTimeLine(viewModel.sections());
-			
 			viewModel.search();
+			viewModel.initializing = false;
 		},
 		
 		shiftTimeLeft: function(){
@@ -318,34 +405,49 @@
 		},
 		
 		shiftTime: function(shift){
+			if (viewModel.initializing){
+				console.log("ignoring refresh from shifting day");
+				return;
+			}
+			viewModel.initializing = true;
 			this.busyMessage("Fetching airings");
 			this.isBusy(true);
+			console.log("calling shiftTime");
 			
 			var schedulerState = scheduler.getState();
 			var dt = schedulerState.min_date.add(shift).hours();
 			viewModel.scheduleStartHour = dt.getHours();
 			viewModel.startDate = dt;
+			viewModel.directTime(dateFormat(dt, 'HH:MM'));
 			
 			viewModel.createTimeLine(viewModel.sections());
 			
 			viewModel.search();
+			viewModel.initializing = false;
 		},
 		
 		shiftToday: function(){
+			if (viewModel.initializing){
+				console.log("ignoring refresh from shifting day");
+				return;
+			}
+			viewModel.initializing = true;
+			console.log("calling shiftToday");
 			this.busyMessage("Fetching airings");
 			this.isBusy(true);
-			
+			viewModel.initializing = true;
 			viewModel.startDate = new Date();
 			viewModel.createTimeLine(viewModel.sections());
 			
 			viewModel.search();
+			viewModel.initializing = false;
 		},
 		
 		loadSections: function () {
 			
 			viewModel.isBusy(true);
 			viewModel.busyMessage("Fetching sections");
-			
+			console.log("loading sections");
             $.ajax({
                 url: this.getSectionsURL,
                 contentType: 'application/json',
@@ -388,6 +490,7 @@
 
         loadAirings: function () {
 			viewModel.busyMessage("Fetching airings");
+			console.log("fetching airings" + new Date().toLocaleString());
 			$.ajax({
                 url: this.getSearchURL(),
                 contentType: 'application/json',
@@ -431,6 +534,63 @@
             });
         },
 		
+	    loadschedule: function () {
+            //alert('load schedule');
+            //reload grid if it already exists 
+            var e = $("#ScheduleList").data("events");
+            if (typeof(e) !== "undefined" && typeof(e.reloadGrid) !== "undefined") {
+                $("#ScheduleList").trigger("reloadGrid");
+            }    
+        
+            var urlSchedule = viewModel.getSearchURL(); //'http://localhost:3000/schedules';
+            jQuery("#ScheduleList").jqGrid({
+                url: urlSchedule,
+                datatype: "json",
+                colNames: ['Network', 'StartDate', 'EndDate', 'Genre', 'SeriesName', 'TitleName', 'Storyline', 'Platform', 'Source'],
+                colModel: [
+                        { name: 'Network', index: 'Network', width: 70},
+                        { name: 'StartDate', index: 'StartDate', width: 120, formatter: 'date', formatoptions: { srcformat: "Y-m-d h:i:s", newformat: 'm/d/Y g:i A' }, sorttype: "date", datefmt: "m/d/Y h:i:s" },
+                        { name: 'EndDate', index: 'EndDate', width: 120, formatter: 'date', formatoptions: { srcformat: "Y-m-d h:i:s", newformat: 'm/d/Y g:i A' }, sorttype: "date", datefmt: "m/d/Y h:i:s" },
+                        { name: 'Title.Genre', width: 90 },
+                        { name: 'Title.SeriesName', width: 100 },
+                        { name: 'Title.Name', width: 150 },
+                        { name: 'Title.Storyline', width: 250 },
+                        { name: 'Platform', index: 'Platform', width: 90, align: "right" },
+                        { name: 'Source', index: 'Source', width: 90, align: "right" }
+                    ],
+                    height: 500,//'auto', //"100%",
+                    autowidth: true,
+
+                    rowNum: -1,
+                    sortable: true,
+                    sortname: 'Network',
+                    sortorder: 'asc',
+                    viewrecords: true,
+                    gridview: true,
+                    emptyrecords: "Empty records",
+                    repeatitems: false,
+                    search: true,
+                    ignoreCase: true,
+                    loadonce:false,
+                    excel: true,
+
+                loadComplete: function (data) {
+                    //alert("data loaded");
+                    //debugger;
+                    ModifyGridDefaultStyles();
+                    $("#ScheduleListExport").show();
+                    $("#ScheduleList").setGridWidth($(window).width()-60);
+                },
+                jsonReader: {
+                    repeatitems: false,
+                    page: function () { return 1; },
+                    root: function (obj) { return obj; },
+                    records: function (obj) { return obj.length; }
+                }
+
+            });
+        },
+		
 		filterArrayForTnt: function(array, propery){
 			var tempData = [];
 			$.each(array, function(i, val){
@@ -444,7 +604,16 @@
 			var dt = new Date(dateValue);
 			return "{0} {1}".format(dateFormat(dt, 'isoDate'), dateFormat(dt, 'isoTime'));
 		},
-		
+	
+		refresh: function(guts, callerName){
+			if (viewModel.initializing) {
+				console.log("ignoring refresh for " + callerName);
+				return;
+			}
+			viewModel.initializing = true;
+			try{guts();}
+			finally{viewModel.initializing = false;}
+		}
 	};
 	
 	viewModel.searchCompleted = ko.dependentObservable(function() {
@@ -459,49 +628,85 @@
 				
 	}, viewModel);
 	
-	viewModel.sectionsLoaded = ko.dependentObservable(function() {
-		this.createTimeLine(viewModel.sections());
-	}, viewModel);
-	
 	viewModel.directTimeChange = ko.dependentObservable(function() {
 		if (viewModel.directTime() == undefined) return;
-		if (viewModel.initializing) {
-			console.log("ignoring refresh in direct time change");
-			return;
-		}
-		viewModel.initializing = true;
-		var schedulerState = scheduler.getState();
-		var dt =  dateFormat(schedulerState.min_date, 'shortDate') + ' ' + viewModel.directTime();
-		console.log('loading direct time');
-		viewModel.startDate = new Date(dt);
 		
-		viewModel.scheduleStartHour = viewModel.startDate.getHours();
-		viewModel.createTimeLine(viewModel.sections());
-		viewModel.search();
-		viewModel.initializing = false;
+		viewModel.refresh(function(){
+			console.log("calling direct time change");
+			var schedulerState = scheduler.getState();
+			var dt =  dateFormat(schedulerState.min_date, 'shortDate') + ' ' + viewModel.directTime();
+			console.log('loading direct time');
+			viewModel.startDate = new Date(dt);
+			
+			viewModel.scheduleStartHour = viewModel.startDate.getHours();
+			viewModel.createTimeLine(viewModel.sections());
+			viewModel.search();
+		}, "direct time change");
 	}, viewModel);
+	
+	viewModel.directDateChange = ko.dependentObservable(function() {
+		if (viewModel.directDate() == undefined) return;
+		viewModel.refresh(function(){
+			if (viewModel.startDate == viewModel.directDate()) return;
+			console.log("calling direct date change");
+			viewModel.initializing = true;
+			var schedulerState = scheduler.getState();
+			var dt =  dateFormat(viewModel.directDate(), 'shortDate') + ' ' + dateFormat(schedulerState.min_date, 'shortTime');
+			console.log('loading direct date');
+			viewModel.startDate = new Date(dt);
+			
+			viewModel.createTimeLine(viewModel.sections());
+			viewModel.search();
+		}, "direct time change");
+	}, viewModel);
+	
+	
 	
 	ko.bindingHandlers.bindTimeFrame = {
 		init: function (element, valueAccessor) {
 		},
 		update: function (element, valueAccessor) {
-			if (viewModel.initializing)  {
-				console.log("ignoring refresh in time frame");
-				return;
-			}
-			viewModel.initializing = true;
-			var value = ko.utils.unwrapObservable(valueAccessor());
-			console.log("bind time frame calling search");
-			viewModel.intervals = viewModel.selectedTimeFrame().intervals;
-			viewModel.createTimeLine(viewModel.sections());
-			viewModel.search();
-			viewModel.initializing = false;
+			viewModel.refresh(function(){
+				console.log("calling time frame change");
+				viewModel.initializing = true;
+				var value = ko.utils.unwrapObservable(valueAccessor());
+				
+				viewModel.intervals = viewModel.selectedTimeFrame().intervals;
+				viewModel.createTimeLine(viewModel.sections());
+				viewModel.search();
+			}, "binding time frame");
 		}
 	};
 
 	ko.applyBindings(viewModel);	
 	
+	function ModifyGridDefaultStyles() {
+            $('#' + "ScheduleList" + ' tr').removeClass("ui-widget-content");
+            $('#' + "ScheduleList" + ' tr:nth-child(even)').addClass("evenTableRow");
+            $('#' + "ScheduleList" + ' tr:nth-child(odd)').addClass("oddTableRow");
+	};
+
+	 exporttoexcel = function() {
+		var csv_value=$('#ScheduleList').table2CSV({delivery:'value'});
+		 $("#csv_text").val(csv_value);	
+	};
+	
 	$(document).ready(function() {
 		viewModel.initialize();
+		
+		$("#ScheduleListExport").hide();
+        
+        $(window).bind('resize', function () {
+            $("#ScheduleList").setGridWidth($(window).width()-60);
+        }).trigger('resize');
+
+		$('#tabs').bind('tabsselect', function(event, ui) {
+			console.log(ui.index);
+			if (ui.index == 1)
+				viewModel.loadschedule();
+			else if (ui.index == 2)
+				viewModel.createTimeline(viewModel.sections());
+		});
+		$("#scheduler_here").height($(document).height() - 86);
 	});
 </script>

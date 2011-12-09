@@ -30,12 +30,21 @@ function() {
 
 var mongoose = require("mongoose");
 
-var db = mongoose.connect('mongodb://scheduling:scheduling@ds029117.mongolab.com:29117/scheduling',
+var db = mongoose.connect(require('./config').mongoConfig,
 function(err) {
     if (err) {
         console.log('err');
         throw err;
     }
+});
+
+app.get('/export', function (req, res) {
+    //console.log('export');
+
+    var filename = 'ScheduleExport.csv';
+    res.attachment(filename);
+    //console.log('res.end');
+    res.end(req.query["csv_text"]);
 });
 
 require('./schema');
@@ -217,32 +226,61 @@ function(req, res) {
 
 app.get('/schedules/network/turneronly/today',
 function(req, res) {
-    res.contentType('application/json');
-    res.json('{"State: "Not yet implemented""}');
-    return;
-
     console.log('/schedules/network/turneronly/today');
     //Get turner only networks
     Network.find({
-        'IsTurnerNetwork': false
+        'IsTurnerNetwork': true
     }).sort('Code', 'ascending').execFind(
     function(err, networks) {
         if (err) {
             throw err;
         }
+		var netArray = new Array();
+		for (i = 0; i <= (networks.length - 1); i++)
+        {
+			netArray[i] = networks[i].Name;
+        }
+        
         // Get schedules for today based on
-        Schedule.find({
-            'Network': req.network
-        }).sort('StartDate', 'ascending').execFind(
-        function(err, schedules) {
-            if (err) {
-                throw err;
-            }
+	    var today = new Date();
 
-            res.contentType('application/json');
-            res.json(schedules);
-        });
+	    var startDate = new Date();
+	    startDate.setUTCDate(today.getDate());
+	    startDate.setUTCHours(0);
+	    startDate.setUTCMinutes(0);
+	    startDate.setUTCSeconds(0);
 
+	    var endDate = new Date();
+	    endDate.setUTCDate(today.getDate());
+	    endDate.setUTCHours(23);
+	    endDate.setUTCMinutes(59);
+	    endDate.setUTCSeconds(29);
+
+	    Schedule.find({
+	        $or: [
+	        {
+	            'StartDate': {
+	                $gte: startDate.toISO(),
+	                $lte: endDate.toISO()
+	            }
+	        },
+	        {
+	            'EndDate': {
+	                $gte: startDate.toISO(),
+	                $lte: endDate.toISO()
+	            }
+	        }
+	        ],
+	        'Network': {$in : netArray}
+	    }).sort('StartDate', 'ascending').execFind(
+	    function(err, schedules) {
+	        if (err) {
+	            throw err;
+	        }
+
+	        res.contentType('application/json');
+	        res.json(schedules);
+	    });
     });
 });
 
