@@ -71,6 +71,12 @@ to use it in not GPL project. Please contact sales@dhtmlx.com for details
 	float:left;
 }
 
+.dhx_display_hours{
+    height: 17px;
+    cursor: pointer;
+	float:left;
+}
+
 .dhx_cal_today_button {
     background-image: url(imgs/buttons.png);
     background-position: -60px 0;

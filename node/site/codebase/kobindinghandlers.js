@@ -22,3 +22,15 @@ ko.bindingHandlers.fadeVisible = {
                                     });
     }
 };
+
+ko.bindingHandlers.bindTimeFrame = {
+    init: function (element, valueAccessor) {
+    },
+    update: function (element, valueAccessor) {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+		console.log("bind time frame calling search");
+		viewModel.intervals = viewModel.selectedTimeFrame().intervals;
+		viewModel.createTimeLine(viewModel.sections());
+		viewModel.search();
+	}
+};

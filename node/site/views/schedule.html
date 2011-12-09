@@ -95,6 +95,8 @@
 					data-bind="click:shiftDayLeft">&nbsp;</div>
 				<div class="dhx_cal_today_button"
 					data-bind="click:shiftToday"></div>
+				<div style="float:left;right:480px">Display <select data-bind="options:availableTimeFrames, 
+					optionsText:'display', value:selectedTimeFrame, bindTimeFrame:selectedTimeFrame"></select> hours</div>
 				<div class="dhx_cal_date"></div>
 				<div class="dhx_cal_tab" name="day_tab" style="right:204px;display:none"></div>
 				<div class="dhx_cal_tab" name="week_tab" style="right:140px;display:none"></div>
@@ -122,6 +124,13 @@
 
 
 <script type="text/javascript">
+	var timeFrame = function(intervals, display) {
+        this.intervals = intervals;
+        this.display = display;    
+    };    
+	
+	var defaultTimeFrame = new timeFrame(4, 2);
+	
 	var viewModel = {
 
 		// Busy indicators
@@ -129,9 +138,24 @@
         isBusy: ko.observable(false),
 
 		interval: 30, // minutes per column
-		intervals: 4, // number of columns
+		intervals: 6, // number of columns
 		scheduleStartHour: new Date().getHours(),
-		shiftTimeInterval: 2,
+		shiftTimeInterval: function(){
+			return viewModel.selectedTimeFrame().intervals == undefined 
+			? 2 
+			: Math.ceil(viewModel.selectedTimeFrame().intervals / 4);
+		},
+		
+		selectedTimeFrame: ko.observable(),
+		availableTimeFrames: ko.observableArray([
+			defaultTimeFrame,
+			new timeFrame(6, 3),
+			new timeFrame(8, 4),
+			new timeFrame(10, 5),
+			new timeFrame(12, 6),
+        ]),
+		
+		
 		
 		start: function(){ //start:  first time to show
 			return viewModel.scheduleStartHour * (60 / viewModel.interval);
@@ -167,7 +191,7 @@
 
         initialize: function(){
 			this.loadSections();
-			this.search();
+			//this.search();
 		},
 		
 		createTimeLine: function(sections) {
@@ -263,11 +287,11 @@
 		},
 		
 		shiftTimeLeft: function(){
-			this.shiftTime(-this.shiftTimeInterval);
+			this.shiftTime(-this.shiftTimeInterval());
 		},
 		
 		shiftTimeRight: function(){
-			this.shiftTime(this.shiftTimeInterval);
+			this.shiftTime(this.shiftTimeInterval());
 		},
 		
 		shiftTime: function(shift){
@@ -277,6 +301,7 @@
 			var schedulerState = scheduler.getState();
 			var dt = schedulerState.min_date.add(shift).hours();
 			viewModel.scheduleStartHour = dt.getHours();
+			viewModel.startDate(dt);
 			viewModel.createTimeLine(viewModel.sections());
 			
 			viewModel.search();
@@ -394,7 +419,7 @@
 		
 		formatDate: function(dateValue){
 			var dt = new Date(dateValue);
-			return dt;
+			return "{0} {1}".format(dateFormat(dt, 'isoDate'), dateFormat(dt, 'isoTime'));
 		},
 	};
 	
@@ -402,18 +427,18 @@
 		viewModel.isBusy(false);
 		
 		scheduler.clearAll();
-		//TODO:  needs performance boost
-		$.each(viewModel.airings(), function(i, val){
-			scheduler.addEvent(val);
-		}); 
-		//scheduler.parse(viewModel.airings(), "json");
+		scheduler.config.xml_date="%Y-%m-%d %H:%i";
+
+		var airings = viewModel.airings();
+		var str = JSON.stringify(airings);
+		scheduler.parse(str, "json");
 				
 	}, viewModel);
 	
 	viewModel.sectionsLoaded = ko.dependentObservable(function() {
 		this.createTimeLine(viewModel.sections());
 	}, viewModel);
-	
+		
 	ko.applyBindings(viewModel);	
 	
 	$(document).ready(function() {
