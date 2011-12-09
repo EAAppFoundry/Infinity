@@ -104,6 +104,44 @@ function(req, res) {
     });
 });
 
+app.get('/networks/images',
+function(req, res) {
+    console.log('/networks/images');
+    Network.find({}).sort('Code', 'ascending').execFind(
+    function(err, networks) {
+        if (err) {
+            throw err;
+        }
+        var staticPath = './site/views/';
+        var tempPath;
+        // foreach on each row
+        for (i = 0; i <= (networks.length - 1); i++)
+        {
+            tempPath = staticPath + networks[i].LogoUrl;
+
+			// this is synchronous so it will be slower
+			if(!fileExists(tempPath))
+			{
+				networks[i].LogoUrl = '';
+			}
+        }
+        res.contentType('application/json');
+        res.json(networks);
+    });
+});
+
+function fileExists(filePath) {
+	try
+	{
+		require('fs').statSync(filePath)
+	}
+	catch(err)
+	{
+		return false;
+	}
+	return true;
+}
+
 app.get('/networks/turneronly',
 function(req, res) {
     console.log('/networks/turneronly');
@@ -181,8 +219,8 @@ app.get('/schedules/network/turneronly/today',
 function(req, res) {
     res.contentType('application/json');
     res.json('{"State: "Not yet implemented""}');
-return;
-   
+    return;
+
     console.log('/schedules/network/turneronly/today');
     //Get turner only networks
     Network.find({
@@ -192,8 +230,8 @@ return;
         if (err) {
             throw err;
         }
-        // Get schedules for today based on 
-		Schedule.find({
+        // Get schedules for today based on
+        Schedule.find({
             'Network': req.network
         }).sort('StartDate', 'ascending').execFind(
         function(err, schedules) {
@@ -305,42 +343,6 @@ function(req, res) {
     console.log('/schedules/startdate/:startdate/enddate/:enddate');
     var stDate = req.startdate;
     var endDate = req.enddate;
-    if (stDate != undefined)
-    {
-        var startDate = new Date(unescape(stDate.toString()).replace(/'/gi, "")).toISO();
-        var endDate = new Date(endDate == undefined ? startDate: unescape(endDate.toString()).replace(/'/gi, "")).toISO();
-
-        Schedule.find({
-            $or: [
-            {
-                'StartDate': {
-                    $gte: startDate,
-                    $lte: endDate
-                }
-            },
-            {
-                'EndDate': {
-                    $gte: startDate,
-                    $lte: endDate
-                }
-            }
-            ]
-        }).sort('StartDate', 'ascending').execFind(
-        function(err, schedules) {
-            if (err) {
-                throw err;
-            }
-            res.contentType('application/json');
-            res.json(schedules);
-        });
-    }
-});
-
-app.get('/schedules/schedule?',
-function(req, res) {
-    console.log('/schedules/schedule?');
-    var stDate = require('url').parse(req.url, true).query.startdate;
-    var endDate = require('url').parse(req.url, true).query.enddate;
     if (stDate != undefined)
     {
         var startDate = new Date(unescape(stDate.toString()).replace(/'/gi, "")).toISO();
