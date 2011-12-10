@@ -14,7 +14,6 @@
 	<script src='../codebase/stringextension.js' type='text/javascript' ></script>
 
 	<script src="../codebase/ext/dhtmlxscheduler_tooltip.js"></script>	
-	<script src="../codebase/ext/dhtmlxscheduler_key_nav.js"></script>	
 	<script src="../codebase/ext/dhtmlxscheduler_expand.js"></script>	
 	
 	<link rel='stylesheet' type='text/css' href='../codebase/dhtmlxscheduler.css'>
@@ -69,27 +68,43 @@
 	}
 	
 	.eventStyle{
-		background-color:purple;
+		background-color:darkblue;
 		color: white;
 		border-color: black;
 		height:16px;
 		padding-top:3px;
 	}
 	
+	.eventStyleAction{
+		background-color:DarkViolet;
+		color:white;
+	}
+	
+	.eventStyleAdventure{
+		background-color:orange;
+	}
+	
+	.eventStyleChildrens{
+		background-color:Tomato;
+	}
+	
 	.eventStyleComedy{
-		background-color:brown;
-	}
-	.eventStyleHealth{
-		background-color:pink;
-		color:black;
+		background-color:MediumSeaGreen;
 	}
 	
-	.eventStyleSitcom{
-		background-color:red;
+	.eventStyleComedy-Drama{
+		background-color:Crimson;
 	}
 	
-	.eventStyleReality{
-		background-color:blue;
+	.eventStyleDrama{
+		background-color:lightsteelblue;
+	}
+	.eventStyleDocumentary{
+		background-color:FireBrick;
+	}
+	
+	.eventStyleFoot{
+		background-color:green;
 	}
 	
 	.eventStyleGameShow{
@@ -97,36 +112,38 @@
 		color:black;
 	}
 	
-	.eventStyleAdventure{
-		background-color:orange;
-	}
-	
-	.eventStyleFoot{
-		background-color:green;
-	}
-	
-	.eventStyleSportsTalk{
-		background-color:green;
-	}
-	
-	.eventStyleDrama{
-		background-color:lightsteelblue;
-	}
-	
-	.eventStyleMystery{
-		background-color:lightsteelblue;
+	.eventStyleHealth{
+		background-color:pink;
+		color:black;
 	}
 	
 	.eventStyleHistory{
 		background-color:Auburn;
 	}
-	
-	.eventStyleComedy-Drama{
-		background-color:Aquamarine;
-	}
-	.eventStyleDocumentary{
+
+	.eventStyleInterview{
 		background-color:black;
-		color:white;
+	}
+	
+	.eventStyleMystery{
+		background-color:lightsteelblue;
+		color:black;
+	}
+	
+	.eventStyleNews{
+		background-color:RoyalBlue;
+	}
+	
+	.eventStyleReality{
+		background-color:brown;
+	}
+	
+	.eventStyleSitcom{
+		background-color:MediumOrchid;
+	}
+	
+	.eventStyleSportsTalk{
+		background-color:DarkGreen;
 	}
 	
 	.sectionStyle{
@@ -332,7 +349,9 @@
 			
 			scheduler.templates.event_class = function(start, end, event){
 				//console.log(event.title.genre);
-				var genreStyleName = event.title.genre == null ? ''  : event.title.genre.replace(/(^\s*|\s*$)/, "");
+				var genreStyleName = event.title.genre == null 
+					? ''  
+					: event.title.genre.replace(/(^\s*|\s*$)/, "");
 				return 'eventStyle eventStyle' + genreStyleName;
 			};
 			

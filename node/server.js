@@ -391,12 +391,12 @@ function(req, res) {
             {
                 'StartDate': {
                     $gte: startDate,
-                    $lte: endDate
+                    $lt: endDate
                 }
             },
             {
                 'EndDate': {
-                    $gte: startDate,
+                    $gt: startDate,
                     $lte: endDate
                 }
             }
