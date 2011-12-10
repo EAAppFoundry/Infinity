@@ -82,10 +82,15 @@
 	
 	.eventStyleAdventure{
 		background-color:orange;
+		color:black;
 	}
 	
 	.eventStyleChildrens{
-		background-color:Tomato;
+		background-color:HotPink;
+	}
+	
+	.eventStyleCollFoot{
+		background-color:green;
 	}
 	
 	.eventStyleComedy{
@@ -94,6 +99,11 @@
 	
 	.eventStyleComedy-Drama{
 		background-color:Crimson;
+	}
+	
+	.eventStyleComedy-Drama{
+		background-color:DarkSlateGray;
+		color:black;
 	}
 	
 	.eventStyleDrama{
@@ -143,6 +153,10 @@
 	}
 	
 	.eventStyleSportsTalk{
+		background-color:DarkGreen;
+	}
+	
+	.eventStyleSportsRelated{
 		background-color:DarkGreen;
 	}
 	
@@ -351,7 +365,9 @@
 				//console.log(event.title.genre);
 				var genreStyleName = event.title.genre == null 
 					? ''  
-					: event.title.genre.replace(/(^\s*|\s*$)/, "");
+					: event.title.genre
+						.replace(/\s+/g, "")
+						.replace(/'+/g, "");
 				return 'eventStyle eventStyle' + genreStyleName;
 			};
 			
