@@ -17,7 +17,11 @@
     "jade": "latest",
     "sass": "latest",
     "loggly": "latest",
-    "mongoose": "latest"
+    "mongoose": "latest",
+    "mongodb": "latest",
+    "request": "latest",
+    "hooks": "latest", 
+    "colors": "latest"
   },
   "devDependencies": {}
 }
