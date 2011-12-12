@@ -1,10 +1,23 @@
 {
-    "name": "application-name"
-  , "version": "0.0.1"
-  , "private": true
-  , "dependencies": {
-      "express": "2.5.1"
-    , "jade": ">= 0.0.1"
-    , "mongoose": "2.4.1"
-  }
+  "author": "Kevin Brill <kevin.brill@turner.com>, Todd Winfrey, Karlton Berry",
+  "name": "Infinity",
+  "description": "Websie and set of apis that aggrigate and surface schedule data",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EAAppFoundry/Infinity"
+  },
+  "main": "server.js",
+  "engines": {
+    "node": "~0.6.5"
+  },
+  "dependencies": {
+    "express": "latest",
+    "express-messages": "latest",
+    "jade": "latest",
+    "sass": "latest",
+    "loggly": "latest",
+    "mongoose": "latest"
+  },
+  "devDependencies": {}
 }
