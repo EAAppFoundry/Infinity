@@ -1,11 +1,16 @@
 ﻿            .evenTableRow {
                 background-color:#eee;color:#000;
+				font-size:small;
             }
             .oddTableRow  {
                 background-color:#fff;color:#000;
+				font-size:small;
             }   
             thead
-            {
+			{
             	background-color:#0A0A2A;
                 color: #D8D8D8;
             }
+			
+			#tabs-2 .ui-jqgrid-labels { height:40px; font-size:12pt; }
+			
