@@ -211,10 +211,10 @@
 			</div>		
 		</div>
 	</div>
-	<div id="tabs-2">
+	<div id="tabs-2" style="height:100%">
         <!--        <input type="button" value="Load Schedule" onclick="loadschedule('');"/>-->
-        <div  style='width:100%; height:550px;' style="overflow-y:scroll">
-         <table id="ScheduleList" class="scroll" cellpadding="0" cellspacing="0"></table>
+        <div  id="gridHeightAdjuster" style='width:100%; min-height:550px;height:100%' style="overflow-y:scroll">
+         <table id="ScheduleList" class="scroll" cellpadding="0" cellspacing="0" style="height:90%"></table>
         <div style="float: right">
             <form action="/export" method ="PUT"  target="_blank" > 
                 <input type="hidden" name="csv_text" id="csv_text">
@@ -612,6 +612,8 @@
                     ModifyGridDefaultStyles();
                     $("#ScheduleListExport").show();
                     $("#ScheduleList").setGridWidth($(window).width()-60);
+					$("#ScheduleList").setGridHeight($(window).height()-160);
+					
                 },
                 jsonReader: {
                     repeatitems: false,
@@ -725,11 +727,16 @@
 
 		$('#tabs').bind('tabsselect', function(event, ui) {
 			console.log(ui.index);
-			if (ui.index == 1)
+			if (ui.index == 1){
 				viewModel.loadschedule();
-			else if (ui.index == 2)
+			} else if (ui.index == 2){
 				viewModel.createTimeline(viewModel.sections());
+				
+			}
 		});
+		
 		$("#scheduler_here").height($(document).height() - 86);
+		$("#tabs-2").height($(document).height() - 86);
+		$("#gridHeightAdjuster").height($(document).height() - 86);
 	});
 </script>
