@@ -24,7 +24,7 @@ namespace ScheduleAggregator
                 database.CreateCollection("schedule");
 
             var startDate = DateTime.Now.Date.AddDays( -45 );
-            var endDate = startDate.AddDays(14);
+            var endDate = DateTime.Now.Date.AddDays(14);
 
             var networkImporter = new NetworkImporter(database);
             networkImporter.Import();
