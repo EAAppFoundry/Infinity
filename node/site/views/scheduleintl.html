@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -271,7 +271,7 @@
 			return viewModel.scheduleStartHour * (60 / viewModel.interval);
 		},
 		
-        getSectionsURL: '../../networks/images',
+        getSectionsURL: '/networks/feedcode',
 		
 		getSearchURL: function(){
 			var schedulerState = scheduler.getState();
@@ -286,7 +286,7 @@
 			
 			var startDate =  schedulerState.min_date.toISO();
 			var endDate = schedulerState.max_date.toISO();
-			var path = "../../schedules/startdate/'{0}'/enddate/'{1}'"
+			var path = "../../schedules/CNNI/Linear/Linear/'{0}'/'{1}'"
 				.format(startDate, endDate);
 				
 			return path;
@@ -380,8 +380,8 @@
 					"<br/><b>External Id:</b> "+event.externalId+
 					"<br/><b>Start:</b> "+event.start_date.format()+
 					"<br/><b>End:</b> "+event.end_date.format()+
-					"<br/><b>Network Feed Code:</b> "+event.networkFeedCode+
-					"<br/><b>Story Line:</b> "+event.title.storyLine ;					
+					"<br/><b>Network Feed Code:</b> "+event.networkFeedCode+					
+					"<br/><b>Story Line:</b> "+event.title.storyLine ;
 			};
 			
 			dhtmlXTooltip.config.className = 'dhtmlXTooltip tooltip'; // sets the CSS classname of the tooltip window
@@ -535,7 +535,7 @@
 						?	$.map( data, function( data, i ){
 								return { 
 									start_date: viewModel.formatDate(data.StartDate), end_date: viewModel.formatDate(data.EndDate), 
-									text: data.Title.Name, section_id: data.Network, externalId: data.ExternalId, 
+									text: data.Title.Name, section_id: data.Network + data.NetworkFeedCode, externalId: data.ExternalId, 
 									platform: data.Platform, source: data.Source, networkFeedCode: data.NetworkFeedCode,
 									 title: { name: data.Title.Name,
 											  seriesName: data.Title.SeriesName,
@@ -545,7 +545,7 @@
 											  type: data.Title.Type,
 											  storyLine: data.Title.Storyline}}}) 
 						: { start_date: data.StartDate, end_date: data.EndDate, text: data.Title.Name, 
-							section_id: data.Network, externalId : data.ExternalId, platform: data.Platform, source: data.Source, networkFeedCode: data.NetworkFeedCode,
+							section_id: data.Network + data.NetworkFeedCode, externalId : data.ExternalId, platform: data.Platform, source: data.Source, networkFeedCode: data.NetworkFeedCode,
 							title: { name: data.Title.Name,
 									seriesName: data.Title.SeriesName,
 									releaseYear: data.Title.ReleaseYear,
@@ -590,7 +590,7 @@
                         { name: 'Title.Storyline', width: 250 },
                         { name: 'Platform', index: 'Platform', width: 90, align: "right" },
                         { name: 'Source', index: 'Source', width: 90, align: "right" },
-                        { name: 'NetworkFeedCode', index: 'NetworkFeedCode', width: 90, align: "right" }                        
+                        { name: 'NetworkFeedCode', index: 'NetworkFeedCode', width: 90, align: "right" } 
                     ],
 					height: '500',
                     autowidth: true,

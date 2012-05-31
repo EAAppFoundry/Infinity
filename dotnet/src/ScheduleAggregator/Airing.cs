@@ -21,5 +21,7 @@ namespace ScheduleAggregator
 
         public string Platform { get; set; }
         public string Source { get; set; }
+
+        public string NetworkFeedCode { get; set; }
     }
 }

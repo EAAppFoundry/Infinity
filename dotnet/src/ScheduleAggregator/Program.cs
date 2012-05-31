@@ -13,7 +13,7 @@ namespace ScheduleAggregator
     {
         static void Main(string[] args)
         {
-            const string connectionString = "mongodb://scheduling:scheduling@ds029117.mongolab.com:29117";
+            const string connectionString = "mongodb://scheduling:scheduling@localhost:27017";
             var server = MongoServer.Create(connectionString);
             var database = server.GetDatabase("scheduling");
             var logger = LogManager.GetLogger(typeof (Program));

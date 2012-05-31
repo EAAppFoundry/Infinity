@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using ScheduleAggregator.Data;
 using log4net;
 
@@ -18,6 +19,7 @@ namespace ScheduleAggregator.Harvesters
 
         public IEnumerable<Airing> Harvest( DateTime startDate, DateTime endDate )
         {
+            string[] networkFeedCodes = {"EU", "AS", "SA", "LA", "NA", "JP", "E"};
             var queryable = from franchiseAiring in entities.FranchiseAirings
                             join titleAiring in entities.TitleAirings on franchiseAiring.FRANCHISE_AIRING_ID equals
                                 titleAiring.FRANCHISE_AIRING_ID
@@ -28,7 +30,8 @@ namespace ScheduleAggregator.Harvesters
                             join networkTitle in entities.NetworkTitles on titleAiring.TITLE_ID equals networkTitle.TITLE_ID
                             from st in seriesTitles.DefaultIfEmpty()
                             where ( schedule.SCHED_TYPE_CD == "R" && titleSchedule.SCHED_TYPE_CD == "R" ) &&
-                                  ( schedule.NETWORK_FEED_CD == "E" && titleSchedule.NETWORK_FEED_CD == "E" ) &&
+//                                  ( schedule.NETWORK_FEED_CD == "E" && titleSchedule.NETWORK_FEED_CD == "E" ) &&
+                                  (networkFeedCodes.Contains(schedule.NETWORK_FEED_CD)  && networkFeedCodes.Contains(titleSchedule.NETWORK_FEED_CD) ) &&
                                   (titleAiring.ACTION_IND != "X" && titleAiring.ACTION_IND != "D") &&
                                   franchiseAiring.SCHEDULE_AIR_DATE >= startDate &&
                                   franchiseAiring.SCHEDULE_AIR_DATE <= endDate
@@ -44,6 +47,7 @@ namespace ScheduleAggregator.Harvesters
                                            SeriesName = st.TITLE_NAME ?? "",
                                            ReleaseYear = title.RELEASE_YEAR,
                                            TitleType = title.TITLE_TYPE_CD,
+                                           NetworkFeedCode = titleSchedule.NETWORK_FEED_CD
                                        };
 
             // Get only distinct airings
@@ -62,6 +66,7 @@ namespace ScheduleAggregator.Harvesters
                                   Network = result.Network,
                                   Platform = "Linear",
                                   Source = "Linear",
+                                  NetworkFeedCode = result.NetworkFeedCode,
                                   StartDate = result.StartDate.Value.AddSeconds(result.StartTime),
                                   Title = new Title
                                               {

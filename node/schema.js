@@ -1,7 +1,6 @@
 var mongoose = require("mongoose"),
 Schema = mongoose.Schema;
 
-
 var Network = new Schema({
     Name: {
         type: String,
@@ -22,7 +21,29 @@ var Network = new Schema({
     LogoUrl: {
 		type: String
     }
-})
+});
+
+var NetworkWithFeeds = new Schema({
+    Name: {
+        type: String,
+        index: true
+    },
+    NielsenCode: {
+        type: String
+    },
+    IsTurnerNetwork: {
+        type: Boolean
+    },
+    ScarlettCode: {
+        type: String
+    },
+    Code: {
+        type: String
+    },
+    LogoUrl: {
+        type: String
+    }
+});
 
  var Schedule = new Schema({
     ExternalId: {
@@ -75,3 +96,4 @@ var Network = new Schema({
 
 mongoose.model('Schedule', Schedule, "schedule");
 mongoose.model('Network', Network, "network");
+mongoose.model('NetworkWithFeeds', NetworkWithFeeds, "networkwithfeeds");
