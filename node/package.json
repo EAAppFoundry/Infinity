@@ -21,7 +21,8 @@
     "mongodb": "latest",
     "request": "latest",
     "hooks": "latest", 
-    "colors": "latest"
+    "colors": "latest",
+    "moment": "latest"
   },
   "devDependencies": {}
 }

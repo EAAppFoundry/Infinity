@@ -1,5 +1,6 @@
 app = module.parent.exports.app;
 db = module.parent.exports.db;
+var moment = require('moment');
 
 require('./schema');
 var Schedule = db.model('Schedule', Schedule, 'schedule');
@@ -83,32 +84,23 @@ function(req, res) {
         }
         
         // Get schedules for today based on
-        var today = new Date();
-
-        var startDate = new Date();
-        startDate.setUTCDate(today.getDate());
-        startDate.setUTCHours(0);
-        startDate.setUTCMinutes(0);
-        startDate.setUTCSeconds(0);
-
-        var endDate = new Date();
-        endDate.setUTCDate(today.getDate());
-        endDate.setUTCHours(23);
-        endDate.setUTCMinutes(59);
-        endDate.setUTCSeconds(29);
+		var startDate = moment().sod().toDate();
+        var endDate = moment().eod().toDate();
 
         Schedule.find({
+	        'Platform': 'Linear',
+            'Source': 'Linear',
             $or: [
             {
                 'StartDate': {
-                    $gte: startDate.toISO(),
-                    $lte: endDate.toISO()
+                    $gte: startDate,
+                    $lte: endDate
                 }
             },
             {
                 'EndDate': {
-                    $gte: startDate.toISO(),
-                    $lte: endDate.toISO()
+                    $gte: startDate,
+                    $lte: endDate
                 }
             }
             ],
@@ -146,30 +138,21 @@ function(req, res) {
     console.log('/schedules/network/:network/today');
     var today = new Date();
 
-    var startDate = new Date();
-    startDate.setUTCDate(today.getDate());
-    startDate.setUTCHours(0);
-    startDate.setUTCMinutes(0);
-    startDate.setUTCSeconds(0);
-
-    var endDate = new Date();
-    endDate.setUTCDate(today.getDate());
-    endDate.setUTCHours(23);
-    endDate.setUTCMinutes(59);
-    endDate.setUTCSeconds(29);
+	var startDate = moment().sod().toDate();
+    var endDate = moment().eod().toDate();
 
     Schedule.find({
         $or: [
         {
             'StartDate': {
-                $gte: startDate.toISO(),
-                $lte: endDate.toISO()
+                $gte: startDate,
+                $lte: endDate
             }
         },
         {
             'EndDate': {
-                $gte: startDate.toISO(),
-                $lte: endDate.toISO()
+                $gte: startDate,
+                $lte: endDate
             }
         }
         ],
@@ -279,7 +262,7 @@ function(req, res) {
     });
 });
 
-app.get('/schedules/:network/:platform/:source/:startdate/:enddate',
+app.get('/schedules/network/:network/platform/:platform/source/:source/startdate/:startdate/enddate/:enddate',
 function(req, res) {
     console.log('/schedules/network/:network/platform/:platform/source/:source/startdate/:startdate/enddate/:enddate');
     var stDate = req.startdate;

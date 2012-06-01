@@ -6,6 +6,7 @@
 <title> Main app </title>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	<script type="text/javascript" src="../codebase/moment.min.js"></script>	
     <script type="text/javascript">
 		$(document).ready(function() {		
         	$.ajax({
@@ -24,9 +25,9 @@
 	    <li>
 			<div>
 				<img src="/site/views/images/networks/${Network}.png"></img>
-				<span class="title">${Title.Name}</span>
+				<span class="title">${Title.Name}(${Title.SeriesName})</span>
 			</div>			
-	        <span class="date">${StartDate} to ${EndDate}</span>
+	        <span class="date">${moment(StartDate).toDate()} to ${moment(EndDate).toDate()}</span>
 	    </li>
 	</br>
 	</script>
@@ -58,7 +59,6 @@
 	</style>
 </head>
 <body>
-	This is a Work In Progress
 <ul id="ulSchedule"></ul>
 </body>
 </html>
