@@ -37,6 +37,12 @@ function(req, res, next, enddate) {
     next();
 });
 
+app.param('feedcode',
+function(req, res, next, feedcode) {
+    req.feedcode = feedcode;
+    next();
+});
+
 app.get('/schedules/platform/:platform',
 function(req, res) {
     console.log('/schedules/platform/:platform');
@@ -287,6 +293,50 @@ function(req, res) {
                 'EndDate': {
                     $gt: startDate,
                     $lte: endDate
+                }
+            }
+            ]
+        }).sort('StartDate', 'ascending').execFind(
+        function(err, schedules) {
+            if (err) {
+                throw err;
+            }
+
+            res.contentType('application/json');
+            res.json(schedules);
+        });
+    }
+});
+
+app.get('/schedules/network/:network/feedcode/:feedcode/platform/:platform/source/:source/startdate/:startdate/enddate/:enddate',
+function(req, res) {
+    console.log('/schedules/network/:network/feedcode/:feedcode/platform/:platform/source/:source/startdate/:startdate/enddate/:enddate');
+    var stDate = req.startdate;
+    var endDate = req.enddate;
+    if (stDate !== undefined)
+    {
+        var startDate = new Date(unescape(stDate.toString()).replace(/'/gi, "")).toISO();
+        endDate = new Date(endDate === undefined ? startDate: unescape(endDate.toString()).replace(/'/gi, "")).toISO();
+
+		var newStartDate = moment(startDate).sod().toDate();
+		var newEndDate = moment(endDate).eod().toDate();
+
+        Schedule.find({
+            'Network': req.network,
+            'Platform': req.platform,
+            'Source': req.source,
+			'NetworkFeedCode': req.feedcode,
+            $or: [
+            {
+                'StartDate': {
+                    $gte: newStartDate,
+                    $lt: newEndDate
+                }
+            },
+            {
+                'EndDate': {
+                    $gt: newStartDate,
+                    $lte: newEndDate
                 }
             }
             ]
